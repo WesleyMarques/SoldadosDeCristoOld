@@ -1,9 +1,9 @@
 *.class
-/nbproject/
-/bin/
-/dist/
+nbproject/
+bin/
+dist/
 build.xml
-/build/
+build/
 
 
 # Mobile Tools for Java (J2ME)
