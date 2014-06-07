@@ -5,15 +5,22 @@
  */
 package org.sc.window;
 
-import org.sc.codes.User;
-import org.sc.codes.UserRegistry;
-import org.sc.data.DataBaseConnect;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.lavieri.modelutil.cep.WebServiceCep;
+import org.sc.codes.User;
+import org.sc.codes.UserRegistry;
+import org.sc.data.DataBaseConnect;
 
 /**
  *
@@ -22,6 +29,10 @@ import org.lavieri.modelutil.cep.WebServiceCep;
 public class Registry extends SwitchablePanel {
     
     private User userRegistry = null;
+    private final int FOTO = 0;
+    private final int DOCUMENTO = 1;
+    private final int MAX_TAM_FOTO = 150;//Tamanho limite em Kb para o upload do foto 3x4
+    private final int MAX_TAM_DOCUMENTO = 2024;//Tamanho limite em Kb para o upload do Documento
 
     /**
      * Creates new form Registry
@@ -1179,22 +1190,81 @@ public class Registry extends SwitchablePanel {
 
     private void uploadPhotoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadPhotoLabelMouseClicked
         // TODO add your handling code here:
-        openFile = new JFileChooser();
-        openFile.setDialogTitle("Escola a foto");
-        FileFilter filter = new FileNameExtensionFilter("jpg files", "jpg");
-        FileFilter filter2 = new FileNameExtensionFilter("png files", "png");
-        openFile.addChoosableFileFilter(filter);
-        openFile.addChoosableFileFilter(filter2);
-        int retorno = openFile.showOpenDialog(null);
-        if (retorno == JFileChooser.APPROVE_OPTION) {
-            photoPath = openFile.getSelectedFile().getAbsolutePath();
-            ImageIcon image = new ImageIcon(photoPath);
-            image.setImage(image.getImage().getScaledInstance(150, 164, 0));
-            photoLabel.setIcon(image);
+        List<FileFilter> filters = new ArrayList<FileFilter>();
+        filters.add(new FileNameExtensionFilter("jpg files", "jpg"));
+        filters.add(new FileNameExtensionFilter("png files", "png"));
+        try {      
+            photoPath = getArchiveDialog("Selecione a Foto desejada", filters, FOTO);
+        } catch (Exception ex) {
+            showDialogInfo(ex.getMessage());
         }
-      
     }//GEN-LAST:event_uploadPhotoLabelMouseClicked
 
+    
+    //Método para mostrar uma messagem com JOptionPane
+    private void showDialogInfo(String message){
+                JOptionPane.showMessageDialog(this, message);
+    }
+    
+    /**
+     * Método para inserir na label da foto 3x4 o arquivo pego na dialogInput
+     * @param pathFoto 
+     */
+    private void setImageFromDialog(String pathFoto) {
+        ImageIcon image = new ImageIcon(pathFoto);
+        image.setImage(image.getImage().getScaledInstance(150, 164, 0));
+        photoLabel.setIcon(image);
+    }
+
+    /**
+     * Esse método abre uma caixa de Diálogo para pegar um arquivo
+     * @param title Título que irá aparecer na caixa de diálogo
+     * @param filt É um array com N filtros utilizados na caixa de diálogo
+     * @param tp É o tipo do arquivo requerido
+     * @return a String com o PATH do arquivo
+     */
+    private String getArchiveDialog(String title, List<FileFilter> filt, int tp) throws Exception{
+        int retorno;
+        String pathReturn = "";
+        openFile = new JFileChooser();
+        openFile.setDialogTitle(title);
+        int i = 0;
+        int tamFile = getTamanho(tp);
+        while(i < filt.size()){
+            openFile.addChoosableFileFilter(filt.get(i));
+            i++;
+        }
+        retorno = openFile.showOpenDialog(null);
+        if (retorno == JFileChooser.APPROVE_OPTION) {
+            pathReturn = openFile.getSelectedFile().getAbsolutePath();
+            if (!validarArchiveByDialog(pathReturn, tp)) {
+                throw new Exception("Tamanho limite excedido!\nO tamanho máximo do arquivo é de: "+tamFile+"Kb");
+            }
+           
+        }   
+        return pathReturn;
+    }
+    
+    /**
+     * Esse método valida o tamanho do arquivo, de acordo com os tamanhos pré-definidos
+     * @param path é o caminho do arquivo
+     * @param type É o tipo do arquivo(FOTO - 0; DOCUMENTO - 1)
+     * @return true, caso seja possível e false c.c.
+     */
+    private boolean validarArchiveByDialog(String path, int tam){
+        File file = new File(path);
+        if (file.getUsableSpace() > tam) {//Verificar aqui, pois o resultado desse método não retorna em KB
+            System.err.println(file.getUsableSpace());
+            return false;
+        }        
+        return true;           
+    }
+    
+    private int getTamanho(int type){
+        return type==FOTO?MAX_TAM_FOTO:MAX_TAM_DOCUMENTO;
+    }
+    
+    
     private void emailTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFocusLost
         // TODO add your handling code here:
         if (verifyEmailAddress(emailText.getText())) {
