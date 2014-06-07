@@ -22,7 +22,11 @@ public class DataOffline {
 
     private static List<User> users;
     private static List<User> login;
-    
+    private static final String PATH = "src/org/sc/archives/";
+    private static final String ARQUIVO__NÃO__ENCONTRADO = "Arquivo Não Encontrado!\nContact o Administrador pela área do FEEDBACK";
+    private static final String ERRO_NA_LEITURA_DO_ARQUIVO = "Erro na leitura do arquivo!\nContact o Administrador pela área do FEEDBACK";
+
+
     
 
     /**
@@ -33,7 +37,7 @@ public class DataOffline {
      *
      *
      */
-    public static List<User> loadUsersLogin() {
+    public static List<User> loadUsersLogin() throws Exception {
         List<Object> listUsers;
         listUsers = readData("UserLoginOff.dat");
         login = new ArrayList<User>();
@@ -53,48 +57,47 @@ public class DataOffline {
      * @param file Name of the file.
      * @return An object list, with the information about the file.
      */
-    private static List<Object> readData(String file) {
+    private static List<Object> readData(String file) throws Exception{
         ObjectInputStream in = null;
         List<Object> dataObject = null;
         try {
             try {
-                in = new ObjectInputStream(new FileInputStream(file));
+                in = new ObjectInputStream(new FileInputStream(PATH+file));
                 dataObject = (ArrayList<Object>) in.readObject();
             } catch (FileNotFoundException e) {
-                System.err.println(e.getMessage());
+                throw new Exception(ARQUIVO__NÃO__ENCONTRADO);
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
             in.close();
         } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+            throw new Exception(ERRO_NA_LEITURA_DO_ARQUIVO);
+            
         }
         return dataObject;
     }
 
     /**
      * Save data in archive
-     *
      * @param file
      * @return
      */
-    public static boolean saveData(String file) {
+    public static boolean saveData(String file) throws Exception{
         ObjectOutputStream out = null;
         try {
             try {
-                out = new ObjectOutputStream(new FileOutputStream(file));
+                out = new ObjectOutputStream(new FileOutputStream(PATH+file));
             } catch (FileNotFoundException e) {
-                return false;
+                throw new Exception(ARQUIVO__NÃO__ENCONTRADO);
             }
-            if (file.equals("NewUsers.dat")) {
+            if (file.equals(PATH+"NewUsers.dat")) {
                 out.writeObject(users);
             } else {
                 out.writeObject(login);
             }
             out.close();
-        } catch (Exception e) {
-            System.err.println(e);
-            System.exit(1);
+        } catch (IOException e) {
+            throw new Exception(ERRO_NA_LEITURA_DO_ARQUIVO);
         }
         return true;
     }
