@@ -20,5 +20,4 @@ public class TesteDataConnect {
 		System.out.println(connection.getConn().isClosed());
 		
 	}
-
 }
