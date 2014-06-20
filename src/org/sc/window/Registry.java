@@ -82,9 +82,6 @@ public class Registry extends SwitchablePanel {
         patOption = new javax.swing.JComboBox();
         status = new javax.swing.JLabel();
         statusOption = new javax.swing.JComboBox();
-        photoPanel = new javax.swing.JPanel();
-        photoLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         otherdatas = new javax.swing.JTabbedPane();
         endereco = new javax.swing.JPanel();
         cepLabel = new javax.swing.JLabel();
@@ -204,7 +201,8 @@ public class Registry extends SwitchablePanel {
         helpLabel = new javax.swing.JLabel();
         statusProgress = new javax.swing.JProgressBar();
         uploadPhotoLabel = new javax.swing.JLabel();
-        infoPhoto = new javax.swing.JLabel();
+        docLabel = new javax.swing.JLabel();
+        photoLabel = new javax.swing.JLabel();
 
         dialogInfo.setTitle("Informações de Cadastro");
         dialogInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -316,7 +314,7 @@ public class Registry extends SwitchablePanel {
                                 .addComponent(mBox)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fBox)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 21, Short.MAX_VALUE))
                             .addComponent(batOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(personaldataLayout.createSequentialGroup()
                         .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,21 +389,6 @@ public class Registry extends SwitchablePanel {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        photoPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout photoPanelLayout = new javax.swing.GroupLayout(photoPanel);
-        photoPanel.setLayout(photoPanelLayout);
-        photoPanelLayout.setHorizontalGroup(
-            photoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(photoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-        );
-        photoPanelLayout.setVerticalGroup(
-            photoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jButton1.setText("Documentos");
-
         otherdatas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         otherdatas.setPreferredSize(new java.awt.Dimension(800, 221));
 
@@ -478,7 +461,7 @@ public class Registry extends SwitchablePanel {
                         .addComponent(cepText, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(validarCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         enderecoLayout.setVerticalGroup(
             enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,7 +576,7 @@ public class Registry extends SwitchablePanel {
                                     .addComponent(twitterText, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(validEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         contatosLayout.setVerticalGroup(
             contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,7 +690,7 @@ public class Registry extends SwitchablePanel {
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
         questionarioSCPanelLayout.setVerticalGroup(
             questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1034,7 +1017,7 @@ public class Registry extends SwitchablePanel {
                                         .addComponent(jLabel33)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(413, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         quetionarioPpanelLayout.setVerticalGroup(
             quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1119,43 +1102,49 @@ public class Registry extends SwitchablePanel {
             }
         });
 
-        infoPhoto.setText("Carregar Foto 3 X 4");
+        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/PDFIcon.png"))); // NOI18N
+        docLabel.setToolTipText("");
+        docLabel.setName("pdfIcon"); // NOI18N
+        docLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                docLabelMouseClicked(evt);
+            }
+        });
+
+        photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/userDefault.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(titleLabel)
-                .addContainerGap(241, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(photoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(973, 973, 973))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(otherdatas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(helpLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(photoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(infoPhoto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(uploadPhotoLabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(35, 35, 35))
+                        .addComponent(uploadPhotoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(194, 194, 194)
+                            .addComponent(titleLabel))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(otherdatas, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(helpLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1164,30 +1153,33 @@ public class Registry extends SwitchablePanel {
                 .addComponent(titleLabel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(photoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(uploadPhotoLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(infoPhoto)))))
+                            .addComponent(uploadPhotoLabel)
+                            .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(otherdatas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(helpLabel)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Método para mostrar uma messagem com JOptionPane
+    private void showDialogInfo(String message){
+                JOptionPane.showMessageDialog(this, message);
+    }
+    
+    //STAR UPFOTO
     private void uploadPhotoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadPhotoLabelMouseClicked
         // TODO add your handling code here:
         List<FileFilter> filters = new ArrayList<FileFilter>();
@@ -1198,14 +1190,12 @@ public class Registry extends SwitchablePanel {
         } catch (Exception ex) {
             showDialogInfo(ex.getMessage());
         }
+        if (photoPath != "") {
+            setImageFromDialog(photoPath);            
+        }
+        
     }//GEN-LAST:event_uploadPhotoLabelMouseClicked
 
-    
-    //Método para mostrar uma messagem com JOptionPane
-    private void showDialogInfo(String message){
-                JOptionPane.showMessageDialog(this, message);
-    }
-    
     /**
      * Método para inserir na label da foto 3x4 o arquivo pego na dialogInput
      * @param pathFoto 
@@ -1253,8 +1243,8 @@ public class Registry extends SwitchablePanel {
      */
     private boolean validarArchiveByDialog(String path, int tam){
         File file = new File(path);
-        if (file.getUsableSpace() > tam) {//Verificar aqui, pois o resultado desse método não retorna em KB
-            System.err.println(file.getUsableSpace());
+        if ((file.length()/1024) > getTamanho(tam)) {//Verificar aqui, pois o resultado desse método não retorna em KB
+            System.err.println((file.length()/1024)+" "+tam);
             return false;
         }        
         return true;           
@@ -1265,6 +1255,11 @@ public class Registry extends SwitchablePanel {
     }
     
     
+    //FIM DO UPFOTO
+    /**
+     * Verifica automaticamente se o formato de email inserido é válido ou não
+     * @param evt 
+     */
     private void emailTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFocusLost
         // TODO add your handling code here:
         if (verifyEmailAddress(emailText.getText())) {
@@ -1277,6 +1272,10 @@ public class Registry extends SwitchablePanel {
 
     }//GEN-LAST:event_emailTextFocusLost
 
+    /**
+     * API webService que auxilia no autocomplemento dos campos de texto do endereço
+     * @param evt 
+     */
     private void cepTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cepTextFocusLost
         // TODO add your handling code here:
         WebServiceCep webServiceCep = WebServiceCep.searchCep(cepText.getText().toString());
@@ -1321,6 +1320,18 @@ public class Registry extends SwitchablePanel {
         }
         
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void docLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docLabelMouseClicked
+        
+        List<FileFilter> filters = new ArrayList<FileFilter>();
+        filters.add(new FileNameExtensionFilter("PDF files", "pdf"));
+        try {      
+            docPath = getArchiveDialog("Selecione o documento desejado", filters, DOCUMENTO);
+        } catch (Exception ex) {
+            showDialogInfo(ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_docLabelMouseClicked
 
     private boolean verifyEmailAddress(String emailAddress) {
         return emailAddress.matches("\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}") && !emailAddress.equals("");
@@ -1371,6 +1382,7 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JDialog dialogInfo;
     private javax.swing.JLabel districtLabel;
     private javax.swing.JTextField districtText;
+    private javax.swing.JLabel docLabel;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailText;
     private javax.swing.JPanel endereco;
@@ -1378,8 +1390,6 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel facebookLabel;
     private javax.swing.JLabel fatherLabelSE;
     private javax.swing.JLabel helpLabel;
-    private javax.swing.JLabel infoPhoto;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
     private javax.swing.JComboBox jComboBox12;
@@ -1450,7 +1460,6 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JFormattedTextField phoneFormat3;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel photoLabel;
-    private javax.swing.JPanel photoPanel;
     private javax.swing.JScrollPane questionarioP;
     private javax.swing.JScrollPane questionarioSC;
     private javax.swing.JPanel questionarioSCPanel;
@@ -1481,7 +1490,8 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel warName;
     private javax.swing.JTextField warNameText;
     // End of variables declaration//GEN-END:variables
-    private String photoPath;
+    private String photoPath = "";
+    private String docPath = "";
     private JFileChooser openFile;
     
 }
