@@ -7,6 +7,8 @@
 package org.sc.controllers;
 
 import org.sc.codes.User;
+import org.sc.codes.UserRegistry;
+import org.sc.data.DataBaseConnect;
 
 /**
  *
@@ -14,9 +16,18 @@ import org.sc.codes.User;
  */
 public class UserController {
     
-    public User newRegistry(User newUser){
-    
-    return null;
+    public User newRegistry(UserRegistry newUser){
+        if(DataBaseConnect.getTypeConn() == DataBaseConnect.ONLINE)
+            return newRegistryOnline(newUser);
+        return newRegistryOffline(newUser);
+    }
+
+    private User newRegistryOnline(UserRegistry newUser) {
+        return null;
+    }
+
+    private User newRegistryOffline(UserRegistry newUser) {
+        return null;
     }
     
 }

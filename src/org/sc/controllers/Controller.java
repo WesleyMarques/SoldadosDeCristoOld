@@ -1,6 +1,7 @@
 package org.sc.controllers;
 
 import org.sc.codes.User;
+import org.sc.codes.UserRegistry;
 
 public class Controller {
 	private DataController dataController;
@@ -15,7 +16,7 @@ public class Controller {
 		return dataController.searchUserLogin(email);
 	}
         
-        public User newUserControll(User user){
+        public User newUserControll(UserRegistry user){
             return userController.newRegistry(user);
         }  
 }

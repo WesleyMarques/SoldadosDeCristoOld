@@ -1347,6 +1347,7 @@ public class Registry extends SwitchablePanel {
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         try {
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_saveButtonMouseClicked

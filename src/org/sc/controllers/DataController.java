@@ -24,17 +24,11 @@ public class DataController {
 
 	}
         //Fim dos métodos para logar um usuário para Login
-        
-        //Méodo para registrar usuários
-        public void registryUserFinally(User userRegistry){
-            
-            
-        }
 //FIM
         
 
 	/**
-	 * M�todo auxiliar de searchUserLogin para busca Offline
+	 * Método auxiliar de searchUserLogin para busca Offline
 	 * @param email
 	 * @return
 	 * @throws Exception
@@ -48,7 +42,7 @@ public class DataController {
 	}
 
 	/**
-	 * M�todo auxiliar de searchUserLogin para busca Online
+	 * Método auxiliar de searchUserLogin para busca Online
 	 * @param email
 	 * @return
 	 * @throws Exception

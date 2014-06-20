@@ -21,7 +21,7 @@ import org.sc.codes.UserLogin;
  */
 public class DataOnline {
 
-	private static ConnectionMySql connection;
+	private static QueryData connection;
 	private static List<User> users;
 	private static List<User> login;
 
@@ -46,22 +46,19 @@ public class DataOnline {
 
 	private static List<Object> readUserLogin() throws Exception {
 		List<Object> usersAux = new ArrayList<Object>();
-                connection = new ConnectionMySql("root", "localhost",
-				"SoldadosDeCristo", "151194");
-		Statement s = connection.getConn().createStatement();
-		ResultSet r = null;
-
-		r = s.executeQuery("Select U.registry, U.name, U.warName, U.RG, U.battalion, U.patent, U.status,"
-				+ "U.email, A.userName, A.password  from Users U, Admin A, Patents P WHERE U.registry = A.userName;"); 
-		while (r.next()) {
-			usersAux.add(new UserLogin(r.getInt("registry"), r.getString("name"), r.getString("warName"), r.getInt("RG"), 
-					r.getInt("battalion"), r.getInt("patent"), r.getString("status"), r.getString("userName"), 
-					r.getString("password"), r.getString("email")));
+                connection = new QueryData(new ConnectionMySql("root", "localhost","SoldadosDeCristo", "151194"));
+		
+		ResultSet resultSet = connection.queryD("Select U.registry, U.name, U.warName, U.RG, U.battalion, "
+                        + "U.patent, U.status,U.email, A.userName, A.password  from Users U, Admin A, "
+                        + "Patents P WHERE U.registry = A.userName;");
+		while (resultSet.next()) {
+			usersAux.add(new UserLogin(resultSet.getInt("registry"), resultSet.getString("name"), resultSet.getString("warName"), 
+                                resultSet.getInt("RG"), resultSet.getInt("battalion"), resultSet.getInt("patent"), resultSet.getString("status"), 
+                                resultSet.getString("userName"), resultSet.getString("password"), resultSet.getString("email")));
 		}
 
-		r.close();
-		s.close();
-
+		resultSet.close();
+                
 		return usersAux;
 	}
 

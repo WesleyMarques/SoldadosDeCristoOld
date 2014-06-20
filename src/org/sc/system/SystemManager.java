@@ -26,6 +26,7 @@ public class SystemManager {
     
     public boolean registryUser(User userRegistry){
         
+        
         return false;
     }
     
