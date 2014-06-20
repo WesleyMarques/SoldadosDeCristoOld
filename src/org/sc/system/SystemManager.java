@@ -24,7 +24,7 @@ public class SystemManager {
         return false;        
     }
     
-    public boolean registryUsers(User userRegistry){
+    public boolean registryUser(User userRegistry){
         
         return false;
     }

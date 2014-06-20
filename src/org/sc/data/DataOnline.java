@@ -21,14 +21,11 @@ import org.sc.codes.UserLogin;
  */
 public class DataOnline {
 
-	private static ConnectionMySql connection = new ConnectionMySql("root", "localhost",
-				"SoldadosDeCristo", "151194");;
+	private static ConnectionMySql connection;
 	private static List<User> users;
 	private static List<User> login;
 
 	public DataOnline() {
-		connection = new ConnectionMySql("root", "localhost",
-				"SoldadosDeCristo", "151194");
 	}
 
 	public static List<User> loadUsersLogin() throws Exception {
@@ -49,6 +46,8 @@ public class DataOnline {
 
 	private static List<Object> readUserLogin() throws Exception {
 		List<Object> usersAux = new ArrayList<Object>();
+                connection = new ConnectionMySql("root", "localhost",
+				"SoldadosDeCristo", "151194");
 		Statement s = connection.getConn().createStatement();
 		ResultSet r = null;
 

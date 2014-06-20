@@ -4,19 +4,18 @@ import org.sc.codes.User;
 
 public class Controller {
 	private DataController dataController;
+        private UserController userController;
 	
 	public Controller(){
 		dataController = new DataController();
+                userController = new UserController();
 	}
 	
 	public User loginData(String email) throws Exception{
 		return dataController.searchUserLogin(email);
 	}
         
-        public User registryData(User userRegistry){
-            
-            return null;
-            
-        }
-
+        public User newUserControll(User user){
+            return userController.newRegistry(user);
+        }  
 }
