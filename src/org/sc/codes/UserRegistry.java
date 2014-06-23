@@ -75,6 +75,7 @@ public class UserRegistry extends User implements Serializable {
         // TODO Auto-generated constructor stub
     }
 
+
     /**
      * @return the photo
      */

@@ -1,9 +1,9 @@
 /**
  * this class is responsible to create a connection online with the database
  * the data base is a server:
- * 			name:
- * 			user:
- * 			password:
+ * 			name:186.202.152.69
+ * 			user:soldadosdecris8@186.202.28.226
+ * 			password:t1moteo23.
  */
 package org.sc.data;
 
@@ -24,6 +24,10 @@ public class DataOnline {
 	private static QueryData connection;
 	private static List<User> users;
 	private static List<User> login;
+        private final static String SERVER_NAME = "186.202.152.69";
+        private final static String SERVER_USER = "soldadosdecris8";
+        private final static String SERVER_PW = "t1moteo23.";
+        private final static String SERVER_DB = "soldadosdecris8";
 
 	public DataOnline() {
 	}
@@ -46,7 +50,7 @@ public class DataOnline {
 
 	private static List<Object> readUserLogin() throws Exception {
 		List<Object> usersAux = new ArrayList<Object>();
-                connection = new QueryData(new ConnectionMySql("root", "localhost","SoldadosDeCristo", "151194"));
+                connection = new QueryData(new ConnectionMySql(SERVER_USER, SERVER_NAME,SERVER_DB, SERVER_PW));
 		
 		ResultSet resultSet = connection.queryD("Select U.registry, U.name, U.warName, U.RG, U.battalion, "
                         + "U.patent, U.status,U.email, A.userName, A.password  from Users U, Admin A, "

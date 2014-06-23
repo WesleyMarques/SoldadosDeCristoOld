@@ -15,13 +15,13 @@ public class ConnectionMySql {
 	
 
 	// Método Construtor da Classe
-	public ConnectionMySql(String dName, String sName, String DB, String pw) {
+	public ConnectionMySql(String dName, String sName, String DB, String pw) throws Exception {
 		conn = getConexaoMySQL(dName, sName, DB, pw);
 	}
 
 	// Método de Conex�o
 	//user, server name, database e password
-	private Connection getConexaoMySQL(String uName, String sName, String DB, String pw) {
+	private Connection getConexaoMySQL(String uName, String sName, String DB, String pw) throws Exception {
 		Connection connection = null;
 		// atributo do tipo Connection
 		try {
@@ -39,12 +39,10 @@ public class ConnectionMySql {
 			return connection;
 		} catch (ClassNotFoundException e) {
 			// Driver n�o encontrado
-			System.out.println("O driver expecificado nao foi encontrado.");
-			return null;
+			throw new Exception("O driver expecificado nao foi encontrado.");
 		} catch (SQLException e) {
 			// N�o conseguindo se conectar ao banco
-			System.out.println("Nao foi possivel conectar ao Banco de Dados.");
-			return null;
+			throw new Exception("Nao foi possivel conectar ao Banco de Dados.");
 		}
 	} 
 	
