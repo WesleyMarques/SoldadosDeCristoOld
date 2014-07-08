@@ -17,6 +17,12 @@ import org.sc.data.DataBaseConnect;
 public class UserController {
     
     public User newRegistry(UserRegistry newUser){
+        /**
+         * Para cadastrar a seguinte ordem deve ser respeitada:
+         * 1 - Cria quetionário
+         * 2 - Cria usuário
+         * 3 - cria contatos
+         */
         if(DataBaseConnect.getTypeConn() == DataBaseConnect.ONLINE)
             return newRegistryOnline(newUser);
         return newRegistryOffline(newUser);

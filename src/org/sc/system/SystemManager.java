@@ -25,7 +25,7 @@ public class SystemManager {
     }
     
     public boolean registryUser(User userRegistry){
-        
+        //chama allcontrol + userControl para cadastrar new user
         
         return false;
     }

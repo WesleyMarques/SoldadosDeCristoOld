@@ -6,12 +6,9 @@
 package org.sc.window;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,6 +18,7 @@ import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.codes.User;
 import org.sc.codes.UserRegistry;
 import org.sc.data.DataBaseConnect;
+import org.sc.system.SoldadosDeCristo;
 
 /**
  *
@@ -150,13 +148,10 @@ public class Registry extends SwitchablePanel {
         jComboBox15 = new javax.swing.JComboBox();
         motherLabelSE = new javax.swing.JLabel();
         jComboBox16 = new javax.swing.JComboBox();
-        jTextField3 = new javax.swing.JTextField();
         QSClabel6 = new javax.swing.JLabel();
         jComboBox17 = new javax.swing.JComboBox();
         QSClabel7 = new javax.swing.JLabel();
         jComboBox18 = new javax.swing.JComboBox();
-        QSClabel8 = new javax.swing.JLabel();
-        jComboBox19 = new javax.swing.JComboBox();
         QSClabel9 = new javax.swing.JLabel();
         jComboBox20 = new javax.swing.JComboBox();
         QSClabel10 = new javax.swing.JLabel();
@@ -170,8 +165,6 @@ public class Registry extends SwitchablePanel {
         jComboBox25 = new javax.swing.JComboBox();
         QSClabel13 = new javax.swing.JLabel();
         jComboBox26 = new javax.swing.JComboBox();
-        jLabel29 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         questionarioP = new javax.swing.JScrollPane();
         quetionarioPpanel = new javax.swing.JPanel();
         QPlabel1 = new javax.swing.JLabel();
@@ -179,22 +172,17 @@ public class Registry extends SwitchablePanel {
         QPlabel2 = new javax.swing.JLabel();
         jComboBox27 = new javax.swing.JComboBox();
         QPlabel3 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jComboBox28 = new javax.swing.JComboBox();
-        jComboBox29 = new javax.swing.JComboBox();
-        jLabel31 = new javax.swing.JLabel();
         jComboBox30 = new javax.swing.JComboBox();
         QPlabel4 = new javax.swing.JLabel();
         jComboBox31 = new javax.swing.JComboBox();
-        jLabel32 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         QPlabel5 = new javax.swing.JLabel();
         jComboBox32 = new javax.swing.JComboBox();
-        jLabel33 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         saveButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         clearButton = new javax.swing.JButton();
@@ -208,7 +196,6 @@ public class Registry extends SwitchablePanel {
         dialogInfo.setBackground(java.awt.Color.white);
         dialogInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         dialogInfo.setIconImage((new ImageIcon(getClass().getResource("/org/sc/SystemImages/escudoIcon.png"))).getImage());
-        dialogInfo.setLocationByPlatform(true);
         dialogInfo.setMinimumSize(new java.awt.Dimension(600, 350));
         dialogInfo.setResizable(false);
         dialogInfo.setType(java.awt.Window.Type.POPUP);
@@ -765,15 +752,11 @@ public class Registry extends SwitchablePanel {
 
         QSClabel7.setText("7 - Recebe algum auxílio ou programa Social?");
 
-        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bolsa família", "Pensão ", "Auxílio doença", "Outro" }));
+        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhum", "Bolsa família", "Pensão ", "Auxílio doença", "Outro" }));
 
-        QSClabel8.setText("8 - Alguém de sua família está doente?");
+        QSClabel9.setText("8 - Algum familiar possui algum problema de saúde?");
 
-        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        QSClabel9.setText("9 - De qual enfermidade está acometido?");
-
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumatismo", "Câncer", "Depressão", "Outra" }));
+        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhum", "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumatismo", "Câncer", "Depressão", "Outra" }));
 
         QSClabel10.setText("10 - Qual o nível de escolaridade?");
 
@@ -795,11 +778,7 @@ public class Registry extends SwitchablePanel {
 
         QSClabel13.setText("13 - Professa alguma religião?");
 
-        jComboBox26.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel29.setText("Qual?");
-
-        jTextField4.setText("Religião");
+        jComboBox26.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhuma", "Protestantismo", "Catolicismo", "Judaismo", "Espiritismo", "Afro-brasileira", "Outra" }));
 
         javax.swing.GroupLayout questionarioSEPanelLayout = new javax.swing.GroupLayout(questionarioSEPanel);
         questionarioSEPanel.setLayout(questionarioSEPanelLayout);
@@ -808,56 +787,53 @@ public class Registry extends SwitchablePanel {
             .addGroup(questionarioSEPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel1)
-                    .addComponent(QSClabel2)
-                    .addComponent(QSClabel3)
-                    .addComponent(QSClabel4)
-                    .addComponent(QSClabel5)
-                    .addComponent(QSClabel6)
-                    .addComponent(QSClabel7)
-                    .addComponent(QSClabel8)
-                    .addComponent(QSClabel9)
-                    .addComponent(QSClabel10)
-                    .addComponent(QSClabel11)
-                    .addComponent(QSClabel12)
-                    .addComponent(QSClabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                        .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(QSClabel1)
+                            .addComponent(QSClabel2)
+                            .addComponent(QSClabel3)
+                            .addComponent(QSClabel4)
+                            .addComponent(QSClabel5)
+                            .addComponent(QSClabel6)
+                            .addComponent(QSClabel7)
+                            .addComponent(QSClabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
+                                .addComponent(fatherLabelSE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(motherLabelSE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                        .addComponent(fatherLabelSE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(motherLabelSE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(QSClabel10)
+                            .addComponent(QSClabel11)
+                            .addComponent(QSClabel12)
+                            .addComponent(QSClabel13))
+                        .addGap(53, 53, 53)
+                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
         questionarioSEPanelLayout.setVerticalGroup(
             questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -885,8 +861,7 @@ public class Registry extends SwitchablePanel {
                         .addComponent(fatherLabelSE)
                         .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(motherLabelSE)
-                        .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(QSClabel6)
@@ -897,34 +872,28 @@ public class Registry extends SwitchablePanel {
                     .addComponent(jComboBox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel8)
-                    .addComponent(jComboBox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(QSClabel9)
                     .addComponent(jComboBox20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(QSClabel10)
+                    .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel28)
-                    .addComponent(jComboBox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(QSClabel11)
                     .addComponent(jComboBox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(QSClabel12)
                     .addComponent(jComboBox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(QSClabel13)
-                    .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jComboBox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         questionarioSE.setViewportView(questionarioSEPanel);
@@ -939,37 +908,31 @@ public class Registry extends SwitchablePanel {
 
         QPlabel2.setText("2 - O membro possui algum tipo de enfermidade?");
 
-        jComboBox27.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
+        jComboBox27.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhuma", "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumantismo", "Câncer", "Depressão", "Asma", "Outra" }));
 
         QPlabel3.setText("3 - Ele Possui algum tipo de alergia? ");
 
-        jLabel30.setText("Qual?");
-
-        jComboBox28.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumantismo", "Câncer", "Depressão", "Asma", "Outra" }));
-
-        jComboBox29.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel31.setText("Qual?");
-
-        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Respiratória", "Alimentar", "Insetos", "Medicamento", "Outro" }));
+        jComboBox30.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nehuma", "Respiratória", "Alimentar", "Insetos", "Medicamento", "Outro" }));
 
         QPlabel4.setText("4 - O membro toma algum medicamento?");
 
         jComboBox31.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
 
-        jLabel32.setText("Qual?");
-
         QPlabel5.setText("5 - Professa alguma religião?");
 
         jComboBox32.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel33.setText("Qual?");
 
         jLabel34.setText("6 - Por que deseja ser um soldado de Cristo?");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
+
+        jLabel1.setText("Observações médicas:");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane1.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout quetionarioPpanelLayout = new javax.swing.GroupLayout(quetionarioPpanel);
         quetionarioPpanel.setLayout(quetionarioPpanelLayout);
@@ -991,34 +954,19 @@ public class Registry extends SwitchablePanel {
                             .addComponent(QPlabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel31)
-                                .addGap(25, 25, 25)
-                                .addComponent(jComboBox30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboBox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel30)
-                                .addGap(25, 25, 25)
-                                .addComponent(jComboBox28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(quetionarioPpanelLayout.createSequentialGroup()
                                 .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel32)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel33)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(417, Short.MAX_VALUE))
+                                        .addComponent(jComboBox31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
         quetionarioPpanelLayout.setVerticalGroup(
             quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1028,37 +976,30 @@ public class Registry extends SwitchablePanel {
                     .addComponent(QPlabel1)
                     .addComponent(jComboBox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QPlabel2)
+                    .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(quetionarioPpanelLayout.createSequentialGroup()
                         .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(QPlabel2)
-                            .addComponent(jComboBox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30)
-                            .addComponent(jComboBox28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31)
                             .addComponent(jComboBox30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(QPlabel3))
                         .addGap(18, 18, 18)
                         .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jComboBox31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel32)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1))
                             .addComponent(QPlabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(13, 13, 13)
                         .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(QPlabel5)))
-                    .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel33)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(QPlabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel34)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -1346,8 +1287,9 @@ public class Registry extends SwitchablePanel {
     }//GEN-LAST:event_docLabelMouseClicked
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
+        User user = null;
         try {
-            
+            SoldadosDeCristo.system.registryUser(user);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_saveButtonMouseClicked
@@ -1381,7 +1323,6 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel QSClabel5;
     private javax.swing.JLabel QSClabel6;
     private javax.swing.JLabel QSClabel7;
-    private javax.swing.JLabel QSClabel8;
     private javax.swing.JLabel QSClabel9;
     private javax.swing.JLabel RG;
     private javax.swing.JTextField UF;
@@ -1423,7 +1364,6 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JComboBox jComboBox16;
     private javax.swing.JComboBox jComboBox17;
     private javax.swing.JComboBox jComboBox18;
-    private javax.swing.JComboBox jComboBox19;
     private javax.swing.JComboBox jComboBox20;
     private javax.swing.JComboBox jComboBox21;
     private javax.swing.JComboBox jComboBox22;
@@ -1432,8 +1372,6 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JComboBox jComboBox25;
     private javax.swing.JComboBox jComboBox26;
     private javax.swing.JComboBox jComboBox27;
-    private javax.swing.JComboBox jComboBox28;
-    private javax.swing.JComboBox jComboBox29;
     private javax.swing.JComboBox jComboBox30;
     private javax.swing.JComboBox jComboBox31;
     private javax.swing.JComboBox jComboBox32;
@@ -1443,6 +1381,7 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JComboBox jComboBox7;
     private javax.swing.JComboBox jComboBox8;
     private javax.swing.JComboBox jComboBox9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1453,19 +1392,12 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JCheckBox mBox;
     private javax.swing.JLabel motherLabelSE;
     private javax.swing.JTextField nacText;
