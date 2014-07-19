@@ -6,7 +6,7 @@
 
 package org.sc.window;
 
-import org.sc.data.DataBaseConnect;
+import org.sc.data.NetworkConnect;
 import org.sc.system.SoldadosDeCristo;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
@@ -30,7 +30,7 @@ public class Home extends SwitchablePanel {
 
     private void setStatusConnection(){
         ImageIcon image;
-        if (DataBaseConnect.getTypeConn()) {
+        if (NetworkConnect.getTypeConn()) {
             nameStatusNet.setText("Online");
             image = new ImageIcon(getClass().getResource("/org/sc/SystemImages/OKConnection.png"));
                        

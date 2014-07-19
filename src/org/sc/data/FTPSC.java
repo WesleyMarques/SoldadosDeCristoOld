@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.sc.data;
 
 import java.io.FileInputStream;
@@ -16,14 +10,14 @@ import org.apache.commons.net.ftp.FTPClient;
  * @author Wesley
  */
 public class FTPSC {
+     private final String SERVIDOR = "";
+    private final String USER = "";
+     private final String PASSWORD = "";
     
     private FTPClient ftpCliente;
-    private String servidor,
-            user,
-            password,
-            basePath;
+    private String basePath;
 
-    public FTPSC(String serv, String user, String pw, String path) throws IOException {
+    public FTPSC(String path) throws IOException {
         ftpCliente = new FTPClient();
         connect();
         
@@ -35,8 +29,8 @@ public class FTPSC {
     }
 
     private void connect() throws IOException {
-        ftpCliente.connect(servidor);
-        ftpCliente.login(user, password);
+        ftpCliente.connect(SERVIDOR);
+        ftpCliente.login(USER, PASSWORD);
     }
     
     public boolean uploadFile(String pathFile) throws FileNotFoundException, IOException{
@@ -51,30 +45,6 @@ public class FTPSC {
     public void closeConnection() throws IOException{
         ftpCliente.logout();
         ftpCliente.disconnect();
-    }
-
-    public String getServidor() {
-        return servidor;
-    }
-
-    public void setServidor(String servidor) {
-        this.servidor = servidor;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getBasePath() {

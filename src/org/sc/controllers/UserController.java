@@ -8,13 +8,16 @@ package org.sc.controllers;
 
 import org.sc.codes.User;
 import org.sc.codes.UserRegistry;
-import org.sc.data.DataBaseConnect;
+import org.sc.data.NetworkConnect;
+import org.sc.data.FTPSC;
 
 /**
  *
  * @author Wesley
  */
 public class UserController {
+    
+   
     
     public User newRegistry(UserRegistry newUser){
         /**
@@ -23,12 +26,13 @@ public class UserController {
          * 2 - Cria usuário
          * 3 - cria contatos
          */
-        if(DataBaseConnect.getTypeConn() == DataBaseConnect.ONLINE)
+        if(NetworkConnect.getTypeConn() == NetworkConnect.ONLINE)
             return newRegistryOnline(newUser);
         return newRegistryOffline(newUser);
     }
 
     private User newRegistryOnline(UserRegistry newUser) {
+        FTPSC ftp = new FTPSC(null);
         return null;
     }
 

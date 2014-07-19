@@ -3,7 +3,7 @@ package org.sc.system;
 import org.sc.codes.User;
 import org.sc.codes.UserLogin;
 import org.sc.controllers.Controller;
-import org.sc.data.DataBaseConnect;
+import org.sc.data.NetworkConnect;
 
 public class SystemManager {
     
@@ -44,7 +44,7 @@ public class SystemManager {
 
     //can be used too for refresh connection status
     public boolean getTypeConnection() {        
-        return DataBaseConnect.getTypeConn();
+        return NetworkConnect.getTypeConn();
     }
     
 }

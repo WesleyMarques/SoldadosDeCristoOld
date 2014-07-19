@@ -18,7 +18,7 @@ import org.sc.codes.*;
  * @author Wesley
  *
  */
-public class DataOffline {
+public class DAOOffline implements DAO{
 
     private static List<User> users;
     private static List<User> login;
@@ -33,11 +33,13 @@ public class DataOffline {
      * Load users from file
      *
      * @return Returns a users list.
+     * @throws java.lang.Exception
      *
      *
      *
      */
-    public static List<User> loadUsersLogin() throws Exception {
+    @Override
+    public List<User> loadUsersLogin() throws Exception {
         List<Object> listUsers;
         listUsers = readData("UserLoginOff.dat");
         login = new ArrayList<User>();
@@ -52,12 +54,13 @@ public class DataOffline {
     }
 
     /**
-     * Read a file.
-     *
-     * @param file Name of the file.
-     * @return An object list, with the information about the file.
+     * 
+     * @param file
+     * @return
+     * @throws Exception 
      */
-    private static List<Object> readData(String file) throws Exception{
+    @Override
+    public List<Object> readData(String file) throws Exception{
         ObjectInputStream in = null;
         List<Object> dataObject = null;
         try {
@@ -81,8 +84,10 @@ public class DataOffline {
      * Save data in archive
      * @param file
      * @return
+     * @throws java.lang.Exception
      */
-    public static boolean saveData(String file) throws Exception{
+    @Override
+    public boolean saveData(String file) throws Exception{
         ObjectOutputStream out = null;
         try {
             try {

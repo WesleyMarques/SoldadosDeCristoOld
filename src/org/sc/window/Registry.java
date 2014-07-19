@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.codes.User;
 import org.sc.codes.UserRegistry;
-import org.sc.data.DataBaseConnect;
+import org.sc.data.NetworkConnect;
 import org.sc.system.SoldadosDeCristo;
 
 /**
@@ -1233,7 +1233,7 @@ public class Registry extends SwitchablePanel {
         // TODO add your handling code here:
         WebServiceCep webServiceCep = WebServiceCep.searchCep(cepText.getText().toString());
         //caso a busca ocorra bem, imprime os resultados.
-        if (!DataBaseConnect.getTypeConn()) {
+        if (!NetworkConnect.getTypeConn()) {
             validarCEP.setText("Sem conexão!");
         }else if (webServiceCep.wasSuccessful()) {
             validarCEP.setText("");

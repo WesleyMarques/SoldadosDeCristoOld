@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.sc.data.ConnectionMySql;
-import org.sc.data.DataBaseConnect;
+import org.sc.data.NetworkConnect;
 
 public class TesteDataConnect {
 	
