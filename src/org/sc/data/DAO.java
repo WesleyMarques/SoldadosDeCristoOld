@@ -14,13 +14,19 @@ import org.sc.codes.User;
  * @author Wesley
  */
 public interface DAO {
-    
+    /**
+     * 
+     * @return
+     * @throws Exception
+     */
+	public boolean open() throws Exception;
+	
     /**
      * 
      * @return
      * @throws Exception 
      */
-    public List<User> loadUsersLogin() throws Exception;
+    public List<User> loadUsers() throws Exception;
     
     /**
      * 

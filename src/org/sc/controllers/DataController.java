@@ -4,6 +4,7 @@ import org.sc.codes.User;
 import org.sc.codes.UserLogin;
 import org.sc.data.DAO;
 import org.sc.data.DAOOffline;
+import org.sc.data.DAOOnline;
 import org.sc.data.NetworkConnect;
 
 public class DataController {
@@ -25,18 +26,19 @@ public class DataController {
     /**
      * 
      * @param email
+     * @param pw 
      * @return
      * @throws Exception 
      */
-    public User searchUserLogin(String email) throws Exception {
-        for (User user : dados.loadUsersLogin()) {
-            if (((UserLogin) user).getEmail().equals(email)) {
+    public User searchUserLogin(String email, String pw) throws Exception {
+        for (User user : dados.loadUsers()) {
+            if (((UserLogin) user).getEmail().equals(email) && ((UserLogin) user).getPassword().equals(pw)) {
                 return user;
             }
         }
         return null;
 
     }
-        //Fim dos m√©todos para logar um usu√°rio para Login
+    //Fim dos mÈtodos para logar um usu·rio para Login
 
 }

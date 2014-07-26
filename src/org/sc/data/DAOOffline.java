@@ -23,10 +23,15 @@ public class DAOOffline implements DAO{
     private static List<User> users;
     private static List<User> login;
     private static final String PATH = "src/org/sc/archives/";
-    private static final String ARQUIVO__NÃO__ENCONTRADO = "Arquivo Não Encontrado!\nContact o Administrador pela área do FEEDBACK";
+    private static final String ARQUIVO_NAO_ENCONTRADO = "Arquivo N�o Encontrado!\nContact o Administrador pela área do FEEDBACK";
     private static final String ERRO_NA_LEITURA_DO_ARQUIVO = "Erro na leitura do arquivo!\nContact o Administrador pela área do FEEDBACK";
 
-
+    
+    @Override
+	public boolean open() throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 
     /**
@@ -39,7 +44,7 @@ public class DAOOffline implements DAO{
      *
      */
     @Override
-    public List<User> loadUsersLogin() throws Exception {
+    public List<User> loadUsers() throws Exception {
         List<Object> listUsers;
         listUsers = readData("UserLoginOff.dat");
         login = new ArrayList<User>();
@@ -68,14 +73,13 @@ public class DAOOffline implements DAO{
                 in = new ObjectInputStream(new FileInputStream(PATH+file));
                 dataObject = (ArrayList<Object>) in.readObject();
             } catch (FileNotFoundException e) {
-                throw new Exception(ARQUIVO__NÃO__ENCONTRADO);
+                throw new Exception(ARQUIVO_NAO_ENCONTRADO);
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
             in.close();
         } catch (IOException ex) {
             throw new Exception(ERRO_NA_LEITURA_DO_ARQUIVO);
-            
         }
         return dataObject;
     }
@@ -93,7 +97,7 @@ public class DAOOffline implements DAO{
             try {
                 out = new ObjectOutputStream(new FileOutputStream(PATH+file));
             } catch (FileNotFoundException e) {
-                throw new Exception(ARQUIVO__NÃO__ENCONTRADO);
+                throw new Exception(ARQUIVO_NAO_ENCONTRADO);
             }
             if (file.equals(PATH+"NewUsers.dat")) {
                 out.writeObject(users);
@@ -106,4 +110,6 @@ public class DAOOffline implements DAO{
         }
         return true;
     }
+
+	
 }

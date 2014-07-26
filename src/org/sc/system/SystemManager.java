@@ -16,8 +16,11 @@ public class SystemManager {
     }
     
     public boolean login(String email, String pw) throws Exception {
-        User auxLogin = allController.loginData(email);
-        if (auxLogin != null && ((UserLogin) auxLogin).getPassword().equals(pw)) {
+    	//try login with data from LOGIN GUI
+        User auxLogin = allController.loginActive(email, pw);
+        
+        //verify if data from loginActive is valid
+        if (auxLogin != null) {
             setUserLogin(auxLogin);
             return true;            
         }

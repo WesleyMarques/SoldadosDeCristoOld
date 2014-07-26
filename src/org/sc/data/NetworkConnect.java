@@ -25,7 +25,7 @@ public class NetworkConnect {
         try {
             // URL do destino escolhido
             URL url = new URL("http://www.google.com");
-
+            
             // abre a conex�o
             HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
 

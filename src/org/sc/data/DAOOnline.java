@@ -16,22 +16,28 @@ import org.sc.codes.UserLogin;
  * @author Wesley
  *
  */
-public class DataOnline implements DAO {
+public class DAOOnline implements DAO {
 
-    private static QueryData connection;
-    private final static String SERVER_NAME = "186.202.152.69";
-    private final static String SERVER_USER = "soldadosdecris8";
-    private final static String SERVER_PW = "t1moteo23.";
-    private final static String SERVER_DB = "soldadosdecris8";
+    private ConnectionMySql connection;
+    private final String SERVER_NAME = "186.202.152.69";
+    private final String SERVER_USER = "soldadosdecris8";
+    private final String SERVER_PW = "t1moteo23.";
+    private final String SERVER_DB = "soldadosdecris8";
 
-    public DataOnline() {
+    public DAOOnline() {
+    	
+    }
+    
+    public boolean open() throws Exception{
+    	connection = new ConnectionMySql(SERVER_USER, SERVER_NAME, SERVER_DB, SERVER_PW);
+		return connection.isConnected();    	    	    	
     }
 
     @Override
-    public List<User> loadUsersLogin() throws Exception {
+    public List<User> loadUsers() throws Exception {
         List<Object> listUsersLogin = readUserLogin();
-        login = new ArrayList<User>();
-        // Downcast da lista de usuï¿½rios do tipo Object para User
+        ArrayList<User> login = new ArrayList<User>();
+        // Downcast da lista de usuários do tipo Object para User
         if (listUsersLogin != null) {
             for (Object object : listUsersLogin) {
                 login.add((User) object);
@@ -42,7 +48,7 @@ public class DataOnline implements DAO {
 
     private List<Object> readUserLogin() throws Exception {
         List<Object> usersAux = new ArrayList<Object>();
-        connection = new QueryData(new ConnectionMySql(SERVER_USER, SERVER_NAME, SERVER_DB, SERVER_PW));
+        
 
         ResultSet resultSet = connection.queryD("Select U.registry, U.name, U.warName, U.RG, U.battalion, "
                 + "U.patent, U.status,U.email, A.userName, A.password  from Users U, Admin A, "
