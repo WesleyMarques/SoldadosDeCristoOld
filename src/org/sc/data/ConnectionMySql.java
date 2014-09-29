@@ -18,7 +18,7 @@ public class ConnectionMySql {
 	public ConnectionMySql(String dName, String sName, String DB, String pw) throws Exception {
 		conn = getConexaoMySQL(dName, sName, DB, pw);
 	}
-
+	
 	// Método de Conexão
 	//user, server name, database e password
 	private Connection getConexaoMySQL(String uName, String sName, String DB, String pw) throws Exception {

@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.lavieri.modelutil.cep.WebServiceCep;
-import org.sc.codes.User;
-import org.sc.codes.UserRegistry;
+import org.sc.models.User;
+import org.sc.models.UserRegistry;
 import org.sc.data.NetworkConnect;
 import org.sc.system.SoldadosDeCristo;
 

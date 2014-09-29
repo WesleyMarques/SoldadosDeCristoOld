@@ -1,22 +1,22 @@
 package org.sc.controllers;
 
-import org.sc.codes.User;
-import org.sc.codes.UserRegistry;
+import org.sc.models.User;
+import org.sc.models.UserRegistry;
 
 public class Controller {
 	private DataController dataController;
-	  private UserController userController;
-	
-	public Controller(){
+	private UserController userController;
+
+	public Controller() {
 		dataController = new DataController();
-                userController = new UserController();
+		userController = new UserController();
 	}
-	
-	public User loginActive(String email, String pw) throws Exception{
+
+	public User loginActive(String email, String pw) throws Exception {
 		return dataController.searchUserLogin(email, pw);
 	}
-        
-        public User newUserControll(UserRegistry user){
-            return userController.newRegistry(user);
-        }  
+
+	public User newUserControll(UserRegistry user) {
+		return userController.newRegistry(user);
+	}
 }

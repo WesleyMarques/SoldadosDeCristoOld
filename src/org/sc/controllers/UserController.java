@@ -6,10 +6,9 @@
 
 package org.sc.controllers;
 
-import org.sc.codes.User;
-import org.sc.codes.UserRegistry;
-import org.sc.data.NetworkConnect;
-import org.sc.data.FTPSC;
+import org.sc.models.User;
+import org.sc.models.UserRegistry;
+
 
 /**
  *
@@ -20,24 +19,14 @@ public class UserController {
    
     
     public User newRegistry(UserRegistry newUser){
+		return newUser;
         /**
          * Para cadastrar a seguinte ordem deve ser respeitada:
          * 1 - Cria quetionário
          * 2 - Cria usuário
          * 3 - cria contatos
          */
-        if(NetworkConnect.getTypeConn() == NetworkConnect.ONLINE)
-            return newRegistryOnline(newUser);
-        return newRegistryOffline(newUser);
-    }
-
-    private User newRegistryOnline(UserRegistry newUser) {
-        FTPSC ftp = new FTPSC(null);
-        return null;
-    }
-
-    private User newRegistryOffline(UserRegistry newUser) {
-        return null;
+        
     }
     
 }

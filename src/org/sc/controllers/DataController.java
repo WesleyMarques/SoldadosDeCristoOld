@@ -1,15 +1,15 @@
 package org.sc.controllers;
 
-import org.sc.codes.User;
-import org.sc.codes.UserLogin;
-import org.sc.data.DAO;
 import org.sc.data.DAOOffline;
 import org.sc.data.DAOOnline;
+import org.sc.data.GenericDAO;
 import org.sc.data.NetworkConnect;
+import org.sc.models.User;
+import org.sc.models.UserLogin;
 
 public class DataController {
 
-    private DAO dados;
+    private GenericDAO dados;
 
     public DataController() {
         verifyTypeConn();
@@ -39,6 +39,6 @@ public class DataController {
         return null;
 
     }
-    //Fim dos mÈtodos para logar um usu·rio para Login
+    //Fim dos m√©todos para logar um usu√°rio para Login
 
 }

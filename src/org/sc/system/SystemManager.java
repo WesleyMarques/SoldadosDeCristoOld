@@ -1,7 +1,7 @@
 package org.sc.system;
 
-import org.sc.codes.User;
-import org.sc.codes.UserLogin;
+import org.sc.models.User;
+import org.sc.models.UserLogin;
 import org.sc.controllers.Controller;
 import org.sc.data.NetworkConnect;
 
