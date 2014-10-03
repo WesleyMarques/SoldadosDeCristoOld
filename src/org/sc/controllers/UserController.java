@@ -7,7 +7,6 @@
 package org.sc.controllers;
 
 import org.sc.models.User;
-import org.sc.models.UserRegistry;
 
 
 /**
@@ -18,7 +17,8 @@ public class UserController {
     
    
     
-    public User newRegistry(UserRegistry newUser){
+	
+    public static User newUserRegistry(User newUser){
 		return newUser;
         /**
          * Para cadastrar a seguinte ordem deve ser respeitada:

@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.sc.window;
+package org.sc.views;
 
 import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -17,10 +18,11 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.lavieri.modelutil.cep.WebServiceCep;
+import org.sc.controllers.DataController;
+import org.sc.controllers.UserController;
+import org.sc.dao.NetworkConnect;
 import org.sc.models.User;
 import org.sc.models.UserRegistry;
-import org.sc.dao.NetworkConnect;
-import org.sc.system.SoldadosDeCristo;
 
 /**
  *
@@ -28,7 +30,11 @@ import org.sc.system.SoldadosDeCristo;
  */
 public class Registry extends SwitchablePanel {
     
-    private User userRegistry = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2952551669050535347L;
+	private User userRegistry = null;
     private final int FOTO = 0;
     private final int DOCUMENTO = 1;
     private final int MAX_TAM_FOTO = 150;//Tamanho limite em Kb para o upload do foto 3x4
@@ -1134,7 +1140,7 @@ public class Registry extends SwitchablePanel {
                 JOptionPane.showMessageDialog(this, message);
     }
     
-    //STAR UPFOTO
+    //START UPFOTO
     private void uploadPhotoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadPhotoLabelMouseClicked
         // TODO add your handling code here:
         List<FileFilter> filters = new ArrayList<FileFilter>();
@@ -1224,33 +1230,27 @@ public class Registry extends SwitchablePanel {
             validEmail.setForeground(Color.RED);
             validEmail.setText("INVÁLIDO");
         }
-
     }//GEN-LAST:event_emailTextFocusLost
 
     /**
      * API webService que auxilia no autocomplemento dos campos de texto do endereço
      * @param evt 
      */
-    private void cepTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cepTextFocusLost
-        // TODO add your handling code here:
-        WebServiceCep webServiceCep = WebServiceCep.searchCep(cepText.getText().toString());
-        //caso a busca ocorra bem, imprime os resultados.
-        if (!NetworkConnect.getTypeConn()) {
-            validarCEP.setText("Sem conexão!");
-        }else if (webServiceCep.wasSuccessful()) {
-            validarCEP.setText("");
-            streetText.setText(webServiceCep.getLogradouroFull());
-            districtText.setText(webServiceCep.getBairro());
-            cityText.setText(webServiceCep.getCidade());
-            stateText.setText(webServiceCep.getUf());
-            countryText.setText("Brasil");
-
-            //caso haja problemas imprime as exceções.
-        } else {
-            validarCEP.setText("CEP inválido, tente novamente!");
-            //System.out.println("Erro número: " + webServiceCep.getResulCode());
-            //System.out.println("Descrição do erro: " + webServiceCep.getResultText());
-        }
+    private void cepTextFocusLost(java.awt.event.FocusEvent evt) {
+    	Map<String, String> logradouroInfo;
+    	
+    	try {
+    		logradouroInfo = DataController.getLogradouroInfo(cepText.getText().toString());
+    		validarCEP.setText("");
+            streetText.setText(logradouroInfo.get("logradouro"));
+            districtText.setText(logradouroInfo.get("bairro"));
+            cityText.setText(logradouroInfo.get("cidade"));
+            stateText.setText(logradouroInfo.get("uf"));
+            countryText.setText(logradouroInfo.get("pais"));
+		} catch (IllegalArgumentException e) {
+			validarCEP.setText("CEP inválido, tente novamente!");
+		}      
+            
     }//GEN-LAST:event_cepTextFocusLost
 
     private void helpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpLabelMouseClicked
@@ -1291,7 +1291,7 @@ public class Registry extends SwitchablePanel {
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         User user = null;
         try {
-            SoldadosDeCristo.system.registryUser(user);
+            UserController.newUserRegistry(user);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_saveButtonMouseClicked
@@ -1300,10 +1300,6 @@ public class Registry extends SwitchablePanel {
     private boolean verifyEmailAddress(String emailAddress) {
         return emailAddress.matches("\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}") && !emailAddress.equals("");
 
-    }
-    
-    private int generateRegistry(){
-        return 0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

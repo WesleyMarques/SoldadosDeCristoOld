@@ -181,6 +181,29 @@ public class User implements Serializable{
 		}
 		this.status = status;
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (registry != other.registry)
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "User [registry=" + registry + ", name=" + name + "]";
+	}
+	
+	
 	
 	
 	

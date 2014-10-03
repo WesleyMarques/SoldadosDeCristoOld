@@ -1,4 +1,4 @@
-package org.sc.window;
+package org.sc.views;
 
 import java.awt.Graphics;
 import java.awt.Image;

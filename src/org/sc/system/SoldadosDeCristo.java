@@ -1,7 +1,8 @@
 package org.sc.system;
 
 
-import org.sc.window.Window;
+import org.sc.views.Window;
+
 import java.awt.EventQueue;
 
 public class SoldadosDeCristo {

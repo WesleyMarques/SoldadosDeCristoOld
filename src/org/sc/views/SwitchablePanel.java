@@ -1,6 +1,6 @@
 
 
-package org.sc.window;
+package org.sc.views;
 import javax.swing.JPanel;
 
 public abstract class SwitchablePanel extends JPanel {

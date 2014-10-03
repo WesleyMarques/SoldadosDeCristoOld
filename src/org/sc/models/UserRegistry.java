@@ -106,7 +106,7 @@ public class UserRegistry extends User implements Serializable {
      * @throws Exception
      */
     public void setSex(int sex) throws Exception {
-        if (sex == -1) {
+        if (sex < 0) {
             throw new Exception("Data invalid!");
         }
         this.sex = sex;
@@ -123,7 +123,6 @@ public class UserRegistry extends User implements Serializable {
      * @param bloodType the bloodType to set
      */
     public void setBloodType(String bloodType) {
-
         this.bloodType = bloodType;
     }
 

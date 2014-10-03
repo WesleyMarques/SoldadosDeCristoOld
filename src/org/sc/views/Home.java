@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 
-package org.sc.window;
-
-import org.sc.dao.NetworkConnect;
-import org.sc.system.SoldadosDeCristo;
-
-import java.sql.SQLException;
+package org.sc.views;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
+import org.sc.controllers.ConnectionController;
+import org.sc.controllers.LoginController;
 
 /**
  *
@@ -21,6 +19,10 @@ import javax.swing.JOptionPane;
 public class Home extends SwitchablePanel {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6740384300330336965L;
+	/**
      * Creates new form Home
      * @param frame
      */
@@ -32,7 +34,7 @@ public class Home extends SwitchablePanel {
 
     private void setStatusConnection(){
         ImageIcon image;
-        if (NetworkConnect.getTypeConn()) {
+        if (ConnectionController.isConnected()) {
             nameStatusNet.setText("Online");
             image = new ImageIcon(getClass().getResource("/org/sc/SystemImages/OKConnection.png"));
                        
@@ -227,7 +229,7 @@ public class Home extends SwitchablePanel {
             if (pwText.getPassword().length == 0) {
                 throw new Exception("Insira a Senha!");
             }
-            ValidateUser = SoldadosDeCristo.system.login(userText.getText(), new String(pwText.getPassword()));
+            ValidateUser = LoginController.login(userText.getText(), new String(pwText.getPassword()));
             if (!ValidateUser) {
                 throw new Exception("Usuário e/ou senha incorretos!");
             }
