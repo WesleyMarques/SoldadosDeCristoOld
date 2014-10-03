@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.sc.dao;
+package org.sc.dao.mysql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

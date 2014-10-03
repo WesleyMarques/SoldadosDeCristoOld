@@ -8,7 +8,11 @@ import javax.swing.JPanel;
 
 public class ImagePanel extends JPanel {
 	 
-    /*
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8196506413693662220L;
+	/*
      * Podiamos usar qualquer uma das classes abaixo mas para simplificar
      * vamos usar um objecto do tipo Image que obtemos atrav�s de um ImageIcon
      * que tem m�todos mais simples para carregar imagens, embora n�o permite a

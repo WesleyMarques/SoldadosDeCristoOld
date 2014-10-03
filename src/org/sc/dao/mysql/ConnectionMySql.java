@@ -1,4 +1,4 @@
-package org.sc.dao;
+package org.sc.dao.mysql;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

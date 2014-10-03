@@ -7,6 +7,8 @@ package org.sc.dao;
 
 import java.util.List;
 
+import org.sc.dao.mysql.ConnectionMySql;
+
 /**
  * @author Wesley
  * 

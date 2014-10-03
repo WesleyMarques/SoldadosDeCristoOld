@@ -1,6 +1,6 @@
 package org.sc.controllers;
 
-import org.sc.dao.NetworkConnect;
+import org.sc.dao.streams.NetworkConnect;
 
 public class ConnectionController {
 	

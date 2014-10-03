@@ -22,7 +22,7 @@ public class Window extends JFrame {
     
     //private JPanel mainPanel = new JPanel();
     private ImagePanel mainPanel;
-    private static final String BASE_PATH = "/org/sc/SystemImages/";
+    private static final String BASE_PATH = "/images/";
 
     /**
      * Creates new form Window

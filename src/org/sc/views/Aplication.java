@@ -54,7 +54,7 @@ public class Aplication extends SwitchablePanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("batalhão");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/exitIcon.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitIcon.png"))); // NOI18N
         jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

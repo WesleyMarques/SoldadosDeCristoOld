@@ -1,4 +1,4 @@
-package org.sc.dao;
+package org.sc.dao.streams;
 
 import java.io.IOException;
 import java.net.*;

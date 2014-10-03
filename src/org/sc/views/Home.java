@@ -36,11 +36,11 @@ public class Home extends SwitchablePanel {
         ImageIcon image;
         if (ConnectionController.isConnected()) {
             nameStatusNet.setText("Online");
-            image = new ImageIcon(getClass().getResource("/org/sc/SystemImages/OKConnection.png"));
+            image = new ImageIcon(getClass().getResource("/images/OKConnection.png"));
                        
         }else{
             nameStatusNet.setText("Offline");
-            image = new ImageIcon(getClass().getResource("/org/sc/SystemImages/cautionConnection.png")); 
+            image = new ImageIcon(getClass().getResource("/images/cautionConnection.png")); 
         }
         pictureStatusNet.setIcon(image); 
         
@@ -153,7 +153,7 @@ public class Home extends SwitchablePanel {
         loginLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         loginLabel.setOpaque(true);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/escudoIcon.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escudoIcon.png"))); // NOI18N
 
         jLabel2.setText("© Copyright");
 

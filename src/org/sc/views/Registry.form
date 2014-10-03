@@ -1775,7 +1775,7 @@
     <Component class="javax.swing.JLabel" name="helpLabel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/org/sc/SystemImages/iconeDuvida.png"/>
+          <Image iconType="3" name="/images/iconeDuvida.png"/>
         </Property>
       </Properties>
       <Events>
@@ -1797,7 +1797,7 @@
     <Component class="javax.swing.JLabel" name="uploadPhotoLabel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/org/sc/SystemImages/upPhoto.png"/>
+          <Image iconType="3" name="/images/upPhoto.png"/>
         </Property>
       </Properties>
       <Events>
@@ -1807,7 +1807,7 @@
     <Component class="javax.swing.JLabel" name="docLabel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/org/sc/SystemImages/PDFIcon.png"/>
+          <Image iconType="3" name="/images/PDFIcon.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="pdfIcon" noResource="true"/>

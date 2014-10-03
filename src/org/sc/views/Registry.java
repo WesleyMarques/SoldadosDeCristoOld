@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.controllers.DataController;
 import org.sc.controllers.UserController;
-import org.sc.dao.NetworkConnect;
+import org.sc.dao.streams.NetworkConnect;
 import org.sc.models.User;
 import org.sc.models.UserRegistry;
 
@@ -203,7 +203,7 @@ public class Registry extends SwitchablePanel {
         dialogInfo.setTitle("Informações de Cadastro");
         dialogInfo.setBackground(java.awt.Color.white);
         dialogInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        dialogInfo.setIconImage((new ImageIcon(getClass().getResource("/org/sc/SystemImages/escudoIcon.png"))).getImage());
+        dialogInfo.setIconImage((new ImageIcon(getClass().getResource("/images/escudoIcon.png"))).getImage());
         dialogInfo.setMinimumSize(new java.awt.Dimension(600, 350));
         dialogInfo.setResizable(false);
         dialogInfo.setType(java.awt.Window.Type.POPUP);
@@ -1039,7 +1039,7 @@ public class Registry extends SwitchablePanel {
             }
         });
 
-        helpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/iconeDuvida.png"))); // NOI18N
+        helpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconeDuvida.png"))); // NOI18N
         helpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 helpLabelMouseClicked(evt);
@@ -1051,14 +1051,14 @@ public class Registry extends SwitchablePanel {
         statusProgress.setPreferredSize(new java.awt.Dimension(145, 25));
         statusProgress.setStringPainted(true);
 
-        uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/upPhoto.png"))); // NOI18N
+        uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/upPhoto.png"))); // NOI18N
         uploadPhotoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 uploadPhotoLabelMouseClicked(evt);
             }
         });
 
-        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/PDFIcon.png"))); // NOI18N
+        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/PDFIcon.png"))); // NOI18N
         docLabel.setToolTipText("");
         docLabel.setName("pdfIcon"); // NOI18N
         docLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1067,7 +1067,7 @@ public class Registry extends SwitchablePanel {
             }
         });
 
-        photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/sc/SystemImages/userDefault.jpg"))); // NOI18N
+        photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userDefault.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -20,7 +20,7 @@ import org.sc.models.*;
 public class DAOOffline implements GenericDAO{
 	
 	private File file;
-    private final String PATH = "src/org/sc/archives/";
+    private final String PATH = "filesOff/";
     private final String ARQUIVO_NAO_ENCONTRADO = "Arquivo Não Encontrado!\nContact o Administrador pela área do FEEDBACK";
     private final String ERRO_NA_LEITURA_DO_ARQUIVO = "Erro na leitura do arquivo!\nContact o Administrador pela área do FEEDBACK";
     //Para realizar a leitura dos dados no arquivos
