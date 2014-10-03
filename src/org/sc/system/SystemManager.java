@@ -3,7 +3,7 @@ package org.sc.system;
 import org.sc.models.User;
 import org.sc.models.UserLogin;
 import org.sc.controllers.Controller;
-import org.sc.data.NetworkConnect;
+import org.sc.dao.NetworkConnect;
 
 public class SystemManager {
     

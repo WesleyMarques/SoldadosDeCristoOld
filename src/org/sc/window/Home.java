@@ -6,9 +6,11 @@
 
 package org.sc.window;
 
-import org.sc.data.NetworkConnect;
+import org.sc.dao.NetworkConnect;
 import org.sc.system.SoldadosDeCristo;
+
 import java.sql.SQLException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 

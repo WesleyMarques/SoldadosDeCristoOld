@@ -1,9 +1,9 @@
 package org.sc.controllers;
 
-import org.sc.data.DAOOffline;
-import org.sc.data.DAOOnline;
-import org.sc.data.GenericDAO;
-import org.sc.data.NetworkConnect;
+import org.sc.dao.DAOOffline;
+import org.sc.dao.DAOOnline;
+import org.sc.dao.GenericDAO;
+import org.sc.dao.NetworkConnect;
 import org.sc.models.User;
 import org.sc.models.UserLogin;
 

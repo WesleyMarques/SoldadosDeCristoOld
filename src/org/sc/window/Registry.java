@@ -9,15 +9,17 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.models.User;
 import org.sc.models.UserRegistry;
-import org.sc.data.NetworkConnect;
+import org.sc.dao.NetworkConnect;
 import org.sc.system.SoldadosDeCristo;
 
 /**
