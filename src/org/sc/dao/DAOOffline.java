@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class DAOOffline implements GenericDAO{
     private final String PATH = "filesOff/";
     private final String ARQUIVO_NAO_ENCONTRADO = "Arquivo Não Encontrado!\nContact o Administrador pela área do FEEDBACK";
     private final String ERRO_NA_LEITURA_DO_ARQUIVO = "Erro na leitura do arquivo!\nContact o Administrador pela área do FEEDBACK";
+    
     //Para realizar a leitura dos dados no arquivos
     private ObjectInputStream in = null;
     private FileInputStream fileIn = null;
@@ -31,20 +33,18 @@ public class DAOOffline implements GenericDAO{
     private FileOutputStream out = null;
     private ObjectOutputStream outObj = null;
     
-    public DAOOffline() {
-	}
+    public DAOOffline() throws IOException{
+    	}
 
     
     @Override
 	public boolean open() throws Exception {
-		return false;
+		return true;
 	}
-
 
 	@Override
 	public boolean close() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 
@@ -65,6 +65,12 @@ public class DAOOffline implements GenericDAO{
 	@Override
 	public <T> T findByEntityId(String entity, int id) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public <T> T findByField(String entity, String field, String fieldValue) throws Exception {
+		
 		return null;
 	}
 
@@ -121,6 +127,9 @@ public class DAOOffline implements GenericDAO{
         }
         return true;
     }
+
+
+	
 	
 	
   

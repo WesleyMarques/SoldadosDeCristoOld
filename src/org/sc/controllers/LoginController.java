@@ -1,6 +1,7 @@
 package org.sc.controllers;
 
 import org.sc.dao.GenericDAO;
+import org.sc.models.UserLogin;
 
 public class LoginController {
 	
@@ -8,10 +9,10 @@ public class LoginController {
 	
 	public static boolean login(String user, String password) throws Exception{
 		dao.open();
-		dao.
+		UserLogin userLogin= dao.findByField("UserLogin", "Email", user);
 		dao.close();
-		return true;
-
+		//inserir usuário no usuário da sessão
+		return (userLogin != null);
 	}
 	
 	public static boolean logout(){

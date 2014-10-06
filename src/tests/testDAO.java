@@ -1,9 +1,9 @@
 package tests;
 
+import java.io.IOException;
+import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sc.dao.DAOOffline;
@@ -35,7 +35,7 @@ public class testDAO{
 	}
 	
 	@Test
-	public void abreConexaoComBDOffline(){
+	public void abreConexaoComBDOffline() throws IOException{
 		dao = new DAOOffline();
 		boolean connStatus;
 		try {

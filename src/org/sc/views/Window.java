@@ -22,19 +22,19 @@ public class Window extends JFrame {
     
     //private JPanel mainPanel = new JPanel();
     private ImagePanel mainPanel;
-    private static final String BASE_PATH = "/images/";
+    private static final String BASE_PATH = "src/images/";
 
     /**
      * Creates new form Window
      */
     public Window() {
-    	
-        mainPanel = new ImagePanel(BASE_PATH+"background.png");
+    	System.out.println(getClass().getResource(BASE_PATH+"escudoIcon.png"));
+        mainPanel = new ImagePanel(getClass().getResource(BASE_PATH+"escudoIcon.png").getPath());
         mainPanel.setLayout(new FlowLayout());
         mainPanel.setSize(1000, 600);
         initComponents();
         this.add(mainPanel);
-        ImageIcon icone = new ImageIcon(getClass().getResource(BASE_PATH+"escudoIcon.png"));
+        ImageIcon icone = new ImageIcon(getClass().getResource(BASE_PATH+"escudoIcon.png").getPath());
         this.setIconImage(icone.getImage());
         switchPanels(new Home(this));
     }

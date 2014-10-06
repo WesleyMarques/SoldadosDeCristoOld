@@ -5,9 +5,12 @@
  */
 package org.sc.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.sc.dao.mysql.ConnectionMySql;
+
+import com.mysql.jdbc.ResultSet;
 
 /**
  * @author Wesley
@@ -68,6 +71,14 @@ public class DAOOnline implements GenericDAO {
 	public <T> boolean updateByEntityId(String entity, int id, Object newObject) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public <T> T findByField(String entity, String field, String fieldValue) throws SQLException {
+		String queryString = "SELECT * FROM "+entity+" WHERE "+field+"="+fieldValue;
+		ResultSet resultSet = connection.query(queryString);
+		//fazer um for para pegar o resultado para retornar  para a classe chamada
+		return null;
 	}
     
     

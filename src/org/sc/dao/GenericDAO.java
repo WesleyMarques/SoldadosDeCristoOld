@@ -1,5 +1,6 @@
 package org.sc.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -45,6 +46,16 @@ public interface GenericDAO {
      * @return
      */
     <T> T findByEntityId(String entity, int id);
+    
+    /**
+     * Listar objectos de acordo com um atributo específico
+     * @param entity
+     * @param field
+     * @param fieldValue
+     * @return
+     * @throws Exception 
+     */
+    <T> T findByField(String entity, String field, String fieldValue) throws Exception;
 
     /**
      * Deleta do banco de dados uma entidade referenciada pelo seu
