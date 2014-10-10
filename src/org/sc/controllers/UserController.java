@@ -6,7 +6,9 @@
 
 package org.sc.controllers;
 
+import org.sc.dao.GenericDAO;
 import org.sc.models.User;
+import org.sc.system.SoldadosDeCristo;
 
 
 /**
@@ -16,9 +18,13 @@ import org.sc.models.User;
 public class UserController {
     
    
-    
+	private static GenericDAO dao;
 	
-    public static User newUserRegistry(User newUser){
+    public static User newUserRegistry(User newUser) throws Exception{
+    	dao = SoldadosDeCristo.getDAO();
+    	dao.open();
+    	dao.persistDataByEntity("", "user");
+    	dao.close();
 		return newUser;
         /**
          * Para cadastrar a seguinte ordem deve ser respeitada:
@@ -28,5 +34,7 @@ public class UserController {
          */
         
     }
+    
+    
     
 }

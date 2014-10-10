@@ -1,14 +1,15 @@
 package org.sc.dao.streams;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.InetAddress;
+import java.net.URL;
+import java.net.UnknownHostException;
 
-public class NetworkConnect {
+public class NetworkConnect{
 
     public final static boolean ONLINE = true;
     public final static boolean OFFLINE = false;
-
-    private static boolean status;
 
     /**
      * Method that verify connection with the internet
@@ -16,15 +17,16 @@ public class NetworkConnect {
      * @return true it's Ok and false otherwise
      */
     public static boolean getTypeConn() {
-        testConnection();
-        return status;
+        
+        return testConnection();
     }
 
-    private static void testConnection() {
+    private static boolean testConnection() {
         InetAddress endereco = null;
+        boolean status = ONLINE;
         try {
             // URL do destino escolhido
-            URL url = new URL("http://186.202.152.69");
+            URL url = new URL("http://google.com");
             
             // abre a conexãoo
             HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
@@ -34,12 +36,10 @@ public class NetworkConnect {
             Object objData = urlConnect.getContent();
         } catch (UnknownHostException e) {
             status = OFFLINE;
-            return;
         } catch (IOException e) {
             status = OFFLINE;
-            return;
         }
-        status = ONLINE;
+        return status;
 
     }
 }

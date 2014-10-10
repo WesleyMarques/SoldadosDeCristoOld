@@ -17,12 +17,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.controllers.DataController;
 import org.sc.controllers.UserController;
-import org.sc.dao.streams.NetworkConnect;
+import org.sc.dao.util.Util;
+import org.sc.models.PhonesUsers;
+import org.sc.models.QuestionnarieUser;
 import org.sc.models.User;
 import org.sc.models.UserRegistry;
+import org.sc.system.SoldadosDeCristo;
 
 /**
  *
@@ -88,6 +90,8 @@ public class Registry extends SwitchablePanel {
         patOption = new javax.swing.JComboBox();
         status = new javax.swing.JLabel();
         statusOption = new javax.swing.JComboBox();
+        civilStatusLabel = new javax.swing.JLabel();
+        civilStatusOptions = new javax.swing.JComboBox();
         otherdatas = new javax.swing.JTabbedPane();
         endereco = new javax.swing.JPanel();
         cepLabel = new javax.swing.JLabel();
@@ -191,6 +195,20 @@ public class Registry extends SwitchablePanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        otherInfo = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        schoolingBox = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        occupationText = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        fatherText = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        motherText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        payFormBox = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        obsText = new javax.swing.JTextArea();
         saveButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         clearButton = new javax.swing.JButton();
@@ -199,6 +217,7 @@ public class Registry extends SwitchablePanel {
         uploadPhotoLabel = new javax.swing.JLabel();
         docLabel = new javax.swing.JLabel();
         photoLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         dialogInfo.setTitle("Informações de Cadastro");
         dialogInfo.setBackground(java.awt.Color.white);
@@ -269,6 +288,8 @@ public class Registry extends SwitchablePanel {
 
         Nacionalidade.setText("Nacionalidade:");
 
+        nacText.setText("Brasileiro");
+
         patente.setText("Patente:");
 
         patOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recruta", "Soldado", "Sd. de 1º classe", "Cabo", "3º Sargento", "2º Sargento", "1º Sargento", "Sub Tenente", "Aspirante", "2º Tenente", "1º Tenente", "Capitão", "Major", "Ten. Coronel", "Coronel", "Capelão" }));
@@ -277,18 +298,23 @@ public class Registry extends SwitchablePanel {
 
         statusOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativado", "Desativado", "Observação" }));
 
+        civilStatusLabel.setText("Estado Civil:");
+
+        civilStatusOptions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout personaldataLayout = new javax.swing.GroupLayout(personaldata);
         personaldata.setLayout(personaldataLayout);
         personaldataLayout.setHorizontalGroup(
             personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(personaldataLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(warName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RG)
-                    .addComponent(patente)
-                    .addComponent(naturalidade)
-                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(warName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RG)
+                        .addComponent(naturalidade)
+                        .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(civilStatusLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(personaldataLayout.createSequentialGroup()
@@ -313,31 +339,28 @@ public class Registry extends SwitchablePanel {
                                 .addGap(0, 21, Short.MAX_VALUE))
                             .addComponent(batOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(personaldataLayout.createSequentialGroup()
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(natText, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(patOption, javax.swing.GroupLayout.Alignment.LEADING, 0, 143, Short.MAX_VALUE))
-                            .addComponent(rgText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addComponent(status)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(statusOption, 0, 99, Short.MAX_VALUE))
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cpf)
-                                    .addComponent(ufNat))
-                                .addGap(18, 18, 18)
-                                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cpfText, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(UF))))
+                            .addComponent(natText, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                            .addComponent(rgText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(civilStatusOptions, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cpf)
+                            .addComponent(ufNat)
+                            .addComponent(patente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cpfText)
+                            .addComponent(UF)
+                            .addComponent(patOption, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bloodType)
-                            .addComponent(Nacionalidade))
+                            .addComponent(Nacionalidade)
+                            .addComponent(status))
                         .addGap(18, 18, 18)
                         .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bloddTypeOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nacText)))))
         );
@@ -376,12 +399,14 @@ public class Registry extends SwitchablePanel {
                     .addComponent(UF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Nacionalidade)
                     .addComponent(nacText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patente)
-                    .addComponent(patOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(status)
-                    .addComponent(statusOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(statusOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patente)
+                    .addComponent(civilStatusLabel)
+                    .addComponent(civilStatusOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1015,6 +1040,101 @@ public class Registry extends SwitchablePanel {
 
         otherdatas.addTab("QUESTIONÁRIO PESSOAL", questionarioP);
 
+        jLabel3.setText("Escolaridade: ");
+
+        schoolingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+
+        jLabel4.setText("Ocupação: ");
+
+        jLabel5.setText("Nome do Pai:");
+
+        jLabel6.setText("Nome da mãe:");
+
+        jLabel7.setText("Forma de pagamento:");
+
+        payFormBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setText("Observações:");
+
+        obsText.setColumns(20);
+        obsText.setRows(5);
+        jScrollPane2.setViewportView(obsText);
+
+        javax.swing.GroupLayout otherInfoLayout = new javax.swing.GroupLayout(otherInfo);
+        otherInfo.setLayout(otherInfoLayout);
+        otherInfoLayout.setHorizontalGroup(
+            otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(otherInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(schoolingBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel7)
+                        .addGap(27, 27, 27)
+                        .addComponent(payFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(otherInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(motherText, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(otherInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(occupationText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(otherInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fatherText, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 83, Short.MAX_VALUE))))
+        );
+        otherInfoLayout.setVerticalGroup(
+            otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(otherInfoLayout.createSequentialGroup()
+                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(schoolingBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(payFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))))
+                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(occupationText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(fatherText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(motherText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(otherInfoLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        otherdatas.addTab("OUTRAS INFORMAÇÕES", otherInfo);
+
         saveButton.setText("Cadastrar");
         saveButton.setPreferredSize(new java.awt.Dimension(81, 25));
         saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1022,11 +1142,7 @@ public class Registry extends SwitchablePanel {
                 saveButtonMouseClicked(evt);
             }
         });
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
+       
 
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
         titleLabel.setText("CADASTRO DE MEMBROS - N BATALHÃO");
@@ -1050,15 +1166,17 @@ public class Registry extends SwitchablePanel {
         statusProgress.setOpaque(true);
         statusProgress.setPreferredSize(new java.awt.Dimension(145, 25));
         statusProgress.setStringPainted(true);
+        statusProgress.setVisible(false);
+        
 
-        uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/upPhoto.png"))); // NOI18N
+        uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemIconSemOk.png"))); // NOI18N
         uploadPhotoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 uploadPhotoLabelMouseClicked(evt);
             }
         });
 
-        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/PDFIcon.png"))); // NOI18N
+        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pdfIconSemOk.png"))); // NOI18N
         docLabel.setToolTipText("");
         docLabel.setName("pdfIcon"); // NOI18N
         docLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1068,6 +1186,13 @@ public class Registry extends SwitchablePanel {
         });
 
         photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userDefault.jpg"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancelarAlgo.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1091,10 +1216,10 @@ public class Registry extends SwitchablePanel {
                                         .addComponent(uploadPhotoLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(64, 64, 64))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(photoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jLabel2))
+                                    .addComponent(photoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1112,16 +1237,23 @@ public class Registry extends SwitchablePanel {
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(uploadPhotoLabel)
-                            .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(uploadPhotoLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(docLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(otherdatas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,7 +1262,7 @@ public class Registry extends SwitchablePanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1148,6 +1280,7 @@ public class Registry extends SwitchablePanel {
         filters.add(new FileNameExtensionFilter("png files", "png"));
         try {      
             photoPath = getArchiveDialog("Selecione a Foto desejada", filters, FOTO);
+            if(photoPath != "")uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemIconComOk.png")));
         } catch (Exception ex) {
             showDialogInfo(ex.getMessage());
         }
@@ -1203,12 +1336,8 @@ public class Registry extends SwitchablePanel {
      * @return true, caso seja possível e false c.c.
      */
     private boolean validarArchiveByDialog(String path, int tam){
-        File file = new File(path);
-        if ((file.length()/1024) > getTamanho(tam)) {//Verificar aqui, pois o resultado desse método não retorna em KB
-            System.err.println((file.length()/1024)+" "+tam);
-            return false;
-        }        
-        return true;           
+        File file = new File(path); 
+        return !((file.length()/1024) > getTamanho(tam));           
     }
     
     private int getTamanho(int type){
@@ -1223,7 +1352,7 @@ public class Registry extends SwitchablePanel {
      */
     private void emailTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFocusLost
         // TODO add your handling code here:
-        if (verifyEmailAddress(emailText.getText())) {
+        if (Util.verifyEmail(emailText.getText())) {
             validEmail.setForeground(Color.GREEN);
             validEmail.setText("OK");
         } else {
@@ -1238,7 +1367,6 @@ public class Registry extends SwitchablePanel {
      */
     private void cepTextFocusLost(java.awt.event.FocusEvent evt) {
     	Map<String, String> logradouroInfo;
-    	
     	try {
     		logradouroInfo = DataController.getLogradouroInfo(cepText.getText().toString());
     		validarCEP.setText("");
@@ -1247,11 +1375,11 @@ public class Registry extends SwitchablePanel {
             cityText.setText(logradouroInfo.get("cidade"));
             stateText.setText(logradouroInfo.get("uf"));
             countryText.setText(logradouroInfo.get("pais"));
+            numberText.requestFocus();
 		} catch (IllegalArgumentException e) {
 			validarCEP.setText("CEP inválido, tente novamente!");
-		}      
-            
-    }//GEN-LAST:event_cepTextFocusLost
+		}            
+    }                                 
 
     private void helpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpLabelMouseClicked
         // TODO add your handling code here:
@@ -1262,19 +1390,6 @@ public class Registry extends SwitchablePanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_clearButtonActionPerformed
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-
-        int registryAux = 0;
-        try {
-            userRegistry = new UserRegistry(registryAux, nomeText.getText(), warNameText.getText(), Integer.parseInt(rgText.getText()), 
-                    Integer.parseInt(batOption.getName()), batOption.getSelectedIndex(), photoPath, photoPath, 
-                photoPath, WIDTH, photoPath, WIDTH, WIDTH, photoPath, photoPath, photoPath, photoPath, photoPath, photoPath, 
-                photoPath, photoPath, photoPath, photoPath, WIDTH, photoPath, photoPath, photoPath, photoPath, null, photoPath, 
-                null);            
-        } catch (Exception e) {
-        }
-        
-    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void docLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_docLabelMouseClicked
         
@@ -1282,6 +1397,7 @@ public class Registry extends SwitchablePanel {
         filters.add(new FileNameExtensionFilter("PDF files", "pdf"));
         try {      
             docPath = getArchiveDialog("Selecione o documento desejado", filters, DOCUMENTO);
+            if(docPath != "")docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pdfIconComOk.png")));
         } catch (Exception ex) {
             showDialogInfo(ex.getMessage());
         }
@@ -1289,18 +1405,38 @@ public class Registry extends SwitchablePanel {
     }//GEN-LAST:event_docLabelMouseClicked
 
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
-        User user = null;
-        try {
-            UserController.newUserRegistry(user);
+        PhonesUsers phones = new PhonesUsers();
+    	QuestionnarieUser questionario = new QuestionnarieUser();
+        int registryAux = newRegistry();
+        try {      
+        	userRegistry = new UserRegistry(registryAux, nomeText.getText(), warNameText.getText(), Integer.parseInt(rgText.getText()), 
+                    Integer.parseInt(batOption.getName()), patOption.getSelectedIndex(), "Ativado", birthDate.getText(), 
+                photoPath,mBox.isSelected()?UserRegistry.MAN:UserRegistry.WOMAN, bloddTypeOption.getSelectedItem().toString(),
+                		Integer.parseInt(cpfText.getText()), civilStatusOptions.getSelectedItem().toString(), 
+                		schoolingBox.getSelectedItem().toString(), occupationText.getText(), nacText.getText(), payFormBox.getSelectedItem().toString(), 
+        			obsText.getText(), fatherText.getText(), motherText.getText(), streetText.getText(), numberText.getText(), complementText.getText(), 
+        			Integer.parseInt(cepText.getText()), districtText.getText(), cityText.getText(), stateText.getText(), countryText.getText(), phones, emailText.getText(),questionario);
+        UserController.newUserRegistry(userRegistry);
         } catch (Exception e) {
+        	showDialogInfo("Erro ao criar membro: "+e.getMessage());
         }
+        
     }//GEN-LAST:event_saveButtonMouseClicked
 
-    //Códigos de verificaações e validações
-    private boolean verifyEmailAddress(String emailAddress) {
-        return emailAddress.matches("\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}") && !emailAddress.equals("");
-
+    private int newRegistry(){
+    	return DataController.getNewRegistryCode();
+    	
     }
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemIconSemOk.png")));
+       photoPath = "";
+       docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pdfIconSemOk.png")));
+       docPath = "";
+       setImageFromDialog(getClass().getResource(Window.BASE_PATH+"/userDefault.jpg").getPath());
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FacebookText;
@@ -1334,6 +1470,8 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JTextField cepText;
     private javax.swing.JLabel cityLabel;
     private javax.swing.JTextField cityText;
+    private javax.swing.JLabel civilStatusLabel;
+    private javax.swing.JComboBox civilStatusOptions;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel complementLabel;
     private javax.swing.JTextField complementText;
@@ -1352,6 +1490,7 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JCheckBox fBox;
     private javax.swing.JLabel facebookLabel;
     private javax.swing.JLabel fatherLabelSE;
+    private javax.swing.JTextField fatherText;
     private javax.swing.JLabel helpLabel;
     private javax.swing.JComboBox jComboBox10;
     private javax.swing.JComboBox jComboBox11;
@@ -1385,19 +1524,28 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JCheckBox mBox;
     private javax.swing.JLabel motherLabelSE;
+    private javax.swing.JTextField motherText;
     private javax.swing.JTextField nacText;
     private javax.swing.JTextField natText;
     private javax.swing.JLabel naturalidade;
@@ -1405,9 +1553,13 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JTextField nomeText;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JTextField numberText;
+    private javax.swing.JTextArea obsText;
+    private javax.swing.JTextField occupationText;
+    private javax.swing.JPanel otherInfo;
     private javax.swing.JTabbedPane otherdatas;
     private javax.swing.JComboBox patOption;
     private javax.swing.JLabel patente;
+    private javax.swing.JComboBox payFormBox;
     private javax.swing.JPanel personaldata;
     private javax.swing.JFormattedTextField phoneFormat1;
     private javax.swing.JFormattedTextField phoneFormat2;
@@ -1423,6 +1575,7 @@ public class Registry extends SwitchablePanel {
     private javax.swing.JLabel redeSocialLabel;
     private javax.swing.JTextField rgText;
     private javax.swing.JButton saveButton;
+    private javax.swing.JComboBox schoolingBox;
     private javax.swing.JLabel sexo;
     private javax.swing.JLabel stateLabel;
     private javax.swing.JTextField stateText;

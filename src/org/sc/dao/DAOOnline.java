@@ -1,14 +1,16 @@
 /**
  * this class is responsible to create a connection online with the database the
- * data base is a server: name: 186.202.152.69
+ * data base is a server: name: mysql07.soldadosdecristo2.hospedagemdesites.ws
  * user:soldadosdecris8@186.202.28.226 password:t1moteo23.
  */
 package org.sc.dao;
 
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.sc.dao.mysql.ConnectionMySql;
+import org.sc.models.User;
+import org.sc.models.UserLogin;
 
 import com.mysql.jdbc.ResultSet;
 
@@ -20,7 +22,7 @@ import com.mysql.jdbc.ResultSet;
 public class DAOOnline implements GenericDAO {
 
     private ConnectionMySql connection;
-    private final String SERVER_NAME = "186.202.152.69";
+    private final String SERVER_NAME = "mysql07.soldadosdecristo2.hospedagemdesites.ws";
     private final String SERVER_USER = "soldadosdecris8";
     private final String SERVER_PW = "t1moteo23.";
     private final String SERVER_DB = "soldadosdecris8";
@@ -44,7 +46,7 @@ public class DAOOnline implements GenericDAO {
 	}
 
 	@Override
-	public boolean persistDataByEntity(Object newObj, String entity) {
+	public boolean persistDataByEntity(String newObj, String entity) {
 		
 		return false;
 	}
@@ -74,10 +76,23 @@ public class DAOOnline implements GenericDAO {
 	}
 
 	@Override
-	public <T> T findByField(String entity, String field, String fieldValue) throws SQLException {
-		String queryString = "SELECT * FROM "+entity+" WHERE "+field+"="+fieldValue;
+	public User findUserLoginByField(String entity, String field, String fieldValue) throws Exception {
+		String queryString = "SELECT U.registry, U.name, U.warname, U.RG, U.battalion, U.patent, U.status, L.userName, L.password, U.email"
+				+ " FROM "+entity+" L, user U WHERE "+field+" = \""+fieldValue+"\" and L.userAdmin = U.registry";
 		ResultSet resultSet = connection.query(queryString);
-		//fazer um for para pegar o resultado para retornar  para a classe chamada
+		
+		User user = null;
+		if (resultSet.first()) {
+			user = new UserLogin(resultSet.getInt("registry"), resultSet.getString("name"), resultSet.getString("warName"), 
+					resultSet.getInt("RG"), resultSet.getInt("battalion"), resultSet.getInt("patent"), resultSet.getString("status"),
+					resultSet.getString(""), "", resultSet.getString("email"));			
+		}
+		return user;
+	}
+
+	@Override
+	public Map<String, String> query(String query) {
+		// TODO Auto-generated method stub
 		return null;
 	}
     

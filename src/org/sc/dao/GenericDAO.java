@@ -2,6 +2,9 @@ package org.sc.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
+import org.sc.models.User;
 
 /**
  * Serviços simples de um Data Access Object (DAO)
@@ -30,7 +33,7 @@ public interface GenericDAO {
     * @param entity Entidade a qual o objeto pertence
     * @return
     */
-    boolean persistDataByEntity(Object newObj, String entity);
+    boolean persistDataByEntity(String newObj, String entity);
     
     /**
      * Listar todos os  dados contidos na base de dados que pertencem a entidade passada por parâmetro 
@@ -55,7 +58,7 @@ public interface GenericDAO {
      * @return
      * @throws Exception 
      */
-    <T> T findByField(String entity, String field, String fieldValue) throws Exception;
+    User findUserLoginByField(String entity, String field, String fieldValue) throws Exception;
 
     /**
      * Deleta do banco de dados uma entidade referenciada pelo seu
@@ -71,5 +74,12 @@ public interface GenericDAO {
      * @return
      */
     <T> boolean updateByEntityId(String entity, int id, Object newObject);
+    
+    /**
+     * 
+     * @param query
+     * @return 
+     */
+    Map<String, String> query(String query);
 
 }

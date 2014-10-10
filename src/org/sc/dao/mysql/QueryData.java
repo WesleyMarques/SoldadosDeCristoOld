@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class QueryData {
     
     private ConnectionMySql conn;
-    private Statement s;
+    private Statement statement;
 
     public QueryData(ConnectionMySql conn) {
         this.conn = conn;
@@ -25,12 +25,12 @@ public class QueryData {
     
     public ResultSet queryD(String query) throws SQLException{
         try {
-            s = conn.getConn().createStatement();
-            return s.executeQuery(query); 
+            statement = conn.getConn().createStatement();
+            return statement.executeQuery(query); 
         } catch (Exception e) {
         }finally{
-            conn.getConn().close();
-            s.close();
+            conn.close();
+            statement.close();
         }
         return null;               
     }   

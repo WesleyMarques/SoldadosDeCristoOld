@@ -1,6 +1,7 @@
 package org.sc.models;
 
 import java.io.Serializable;
+import org.sc.dao.util.Util;
 
 public class UserRegistry extends User implements Serializable {
 
@@ -8,8 +9,8 @@ public class UserRegistry extends User implements Serializable {
      *
      */
     private static final long serialVersionUID = -8769554218265136933L;
-    private static final int MAN = 0;
-    private static final int WOMAN = 1;
+    public static final int MAN = 0;
+    public static final int WOMAN = 1;
     private static final int SINGLE = 0;
     private static final int MARRIED = 1;
     private static final int WIDOWED = 2;
@@ -17,10 +18,10 @@ public class UserRegistry extends User implements Serializable {
     private String photo = null;
     private String documents = null;
     
-    private int sex = -1;   
+    private int gender = -1;   
     private String bloodType = null;
     private int CPF = 0;
-    private int civilStatus = -1;
+    private String civilStatus = null;
     private String schooling = null;
     private String occupation = null;
     private String birthDate = null;
@@ -44,7 +45,7 @@ public class UserRegistry extends User implements Serializable {
     
 
     public UserRegistry(int registry, String name, String warName, int rG, int battalion, int patent, String status,
-            String birthDate, String photo, int sex, String bloodType, int cPF, int civilStatus, String schooling,
+            String birthDate, String photo, int sex, String bloodType, int cPF, String civilStatus, String schooling,
             String occupation, String nationality, String MPType, String obs, String fName, String mName, String street,
             String number, String complement, int zipCode, String district, String city, String state, String country,
             PhonesUsers phones, String email, QuestionnarieUser qUser) throws Exception {
@@ -68,7 +69,7 @@ public class UserRegistry extends User implements Serializable {
         setPhones(phones);
         setPhoto(photo);
         setSchooling(schooling);
-        setSex(sex);
+        setGender(sex);
         setState(state);
         setStreet(street);
         setZipCode(zipCode);
@@ -89,27 +90,27 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setPhoto(String photo) throws Exception {
         if (photo == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Photo invalid!");
         }
         this.photo = photo;
     }
 
     /**
-     * @return the sex
+     * @return the gender
      */
     public int getSex() {
-        return sex;
+        return gender;
     }
 
     /**
-     * @param sex the sex to set
+     * @param gender the gender to set
      * @throws Exception
      */
-    public void setSex(int sex) throws Exception {
+    public void setGender(int sex) throws Exception {
         if (sex < 0) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Gender invalid!");
         }
-        this.sex = sex;
+        this.gender = sex;
     }
 
     /**
@@ -137,64 +138,27 @@ public class UserRegistry extends User implements Serializable {
      * @param cPF the cPF to set
      */
     public void setCPF(int cPF) throws Exception {
-        if (!validaCPF(cPF+"")) {
-            throw new Exception("Data invalid!");
+        if (!Util.validaCPF(cPF+"")) {
+            throw new Exception("CPF invalid!");
         }
         CPF = cPF;
     }
 
-    private boolean validaCPF(String strCpf) {
-        int iDigito1Aux = 0, iDigito2Aux = 0, iDigitoCPF;
-        int iDigito1 = 0, iDigito2 = 0, iRestoDivisao = 0;
-        String strDigitoVerificador, strDigitoResultado;
 
-        if (!strCpf.substring(0, 1).equals("")) {
-            try {
-                strCpf = strCpf.replace('.', ' ');
-                strCpf = strCpf.replace('-', ' ');
-                strCpf = strCpf.replaceAll(" ", "");
-                for (int iCont = 1; iCont < strCpf.length() - 1; iCont++) {
-                    iDigitoCPF = Integer.valueOf(strCpf.substring(iCont - 1, iCont)).intValue();
-                    iDigito1Aux = iDigito1Aux + (11 - iCont) * iDigitoCPF;
-                    iDigito2Aux = iDigito2Aux + (12 - iCont) * iDigitoCPF;
-                }
-                iRestoDivisao = (iDigito1Aux % 11);
-                if (iRestoDivisao < 2) {
-                    iDigito1 = 0;
-                } else {
-                    iDigito1 = 11 - iRestoDivisao;
-                }
-                iDigito2Aux += 2 * iDigito1;
-                iRestoDivisao = (iDigito2Aux % 11);
-                if (iRestoDivisao < 2) {
-                    iDigito2 = 0;
-                } else {
-                    iDigito2 = 11 - iRestoDivisao;
-                }
-                strDigitoVerificador = strCpf.substring(strCpf.length() - 2, strCpf.length());
-                strDigitoResultado = String.valueOf(iDigito1) + String.valueOf(iDigito2);
-                return strDigitoVerificador.equals(strDigitoResultado);
-            } catch (Exception e) {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
 
     /**
      * @return the civilStatus
      */
-    public int getCivilStatus() {
+    public String getCivilStatus() {
         return civilStatus;
     }
 
     /**
      * @param civilStatus the civilStatus to set
      */
-    public void setCivilStatus(int civilStatus) throws Exception {
-        if (sex == -1) {
-            throw new Exception("Data invalid!");
+    public void setCivilStatus(String civilStatus) throws Exception {
+        if (civilStatus == null || civilStatus == "") {
+            throw new Exception("Civil Status invalid!");
         }
         this.civilStatus = civilStatus;
     }
@@ -225,7 +189,7 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setOccupation(String occupation) throws Exception {
         if (occupation == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Occupation invalid!");
         }
         this.occupation = occupation;
     }
@@ -242,7 +206,7 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setBirthDate(String birthDate) throws Exception {
         if (birthDate == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("BirthDay invalid!");
         }
         this.birthDate = birthDate;
     }
@@ -315,7 +279,7 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setMotherName(String motherName) throws Exception {
         if (motherName == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Mother Name invalid!");
         }
         this.motherName = motherName;
     }
@@ -332,7 +296,7 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setStreet(String street) throws Exception {
         if (street == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Street invalid!");
         }
         this.street = street;
     }
@@ -349,7 +313,7 @@ public class UserRegistry extends User implements Serializable {
      */
     public void setNumber(String number) throws Exception {
         if (number == null) {
-            throw new Exception("Data invalid!");
+            throw new Exception("Number invalid!");
         }
         this.number = number;
     }

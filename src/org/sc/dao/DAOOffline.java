@@ -8,11 +8,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.sc.models.*;
+import org.sc.models.User;
 
 /**
  * @author Wesley
@@ -33,7 +31,7 @@ public class DAOOffline implements GenericDAO{
     private FileOutputStream out = null;
     private ObjectOutputStream outObj = null;
     
-    public DAOOffline() throws IOException{
+    public DAOOffline(){
     	}
 
     
@@ -69,7 +67,7 @@ public class DAOOffline implements GenericDAO{
 	}
 	
 	@Override
-	public <T> T findByField(String entity, String field, String fieldValue) throws Exception {
+	public User findUserLoginByField(String entity, String field, String fieldValue) throws Exception {
 		
 		return null;
 	}

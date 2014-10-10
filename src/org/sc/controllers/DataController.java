@@ -29,4 +29,12 @@ public class DataController {
 		}
     	return info;    	
     }
+    
+    public static int getNewRegistryCode(){
+    	return 0;    	
+    }
+    
+    public static String getWarName(String name){
+    	return "";
+    }
 }

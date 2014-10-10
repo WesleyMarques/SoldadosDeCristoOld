@@ -8,7 +8,6 @@ package org.sc.views;
 
 
 import java.awt.FlowLayout;
-import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -22,10 +21,10 @@ public class Window extends JFrame {
     
     //private JPanel mainPanel = new JPanel();
     private ImagePanel mainPanel;
-    private static final String BASE_PATH = "/images/";
+    public static final String BASE_PATH = "/images/";
 
     /**
-     * Creates new form Window
+     * Creates new form Windowa
      */
     public Window() {
         mainPanel = new ImagePanel(BASE_PATH+"background.png");
@@ -53,7 +52,6 @@ public class Window extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Departamento Soldados de Cristo");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setName("frameMain"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
