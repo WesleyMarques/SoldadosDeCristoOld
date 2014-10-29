@@ -1,6 +1,7 @@
 package org.sc.models;
 
 import java.io.Serializable;
+
 import org.sc.dao.util.Util;
 
 public class UserRegistry extends User implements Serializable {
@@ -11,9 +12,9 @@ public class UserRegistry extends User implements Serializable {
     private static final long serialVersionUID = -8769554218265136933L;
     public static final int MAN = 0;
     public static final int WOMAN = 1;
-    private static final int SINGLE = 0;
-    private static final int MARRIED = 1;
-    private static final int WIDOWED = 2;
+    public static final int SINGLE = 0;
+    public static final int MARRIED = 1;
+    public static final int WIDOWED = 2;
 
     private String photo = null;
     private String documents = null;

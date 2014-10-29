@@ -8,6 +8,7 @@ package org.sc.views;
 
 
 import java.awt.FlowLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 

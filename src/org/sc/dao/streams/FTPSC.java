@@ -3,6 +3,7 @@ package org.sc.dao.streams;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import org.apache.commons.net.ftp.FTPClient;
 
 /**
@@ -10,50 +11,36 @@ import org.apache.commons.net.ftp.FTPClient;
  * @author Wesley
  */
 public class FTPSC {
-     private final String SERVIDOR = "";
-    private final String USER = "";
-     private final String PASSWORD = "";
-    
-    private FTPClient ftpCliente;
-    private String basePath;
+	private final String SERVIDOR = "ftp.soldadosdecristo2.hospedagemdesites.ws";
+	private final String USER = "soldadosdecristo2";
+	private final String PASSWORD = "t1moteo23.";
+	private final String BASE_PATH = "SoftwareFiles/";
 
-    public FTPSC(String path) throws IOException {
-        ftpCliente = new FTPClient();
-        connect();
-        
-    }
-    
-    
-    public FTPClient getFtpCliente() {
-        return ftpCliente;
-    }
+	private FTPClient ftpCliente;
 
-    private void connect() throws IOException {
-        ftpCliente.connect(SERVIDOR);
-        ftpCliente.login(USER, PASSWORD);
-    }
-    
-    public boolean uploadFile(String pathFile) throws FileNotFoundException, IOException{
-        FileInputStream fileToSend = new FileInputStream(pathFile);
-        if (ftpCliente.storeFile("novo nome", fileToSend)) {
-            return true;
-        }
+	public FTPSC(String path) throws IOException {
+		ftpCliente = new FTPClient();
+		connect();
+	}
 
-        return false;
-    }
-    
-    public void closeConnection() throws IOException{
-        ftpCliente.logout();
-        ftpCliente.disconnect();
-    }
+	public FTPClient getFtpCliente() {
+		return ftpCliente;
+	}
 
-    public String getBasePath() {
-        return basePath;
-    }
+	private void connect() throws IOException {
+		ftpCliente.connect(SERVIDOR);
+		ftpCliente.login(USER, PASSWORD);
+	}
 
-    public void setBasePath(String basePath) {
-        this.basePath = basePath;
-    }
-    
-    
+	public boolean uploadFile(String fileName, String pathFile)
+			throws FileNotFoundException, IOException {
+		FileInputStream fileToSend = new FileInputStream(pathFile);
+		return ftpCliente.storeFile(BASE_PATH+fileName, fileToSend);
+	}
+
+	public void closeConnection() throws IOException {
+		ftpCliente.logout();
+		ftpCliente.disconnect();
+	}
+
 }

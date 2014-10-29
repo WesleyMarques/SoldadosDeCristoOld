@@ -8,6 +8,7 @@ package org.sc.views;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 import org.sc.controllers.ConnectionController;
 import org.sc.controllers.LoginController;
 

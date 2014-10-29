@@ -24,7 +24,6 @@ import org.sc.models.PhonesUsers;
 import org.sc.models.QuestionnarieUser;
 import org.sc.models.User;
 import org.sc.models.UserRegistry;
-import org.sc.system.SoldadosDeCristo;
 
 /**
  *

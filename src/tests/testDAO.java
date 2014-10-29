@@ -1,9 +1,11 @@
 package tests;
 
-import java.io.IOException;
-import org.junit.After;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.io.IOException;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sc.dao.DAOOffline;
