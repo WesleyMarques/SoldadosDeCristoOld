@@ -21,7 +21,7 @@ public class UserRegistry extends User implements Serializable {
     
     private int gender = -1;   
     private String bloodType = null;
-    private int CPF = 0;
+    private String CPF = null;
     private String civilStatus = null;
     private String schooling = null;
     private String occupation = null;
@@ -46,7 +46,7 @@ public class UserRegistry extends User implements Serializable {
     
 
     public UserRegistry(int registry, String name, String warName, int rG, int battalion, int patent, String status,
-            String birthDate, String photo, int sex, String bloodType, int cPF, String civilStatus, String schooling,
+            String birthDate, String photo, int sex, String bloodType, String cPF, String civilStatus, String schooling,
             String occupation, String nationality, String MPType, String obs, String fName, String mName, String street,
             String number, String complement, int zipCode, String district, String city, String state, String country,
             PhonesUsers phones, String email, QuestionnarieUser qUser) throws Exception {
@@ -89,9 +89,9 @@ public class UserRegistry extends User implements Serializable {
      * @param photo the photo to set
      * @throws Exception
      */
-    public void setPhoto(String photo) throws Exception {
+    public void setPhoto(String photo) throws UserInvalidException {
         if (photo == null) {
-            throw new Exception("Photo invalid!");
+            throw new UserInvalidException("Photo invalid!");
         }
         this.photo = photo;
     }
@@ -107,9 +107,9 @@ public class UserRegistry extends User implements Serializable {
      * @param gender the gender to set
      * @throws Exception
      */
-    public void setGender(int sex) throws Exception {
+    public void setGender(int sex) throws UserInvalidException {
         if (sex < 0) {
-            throw new Exception("Gender invalid!");
+            throw new UserInvalidException("Gender invalid!");
         }
         this.gender = sex;
     }
@@ -131,16 +131,16 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @return the cPF
      */
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
     /**
      * @param cPF the cPF to set
      */
-    public void setCPF(int cPF) throws Exception {
-        if (!Util.validaCPF(cPF+"")) {
-            throw new Exception("CPF invalid!");
+    public void setCPF(String cPF) throws UserInvalidException {
+        if (!Util.validaCPF(cPF)) {
+            throw new UserInvalidException("CPF invalid!");
         }
         CPF = cPF;
     }
@@ -188,9 +188,9 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @param occupation the occupation to set
      */
-    public void setOccupation(String occupation) throws Exception {
+    public void setOccupation(String occupation) throws UserInvalidException {
         if (occupation == null) {
-            throw new Exception("Occupation invalid!");
+            throw new UserInvalidException("Occupation invalid!");
         }
         this.occupation = occupation;
     }
@@ -205,9 +205,9 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @param birthDate the birthDate to set
      */
-    public void setBirthDate(String birthDate) throws Exception {
+    public void setBirthDate(String birthDate) throws UserInvalidException {
         if (birthDate == null) {
-            throw new Exception("BirthDay invalid!");
+            throw new UserInvalidException("BirthDay invalid!");
         }
         this.birthDate = birthDate;
     }
@@ -278,9 +278,9 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @param motherName the motherName to set
      */
-    public void setMotherName(String motherName) throws Exception {
+    public void setMotherName(String motherName) throws UserInvalidException {
         if (motherName == null) {
-            throw new Exception("Mother Name invalid!");
+            throw new UserInvalidException("Mother Name invalid!");
         }
         this.motherName = motherName;
     }
@@ -295,9 +295,9 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @param street the street to set
      */
-    public void setStreet(String street) throws Exception {
+    public void setStreet(String street) throws UserInvalidException {
         if (street == null) {
-            throw new Exception("Street invalid!");
+            throw new UserInvalidException("Street invalid!");
         }
         this.street = street;
     }
@@ -312,9 +312,9 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @param number the number to set
      */
-    public void setNumber(String number) throws Exception {
+    public void setNumber(String number) throws UserInvalidException {
         if (number == null) {
-            throw new Exception("Number invalid!");
+            throw new UserInvalidException("Number invalid!");
         }
         this.number = number;
     }

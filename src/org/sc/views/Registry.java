@@ -1411,7 +1411,7 @@ public class Registry extends SwitchablePanel {
         	userRegistry = new UserRegistry(registryAux, nomeText.getText(), warNameText.getText(), Integer.parseInt(rgText.getText()), 
                     Integer.parseInt(batOption.getName()), patOption.getSelectedIndex(), "Ativado", birthDate.getText(), 
                 photoPath,mBox.isSelected()?UserRegistry.MAN:UserRegistry.WOMAN, bloddTypeOption.getSelectedItem().toString(),
-                		Integer.parseInt(cpfText.getText()), civilStatusOptions.getSelectedItem().toString(), 
+                		cpfText.getText(), civilStatusOptions.getSelectedItem().toString(), 
                 		schoolingBox.getSelectedItem().toString(), occupationText.getText(), nacText.getText(), payFormBox.getSelectedItem().toString(), 
         			obsText.getText(), fatherText.getText(), motherText.getText(), streetText.getText(), numberText.getText(), complementText.getText(), 
         			Integer.parseInt(cepText.getText()), districtText.getText(), cityText.getText(), stateText.getText(), countryText.getText(), phones, emailText.getText(),questionario);
