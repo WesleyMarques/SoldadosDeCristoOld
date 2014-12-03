@@ -21,81 +21,97 @@ import com.mysql.jdbc.ResultSet;
 
 public class DAOOnline implements GenericDAO {
 
-    private ConnectionMySql connection;
-    private final String SERVER_NAME = "mysql07.soldadosdecristo2.hospedagemdesites.ws";
-    private final String SERVER_USER = "soldadosdecris8";
-    private final String SERVER_PW = "t1moteo23.";
-    private final String SERVER_DB = "soldadosdecris8";
+   private ConnectionMySql connection;
+   private final String SERVER_NAME = "mysql07.soldadosdecristo2.hospedagemdesites.ws";
+   private final String SERVER_USER = "soldadosdecris8";
+   private final String SERVER_PW = "t1moteo23.";
+   private final String SERVER_DB = "soldadosdecris8";
 
-    public DAOOnline() {
-    	
-    }
-    
-    @Override
-    public boolean open() throws Exception{
-    	connection = new ConnectionMySql(SERVER_USER, SERVER_NAME, SERVER_DB, SERVER_PW);
-		return connection.isConnected();    	    	    	
-    }
+   public DAOOnline() {
 
-	@Override
-	public boolean close() {
-		connection.close();
-		boolean connStatus = connection.isConnected();
-		connection = null;
-		return connStatus;
-	}
+   }
 
-	@Override
-	public boolean persistDataByEntity(String newObj, String entity) {
-		
-		return false;
-	}
+   @Override
+   public boolean open() throws DAOException {
+      connection = new ConnectionMySql(SERVER_USER, SERVER_NAME, SERVER_DB,
+            SERVER_PW);
+      return connection.isConnected();
+   }
 
-	@Override
-	public <T> List<T> findAllByEntityId(String entity) {
-		
-		return null;
-	}
+   @Override
+   public boolean close() throws DAOException {
 
-	@Override
-	public <T> T findByEntityId(String entity, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+      try {
+         return connection.close();
+      } catch (Exception e) {
+         throw new DAOException("Erro ao fechar conexão: " + e.getMessage());
+      } finally {
+         connection = connection.isConnected() ? connection : null;
+      }
+   }
 
-	@Override
-	public <T> T removeByEntityId(String entidade, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   @Override
+   public boolean persistDataByEntity(String newObj, String entity) {
 
-	@Override
-	public <T> boolean updateByEntityId(String entity, int id, Object newObject) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+      return false;
+   }
 
-	@Override
-	public User findUserLoginByField(String entity, String field, String fieldValue) throws Exception {
-		String queryString = "SELECT U.registry, U.name, U.warname, U.RG, U.battalion, U.patent, U.status, L.userName, L.password, U.email"
-				+ " FROM "+entity+" L, user U WHERE "+field+" = \""+fieldValue+"\" and L.userAdmin = U.registry";
-		ResultSet resultSet = connection.query(queryString);
-		
-		User user = null;
-		if (resultSet.first()) {
-			user = new UserLogin(resultSet.getInt("registry"), resultSet.getString("name"), resultSet.getString("warName"), 
-					resultSet.getInt("RG"), resultSet.getInt("battalion"), resultSet.getInt("patent"), resultSet.getString("status"),
-					resultSet.getString(""), "", resultSet.getString("email"));			
-		}
-		return user;
-	}
+   @Override
+   public <T> List<T> findAllByEntityId(String entity) {
 
-	@Override
-	public Map<String, String> query(String query) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-    
-    
-    
+      return null;
+   }
+
+   @Override
+   public <T> T findByEntityId(String entity, int id) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public <T> T removeByEntityId(String entidade, int id) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public <T> boolean updateByEntityId(String entity, int id, Object newObject) {
+      // TODO Auto-generated method stub
+      return false;
+   }
+
+   @Override
+   public User findUserLoginByField(String entity, String field,
+         String fieldValue) throws DAOException {
+      String queryString = "SELECT U.registry, U.name, U.warname, U.RG, U.battalion, U.patent, U.status, L.userName, L.password, U.email"
+            + " FROM "
+            + entity
+            + " L, user U WHERE "
+            + field
+            + " = \""
+            + fieldValue + "\" and L.userAdmin = U.registry";
+      User user = null;
+      try {
+         ResultSet resultSet = connection.query(queryString);
+         if (resultSet.first()) {
+            user = new UserLogin(resultSet.getInt("registry"),
+                  resultSet.getString("name"), resultSet.getString("warName"),
+                  resultSet.getInt("RG"), resultSet.getInt("battalion"),
+                  resultSet.getInt("patent"), resultSet.getString("status"),
+                  resultSet.getString(""), "", resultSet.getString("email"));
+         }
+      } catch (Exception e) {
+         throw new DAOException("Erro na consulta do banco de dados: "
+               + e.getMessage());
+      }
+
+      return user;
+   }
+
+   @Override
+   public Map<String, String> query(String query) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
 }
