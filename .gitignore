@@ -3,6 +3,8 @@ nbproject/*
 /bin/*
 build.xml
 build/*
+nbproject/
+nb-build.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
