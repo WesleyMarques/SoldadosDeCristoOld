@@ -7,7 +7,6 @@
 package org.sc.views;
 
 import java.awt.FlowLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -45,33 +44,30 @@ public class Window extends JFrame {
 
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
-   // desc="Generated Code">//GEN-BEGIN:initComponents
-   private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-      setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-      setTitle("Departamento Soldados de Cristo");
-      setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-      setName("frameMain"); // NOI18N
-      setPreferredSize(new java.awt.Dimension(1000, 600));
-      setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Departamento Soldados de Cristo");
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setName("frameMain"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setResizable(false);
 
-      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-            getContentPane());
-      getContentPane().setLayout(layout);
-      layout.setHorizontalGroup(
-            layout.createParallelGroup(
-                  javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGap(0, 1434, Short.MAX_VALUE)
-            );
-      layout.setVerticalGroup(
-            layout.createParallelGroup(
-                  javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGap(0, 854, Short.MAX_VALUE)
-            );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1434, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 854, Short.MAX_VALUE)
+        );
 
-      pack();
-      setLocationRelativeTo(null);
-   }// </editor-fold>//GEN-END:initComponents
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
