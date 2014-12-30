@@ -7,7 +7,6 @@
 package org.sc.views;
 
 import javax.swing.ImageIcon;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 
 import org.sc.controllers.ConnectionController;
@@ -23,18 +22,17 @@ public class Home extends SwitchablePanel {
 	 * 
 	 */
    private static final long serialVersionUID = 6740384300330336965L;
+
    /**
     * Creates new form Home
     * 
     * @param frame
     */
-   private final JMenuBar menuMain;
 
-   public Home(Window frame, JMenuBar menu) {
+   public Home(Window frame) {
       super(frame, false);
       initComponents();
       statusConnect.start();
-      menuMain = menu;
    }
 
    Thread statusConnect = new Thread() {
@@ -76,186 +74,26 @@ public class Home extends SwitchablePanel {
     */
    @SuppressWarnings("unchecked")
    // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
    // desc="Generated Code">//GEN-BEGIN:initComponents
    private void initComponents() {
 
-      loginPanel = new javax.swing.JPanel();
-      pqName = new javax.swing.JLabel();
+      jLabel2 = new javax.swing.JLabel();
+      jButton1 = new javax.swing.JButton();
       loginName = new javax.swing.JLabel();
       userText = new javax.swing.JTextField();
-      loginButton = new javax.swing.JButton();
-      forgotPw = new javax.swing.JLabel();
+      pqName = new javax.swing.JLabel();
       pwText = new javax.swing.JPasswordField();
-      loginLabel = new javax.swing.JLabel();
+      forgotPw = new javax.swing.JLabel();
+      loginButton = new javax.swing.JButton();
       jLabel1 = new javax.swing.JLabel();
-      jLabel2 = new javax.swing.JLabel();
       pictureStatusNet = new javax.swing.JLabel();
       nameStatusNet = new javax.swing.JLabel();
-      jButton1 = new javax.swing.JButton();
 
       setPreferredSize(new java.awt.Dimension(1000, 600));
 
-      loginPanel.setBackground(new java.awt.Color(255, 255, 255));
-      loginPanel.setBorder(javax.swing.BorderFactory.createLineBorder(
-            new java.awt.Color(0, 0, 0), 2));
-
-      pqName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-      pqName.setText("SENHA:");
-
-      loginName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-      loginName.setText("USUÁRIO:");
-      loginName.setPreferredSize(new java.awt.Dimension(130, 45));
-
-      userText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-      userText.setPreferredSize(new java.awt.Dimension(59, 45));
-
-      loginButton.setText("Entrar");
-      loginButton.addActionListener(new java.awt.event.ActionListener() {
-         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            loginButtonActionPerformed(evt);
-         }
-      });
-
-      forgotPw.setText("Esqueceu a Senha?");
-
-      pwText.addActionListener(new java.awt.event.ActionListener() {
-         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            pwTextActionPerformed(evt);
-         }
-      });
-
-      javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(
-            loginPanel);
-      loginPanel.setLayout(loginPanelLayout);
-      loginPanelLayout
-            .setHorizontalGroup(
-            loginPanelLayout
-                  .createParallelGroup(
-                        javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(
-                        loginPanelLayout
-                              .createSequentialGroup()
-                              .addGap(29, 29, 29)
-                              .addGroup(
-                                    loginPanelLayout
-                                          .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                false)
-                                          .addGroup(
-                                                loginPanelLayout
-                                                      .createSequentialGroup()
-                                                      .addGroup(
-                                                            loginPanelLayout
-                                                                  .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                  .addComponent(
-                                                                        loginName,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        145,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                  .addComponent(
-                                                                        pqName,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        145,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                      .addPreferredGap(
-                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                      .addGroup(
-                                                            loginPanelLayout
-                                                                  .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                  .addComponent(
-                                                                        userText,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        235,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                  .addComponent(
-                                                                        pwText,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                        235,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                          .addGroup(
-                                                loginPanelLayout
-                                                      .createSequentialGroup()
-                                                      .addComponent(forgotPw)
-                                                      .addPreferredGap(
-                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                            Short.MAX_VALUE)
-                                                      .addComponent(
-                                                            loginButton,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            87,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
-                              .addContainerGap(61, Short.MAX_VALUE))
-            );
-      loginPanelLayout
-            .setVerticalGroup(
-            loginPanelLayout
-                  .createParallelGroup(
-                        javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(
-                        javax.swing.GroupLayout.Alignment.TRAILING,
-                        loginPanelLayout
-                              .createSequentialGroup()
-                              .addContainerGap(
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    Short.MAX_VALUE)
-                              .addGroup(
-                                    loginPanelLayout
-                                          .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                          .addComponent(
-                                                userText,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                35,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                          .addComponent(
-                                                loginName,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                45,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                              .addGap(28, 28, 28)
-                              .addGroup(
-                                    loginPanelLayout
-                                          .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                          .addComponent(
-                                                pwText,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                35,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                          .addComponent(
-                                                pqName,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                45,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                              .addPreferredGap(
-                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    Short.MAX_VALUE)
-                              .addGroup(
-                                    loginPanelLayout
-                                          .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                          .addComponent(loginButton)
-                                          .addComponent(forgotPw))
-                              .addGap(85, 85, 85))
-            );
-
-      loginLabel.setBackground(new java.awt.Color(255, 255, 255));
-      loginLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-      loginLabel.setText("LOGIN");
-      loginLabel.setBorder(new javax.swing.border.LineBorder(
-            new java.awt.Color(0, 0, 0), 2, true));
-      loginLabel.setOpaque(true);
-
-      jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-            "/images/escudoIcon.png"))); // NOI18N
-
       jLabel2.setText("© Copyright");
-
-      nameStatusNet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
       jButton1.setText("jButton1");
       jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -264,6 +102,46 @@ public class Home extends SwitchablePanel {
          }
       });
 
+      loginName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+      loginName.setForeground(new java.awt.Color(255, 255, 255));
+      loginName.setText("Usuário");
+      loginName.setPreferredSize(new java.awt.Dimension(130, 45));
+
+      userText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+      userText.setPreferredSize(new java.awt.Dimension(59, 45));
+      userText.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            userTextActionPerformed(evt);
+         }
+      });
+
+      pqName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+      pqName.setForeground(new java.awt.Color(255, 255, 255));
+      pqName.setText("Senha");
+
+      pwText.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            pwTextActionPerformed(evt);
+         }
+      });
+
+      forgotPw.setForeground(new java.awt.Color(255, 255, 255));
+      forgotPw.setText("Esqueceu a Senha?");
+
+      loginButton.setText("Entrar");
+      loginButton.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            loginButtonActionPerformed(evt);
+         }
+      });
+
+      jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+      jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+      jLabel1.setText("LOGIN");
+
+      nameStatusNet.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+      nameStatusNet.setForeground(new java.awt.Color(255, 255, 255));
+
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
       this.setLayout(layout);
       layout.setHorizontalGroup(
@@ -271,29 +149,60 @@ public class Home extends SwitchablePanel {
                   javax.swing.GroupLayout.Alignment.LEADING)
                   .addGroup(
                         layout.createSequentialGroup()
-                              .addGap(24, 24, 24)
+                              .addGap(41, 41, 41)
                               .addGroup(
                                     layout.createParallelGroup(
                                           javax.swing.GroupLayout.Alignment.LEADING)
                                           .addGroup(
                                                 layout.createSequentialGroup()
-                                                      .addComponent(
-                                                            loginLabel,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            134,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                      .addContainerGap(838,
+                                                      .addGroup(
+                                                            layout.createParallelGroup(
+                                                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                  false)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    forgotPw)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    Short.MAX_VALUE)
+                                                                              .addComponent(
+                                                                                    loginButton,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    87,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        layout.createParallelGroup(
+                                                                              javax.swing.GroupLayout.Alignment.LEADING)
+                                                                              .addComponent(
+                                                                                    pwText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    235,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addComponent(
+                                                                                    pqName,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    145,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addComponent(
+                                                                                    userText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    235,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addComponent(
+                                                                                    loginName,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    145,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                      .addGap(0, 0,
                                                             Short.MAX_VALUE))
                                           .addGroup(
                                                 layout.createSequentialGroup()
-                                                      .addComponent(
-                                                            loginPanel,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(jLabel1)
                                                       .addPreferredGap(
                                                             javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                                            359,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
                                                             Short.MAX_VALUE)
                                                       .addComponent(
                                                             pictureStatusNet,
@@ -306,86 +215,97 @@ public class Home extends SwitchablePanel {
                                                             nameStatusNet,
                                                             javax.swing.GroupLayout.PREFERRED_SIZE,
                                                             80,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                      .addGap(23, 23, 23))))
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))))
                   .addGroup(
-                        javax.swing.GroupLayout.Alignment.TRAILING,
                         layout.createSequentialGroup()
-                              .addContainerGap(
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    Short.MAX_VALUE)
+                              .addContainerGap(492, Short.MAX_VALUE)
                               .addGroup(
                                     layout.createParallelGroup(
                                           javax.swing.GroupLayout.Alignment.LEADING)
                                           .addGroup(
                                                 javax.swing.GroupLayout.Alignment.TRAILING,
                                                 layout.createSequentialGroup()
-                                                      .addComponent(jButton1)
-                                                      .addGap(209, 209, 209)
-                                                      .addComponent(
-                                                            jLabel1,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            119,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                      .addContainerGap())
+                                                      .addComponent(jLabel2)
+                                                      .addGap(448, 448, 448))
                                           .addGroup(
                                                 javax.swing.GroupLayout.Alignment.TRAILING,
                                                 layout.createSequentialGroup()
-                                                      .addComponent(jLabel2)
-                                                      .addGap(448, 448, 448))))
+                                                      .addComponent(jButton1)
+                                                      .addGap(338, 338, 338))))
             );
       layout.setVerticalGroup(
             layout.createParallelGroup(
                   javax.swing.GroupLayout.Alignment.LEADING)
                   .addGroup(
                         layout.createSequentialGroup()
+                              .addGap(24, 24, 24)
                               .addGroup(
                                     layout.createParallelGroup(
-                                          javax.swing.GroupLayout.Alignment.LEADING)
-                                          .addGroup(
-                                                layout.createSequentialGroup()
-                                                      .addGap(35, 35, 35)
-                                                      .addComponent(
-                                                            jLabel1,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            120,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
-                                          .addGroup(
-                                                layout.createSequentialGroup()
-                                                      .addGap(69, 69, 69)
-                                                      .addComponent(jButton1)))
-                              .addGap(32, 32, 32)
-                              .addComponent(loginLabel)
+                                          javax.swing.GroupLayout.Alignment.LEADING,
+                                          false)
+                                          .addComponent(
+                                                nameStatusNet,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                Short.MAX_VALUE)
+                                          .addComponent(
+                                                pictureStatusNet,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                26, Short.MAX_VALUE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                    55, Short.MAX_VALUE)
+                              .addComponent(jLabel1)
+                              .addGap(18, 18, 18)
+                              .addComponent(loginName,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE, 30,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addComponent(userText,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE, 35,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE)
                               .addPreferredGap(
                                     javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                               .addGroup(
                                     layout.createParallelGroup(
-                                          javax.swing.GroupLayout.Alignment.TRAILING)
-                                          .addComponent(
-                                                loginPanel,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          javax.swing.GroupLayout.Alignment.LEADING,
+                                          false)
                                           .addGroup(
-                                                layout.createParallelGroup(
-                                                      javax.swing.GroupLayout.Alignment.BASELINE)
+                                                layout.createSequentialGroup()
                                                       .addComponent(
-                                                            pictureStatusNet,
+                                                            pqName,
                                                             javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            26,
+                                                            30,
                                                             javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                       .addComponent(
-                                                            nameStatusNet,
+                                                            pwText,
                                                             javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                            39,
-                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
-                              .addGap(53, 53, 53)
+                                                            35,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(13, 13, 13)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(
+                                                                  javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        loginButton)
+                                                                  .addComponent(
+                                                                        forgotPw)))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGap(277, 277, 277)
+                                                      .addComponent(jButton1)))
+                              .addGap(34, 34, 34)
                               .addComponent(jLabel2)
-                              .addContainerGap(
-                                    javax.swing.GroupLayout.DEFAULT_SIZE,
-                                    Short.MAX_VALUE))
+                              .addContainerGap(15, Short.MAX_VALUE))
             );
    }// </editor-fold>//GEN-END:initComponents
+
+   private void userTextActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_userTextActionPerformed
+      // TODO add your handling code here:
+   }// GEN-LAST:event_userTextActionPerformed
 
    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
 
@@ -402,7 +322,7 @@ public class Home extends SwitchablePanel {
                pwText.getPassword()));
          if (ValidateUser) {
             getMainFrame().switchPanels(
-                  new Aplication(getMainFrame(), menuMain));
+                  new Aplication(getMainFrame()));
          }
       } catch (Exception e) {
          JOptionPane.showMessageDialog(this, e.getMessage());
@@ -415,7 +335,7 @@ public class Home extends SwitchablePanel {
    }// GEN-LAST:event_pwTextActionPerformed
 
    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-      getMainFrame().switchPanels(new Aplication(getMainFrame(), menuMain));
+      getMainFrame().switchPanels(new Aplication(getMainFrame()));
    }// GEN-LAST:event_jButton1ActionPerformed
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -424,9 +344,7 @@ public class Home extends SwitchablePanel {
    private javax.swing.JLabel jLabel1;
    private javax.swing.JLabel jLabel2;
    private javax.swing.JButton loginButton;
-   private javax.swing.JLabel loginLabel;
    private javax.swing.JLabel loginName;
-   private javax.swing.JPanel loginPanel;
    private javax.swing.JLabel nameStatusNet;
    private javax.swing.JLabel pictureStatusNet;
    private javax.swing.JLabel pqName;
