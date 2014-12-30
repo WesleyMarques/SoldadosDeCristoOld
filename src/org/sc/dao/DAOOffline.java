@@ -17,7 +17,7 @@ import org.sc.models.UserLogin;
 
 /**
  * @author Wesley
- *
+ * 
  */
 public class DAOOffline implements GenericDAO {
 
@@ -160,5 +160,11 @@ public class DAOOffline implements GenericDAO {
 
       }
       return true;
+   }
+
+   @Override
+   public int getCount(String atribute, String entite) throws DAOException {
+      // TODO Auto-generated method stub
+      return 0;
    }
 }

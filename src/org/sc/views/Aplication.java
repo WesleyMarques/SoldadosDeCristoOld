@@ -38,13 +38,16 @@ public class Aplication extends SwitchablePanel {
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         popupCadastro = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
         popupConfig = new javax.swing.JPopupMenu();
+        jMenu2 = new javax.swing.JMenu();
         novoBatalhaoOp = new javax.swing.JMenuItem();
+        setCommanderOp = new javax.swing.JMenuItem();
         jButton3 = new javax.swing.JButton();
         cadastroOpMenu = new javax.swing.JLabel();
         financeiroOpMenu = new javax.swing.JLabel();
@@ -66,6 +69,9 @@ public class Aplication extends SwitchablePanel {
 
         popupConfig.setForeground(new java.awt.Color(255, 255, 255));
 
+        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu2.setText("Batalhão");
+
         novoBatalhaoOp.setBackground(new java.awt.Color(255, 255, 255));
         novoBatalhaoOp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
         novoBatalhaoOp.setText("Novo Batalhão");
@@ -76,7 +82,16 @@ public class Aplication extends SwitchablePanel {
                 novoBatalhaoOpActionPerformed(evt);
             }
         });
-        popupConfig.add(novoBatalhaoOp);
+        jMenu2.add(novoBatalhaoOp);
+
+        setCommanderOp.setBackground(new java.awt.Color(255, 255, 255));
+        setCommanderOp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
+        setCommanderOp.setText("Inserir Comandante");
+        setCommanderOp.setToolTipText("");
+        setCommanderOp.setName(""); // NOI18N
+        jMenu2.add(setCommanderOp);
+
+        popupConfig.add(jMenu2);
 
         setPreferredSize(new java.awt.Dimension(1000, 600));
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -291,34 +306,38 @@ public class Aplication extends SwitchablePanel {
         cadastroOpMenu.getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseClicked
-
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseClicked
-
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6MouseClicked
-
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7MouseClicked
-
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9MouseClicked
-
-    private void configOpMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configOpMenuMouseEntered
-        // TODO add your handling code here:
-        popupConfig.show(this, 850, 60);
-    }//GEN-LAST:event_configOpMenuMouseEntered
-
     private void novoBatalhaoOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoBatalhaoOpActionPerformed
-        // TODO add your handling code here:
+        getMainFrame().switchPanels(new NewCompany(getMainFrame()));
     }//GEN-LAST:event_novoBatalhaoOpActionPerformed
+
+   private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton4MouseClicked
+      // TODO add your handling code here:
+   }// GEN-LAST:event_jButton4MouseClicked
+
+   private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton5MouseClicked
+      // TODO add your handling code here:
+   }// GEN-LAST:event_jButton5MouseClicked
+
+   private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton6MouseClicked
+      // TODO add your handling code here:
+   }// GEN-LAST:event_jButton6MouseClicked
+
+   private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton7MouseClicked
+      // TODO add your handling code here:
+   }// GEN-LAST:event_jButton7MouseClicked
+
+   private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton9MouseClicked
+      // TODO add your handling code here:
+   }// GEN-LAST:event_jButton9MouseClicked
+
+   private void configOpMenuMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configOpMenuMouseEntered
+      // TODO add your handling code here:
+      popupConfig.show(this, 850, 60);
+   }// GEN-LAST:event_configOpMenuMouseEntered
+
+   private void novoBatalhaoOpMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_novoBatalhaoOpMouseClicked
+
+   }// GEN-LAST:event_novoBatalhaoOpMouseClicked
 
    private void financeiroOpMenuMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_financeiroOpMenuMouseClicked
       // TODO add your handling code here:
@@ -329,7 +348,7 @@ public class Aplication extends SwitchablePanel {
    }// GEN-LAST:event_ensinoOpMenuMouseClicked
 
    private void sairOpMenuMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_sairOpMenuMouseClicked
-      // TODO add your handling code here:
+      getMainFrame().switchPanels(new Home(getMainFrame()));
    }// GEN-LAST:event_sairOpMenuMouseClicked
 
    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton3MouseClicked
@@ -380,9 +399,11 @@ public class Aplication extends SwitchablePanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem novoBatalhaoOp;
     private javax.swing.JPopupMenu popupCadastro;
     private javax.swing.JPopupMenu popupConfig;
     private javax.swing.JLabel sairOpMenu;
+    private javax.swing.JMenuItem setCommanderOp;
     // End of variables declaration//GEN-END:variables
 }

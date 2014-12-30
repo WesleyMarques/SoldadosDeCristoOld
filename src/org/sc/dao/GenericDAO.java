@@ -91,4 +91,10 @@ public interface GenericDAO {
     */
    Map<String, String> query(String query);
 
+   /**
+    * 
+    * @return
+    */
+   int getCount(String atribute, String entite) throws DAOException;
+
 }

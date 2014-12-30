@@ -114,4 +114,20 @@ public class DAOOnline implements GenericDAO {
       return null;
    }
 
+   @Override
+   public int getCount(String atribute, String entite) throws DAOException {
+      int retorno;
+      String queryFull = "SELECT COUNT(" + atribute + ") as countNumber FROM "
+            + entite + ";";
+      try {
+         ResultSet resultSet = connection.query(queryFull);
+         if (resultSet.first()) {
+            retorno = resultSet.getInt("countNumber");
+         }
+      } catch (Exception e) {
+         throw new DAOException("Erro na consulta do banco de dados: "
+               + e.getMessage());
+      }
+      return 0;
+   }
 }
