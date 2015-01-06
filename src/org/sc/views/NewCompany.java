@@ -7,7 +7,12 @@
 package org.sc.views;
 
 import java.util.Map;
+
+import javax.swing.JOptionPane;
+
 import org.sc.controllers.DataController;
+import org.sc.dao.DAOException;
+import org.sc.models.Battalion;
 
 /**
  * 
@@ -20,6 +25,10 @@ public class NewCompany extends SwitchablePanel {
     * 
     * @param frame
     */
+
+   private int nextBattalionValue;
+   private int nextIdBattalion;
+   private Battalion newBattalion;
 
    public NewCompany(Window frame) {
       super(frame, false);
@@ -40,203 +49,420 @@ public class NewCompany extends SwitchablePanel {
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+   // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
+   // <editor-fold defaultstate="collapsed"
+   // desc="Generated Code">//GEN-BEGIN:initComponents
+   private void initComponents() {
 
-        backIcon = new javax.swing.JLabel();
-        titlePanel = new javax.swing.JLabel();
-        personaldata = new javax.swing.JPanel();
-        cepLabel = new javax.swing.JLabel();
-        cepText = new javax.swing.JTextField();
-        streetText = new javax.swing.JTextField();
-        streetLabel = new javax.swing.JLabel();
-        numberLabel = new javax.swing.JLabel();
-        numberText = new javax.swing.JTextField();
-        districtLabel = new javax.swing.JLabel();
-        districtText = new javax.swing.JTextField();
-        cityLabel = new javax.swing.JLabel();
-        cityText = new javax.swing.JTextField();
-        stateLabel = new javax.swing.JLabel();
-        stateText = new javax.swing.JTextField();
-        countryLabel = new javax.swing.JLabel();
-        countryText = new javax.swing.JTextField();
-        typeOfBat = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        validarCEP = new javax.swing.JLabel();
+      backIcon = new javax.swing.JLabel();
+      titlePanel = new javax.swing.JLabel();
+      personaldata = new javax.swing.JPanel();
+      cepLabel = new javax.swing.JLabel();
+      cepText = new javax.swing.JTextField();
+      streetText = new javax.swing.JTextField();
+      streetLabel = new javax.swing.JLabel();
+      numberLabel = new javax.swing.JLabel();
+      numberText = new javax.swing.JTextField();
+      districtLabel = new javax.swing.JLabel();
+      districtText = new javax.swing.JTextField();
+      cityLabel = new javax.swing.JLabel();
+      cityText = new javax.swing.JTextField();
+      stateLabel = new javax.swing.JLabel();
+      stateText = new javax.swing.JTextField();
+      countryLabel = new javax.swing.JLabel();
+      countryText = new javax.swing.JTextField();
+      typeOfBat = new javax.swing.JComboBox();
+      jLabel1 = new javax.swing.JLabel();
+      validarCEP = new javax.swing.JLabel();
+      nextBatallionLabel = new javax.swing.JLabel();
+      CreateBatButton = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1000, 600));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
+      setPreferredSize(new java.awt.Dimension(1000, 600));
 
-        backIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/voltarIcon.png"))); // NOI18N
-        backIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backIconMouseClicked(evt);
-            }
-        });
+      backIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/voltarIcon.png"))); // NOI18N
+      backIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            backIconMouseClicked(evt);
+         }
+      });
 
-        titlePanel.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        titlePanel.setForeground(new java.awt.Color(255, 255, 255));
-        titlePanel.setText("CADASTRO DE BATALHÃO/CIA");
+      titlePanel.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+      titlePanel.setForeground(new java.awt.Color(255, 255, 255));
+      titlePanel.setText("CADASTRO DE BATALHÃO/CIA");
 
-        personaldata.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Dados do Batalhão/Cia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        personaldata.setForeground(new java.awt.Color(255, 255, 255));
-        personaldata.setToolTipText("");
-        personaldata.setOpaque(false);
+      personaldata.setBorder(javax.swing.BorderFactory.createTitledBorder(
+            javax.swing.BorderFactory.createTitledBorder(""),
+            "Dados do Batalhão/Cia",
+            javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+            javax.swing.border.TitledBorder.DEFAULT_POSITION,
+            new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255,
+                  255))); // NOI18N
+      personaldata.setForeground(new java.awt.Color(255, 255, 255));
+      personaldata.setToolTipText("");
+      personaldata.setOpaque(false);
 
-        cepLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cepLabel.setText("CEP: ");
+      cepLabel.setForeground(new java.awt.Color(255, 255, 255));
+      cepLabel.setText("CEP: ");
 
-        cepText.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cepTextFocusLost(evt);
-            }
-        });
+      cepText.addFocusListener(new java.awt.event.FocusAdapter() {
+         public void focusLost(java.awt.event.FocusEvent evt) {
+            cepTextFocusLost(evt);
+         }
+      });
 
-        streetText.setToolTipText("");
+      streetText.setToolTipText("");
 
-        streetLabel.setForeground(new java.awt.Color(255, 255, 255));
-        streetLabel.setText("Logradouro: ");
+      streetLabel.setForeground(new java.awt.Color(255, 255, 255));
+      streetLabel.setText("Logradouro: ");
 
-        numberLabel.setForeground(new java.awt.Color(255, 255, 255));
-        numberLabel.setText("Número: ");
+      numberLabel.setForeground(new java.awt.Color(255, 255, 255));
+      numberLabel.setText("Número: ");
 
-        districtLabel.setForeground(new java.awt.Color(255, 255, 255));
-        districtLabel.setText("Bairro: ");
+      districtLabel.setForeground(new java.awt.Color(255, 255, 255));
+      districtLabel.setText("Bairro: ");
 
-        cityLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cityLabel.setText("Cidade:");
+      cityLabel.setForeground(new java.awt.Color(255, 255, 255));
+      cityLabel.setText("Cidade:");
 
-        stateLabel.setForeground(new java.awt.Color(255, 255, 255));
-        stateLabel.setText("Estado:");
+      stateLabel.setForeground(new java.awt.Color(255, 255, 255));
+      stateLabel.setText("Estado:");
 
-        countryLabel.setForeground(new java.awt.Color(255, 255, 255));
-        countryLabel.setText("País:");
+      countryLabel.setForeground(new java.awt.Color(255, 255, 255));
+      countryLabel.setText("País:");
 
-        typeOfBat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Batalhão", "Cia" }));
-        typeOfBat.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                typeOfBatItemStateChanged(evt);
-            }
-        });
+      typeOfBat.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Selecione o tipo", "Batalhão", "Cia"}));
+      typeOfBat.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            typeOfBatItemStateChanged(evt);
+         }
+      });
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tipo:");
+      jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+      jLabel1.setText("Tipo:");
 
-        validarCEP.setForeground(new java.awt.Color(255, 0, 0));
+      validarCEP.setForeground(new java.awt.Color(255, 0, 0));
 
-        javax.swing.GroupLayout personaldataLayout = new javax.swing.GroupLayout(personaldata);
-        personaldata.setLayout(personaldataLayout);
-        personaldataLayout.setHorizontalGroup(
-            personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(personaldataLayout.createSequentialGroup()
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(personaldataLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(streetLabel)
-                            .addComponent(districtLabel)
-                            .addComponent(cityLabel)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addComponent(streetText, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(numberLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(districtText, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(stateLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(countryLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(countryText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(typeOfBat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(personaldataLayout.createSequentialGroup()
-                        .addGap(360, 360, 360)
-                        .addComponent(cepLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cepText, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(validarCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 96, Short.MAX_VALUE))
-        );
-        personaldataLayout.setVerticalGroup(
-            personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(personaldataLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeOfBat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cepLabel)
-                        .addComponent(cepText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(validarCEP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(streetLabel)
-                    .addComponent(streetText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberLabel)
-                    .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(districtLabel)
-                    .addComponent(districtText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cityLabel)
-                    .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stateLabel)
-                    .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(countryLabel)
-                    .addComponent(countryText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
-        );
+      nextBatallionLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+      nextBatallionLabel.setForeground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backIcon)
-                        .addGap(263, 263, 263)
-                        .addComponent(titlePanel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backIcon)
-                    .addComponent(titlePanel))
-                .addGap(38, 38, 38)
-                .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
+      javax.swing.GroupLayout personaldataLayout = new javax.swing.GroupLayout(
+            personaldata);
+      personaldata.setLayout(personaldataLayout);
+      personaldataLayout
+            .setHorizontalGroup(
+            personaldataLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        personaldataLayout
+                              .createSequentialGroup()
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(82, 82, 82)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        streetLabel)
+                                                                  .addComponent(
+                                                                        districtLabel)
+                                                                  .addComponent(
+                                                                        cityLabel)
+                                                                  .addComponent(
+                                                                        jLabel1))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        personaldataLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    streetText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    465,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    numberLabel)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                              .addComponent(
+                                                                                    numberText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    96,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addComponent(
+                                                                        districtText,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        211,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addGroup(
+                                                                        personaldataLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    cityText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    211,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    stateLabel)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    stateText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    179,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    countryLabel)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    countryText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    111,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addComponent(
+                                                                        typeOfBat,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        nextBatallionLabel)))
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(360, 360, 360)
+                                                      .addComponent(cepLabel)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addComponent(
+                                                            cepText,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            120,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addComponent(
+                                                            validarCEP,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            204,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addGap(0, 96, Short.MAX_VALUE))
+            );
+      personaldataLayout
+            .setVerticalGroup(
+            personaldataLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        personaldataLayout
+                              .createSequentialGroup()
+                              .addGap(21, 21, 21)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(
+                                                typeOfBat,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(jLabel1))
+                              .addGap(49, 49, 49)
+                              .addComponent(nextBatallionLabel)
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                    48, Short.MAX_VALUE)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                personaldataLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(cepLabel)
+                                                      .addComponent(
+                                                            cepText,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            25,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addComponent(
+                                                validarCEP,
+                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(streetLabel)
+                                          .addComponent(
+                                                streetText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(numberLabel)
+                                          .addComponent(
+                                                numberText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(districtLabel)
+                                          .addComponent(
+                                                districtText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(cityLabel)
+                                          .addComponent(
+                                                cityText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(stateLabel)
+                                          .addComponent(
+                                                stateText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(countryLabel)
+                                          .addComponent(
+                                                countryText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGap(30, 30, 30))
+            );
 
-        titlePanel.getAccessibleContext().setAccessibleName("");
-    }// </editor-fold>//GEN-END:initComponents
+      CreateBatButton.setText("Criar");
+      CreateBatButton.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            CreateBatButtonMouseClicked(evt);
+         }
+      });
+
+      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+      this.setLayout(layout);
+      layout.setHorizontalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addComponent(CreateBatButton)
+                                          .addGroup(
+                                                layout.createParallelGroup(
+                                                      javax.swing.GroupLayout.Alignment.LEADING)
+                                                      .addGroup(
+                                                            layout.createSequentialGroup()
+                                                                  .addContainerGap()
+                                                                  .addComponent(
+                                                                        backIcon)
+                                                                  .addGap(263,
+                                                                        263,
+                                                                        263)
+                                                                  .addComponent(
+                                                                        titlePanel))
+                                                      .addGroup(
+                                                            layout.createSequentialGroup()
+                                                                  .addGap(38,
+                                                                        38, 38)
+                                                                  .addComponent(
+                                                                        personaldata,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))))
+                              .addContainerGap(71, Short.MAX_VALUE))
+            );
+      layout.setVerticalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addGap(12, 12, 12)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(backIcon)
+                                          .addComponent(titlePanel))
+                              .addGap(38, 38, 38)
+                              .addComponent(personaldata,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addComponent(CreateBatButton)
+                              .addContainerGap(168, Short.MAX_VALUE))
+            );
+
+      titlePanel.getAccessibleContext().setAccessibleName("");
+   }// </editor-fold>//GEN-END:initComponents
+
+   private void CreateBatButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_CreateBatButtonMouseClicked
+      newBattalion = new Battalion(nextIdBattalion, streetText.getText(),
+            "Ativado",
+            countryText.getText(), districtText.getText(), stateText.getText(),
+            cityText.getText(), Integer.parseInt(cepText.getText()),
+            nextBattalionValue,
+            numberText.getText());
+
+      try {
+         DataController.createNewBattalion(newBattalion);
+         showMessage("Batalhão Criado com sucesso", JOptionPane.OK_OPTION);
+      } catch (DAOException e) {
+         showMessage(e.getMessage(), JOptionPane.ERROR_MESSAGE);
+      }
+
+   }// GEN-LAST:event_CreateBatButtonMouseClicked
 
    private void backIconMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_backIconMouseClicked
       // TODO add your handling code here:
@@ -261,41 +487,60 @@ public class NewCompany extends SwitchablePanel {
    }// GEN-LAST:event_cepTextFocusLost
 
    private void typeOfBatItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_typeOfBatItemStateChanged
-      if (typeOfBat.getSelectedIndex() == 0) {
-         newBattalion();
-      } else {
-         newCia();
+      if (typeOfBat.getSelectedIndex() == 1) {
+         nextBattalion();
+      } else if (typeOfBat.getSelectedIndex() == 2) {
+         nextCia();
       }
    }// GEN-LAST:event_typeOfBatItemStateChanged
 
-   private void newCia() {
+   private void nextCia() {
 
    }
 
-   private void newBattalion() {
+   private void nextBattalion() {
+      nextBatallionLabel.setVisible(true);
+      try {
+         nextBattalionValue = DataController.getNextBattalion("idBattalions",
+               "battalions");
+         nextBatallionLabel.setText("Criação do " + nextBattalionValue
+               + "º Batalhão em andamento...");
+         cepText.requestFocus();
+      } catch (DAOException e) {
+         showMessage(e.getMessage(), JOptionPane.ERROR_MESSAGE);
+      }
 
    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backIcon;
-    private javax.swing.JLabel cepLabel;
-    private javax.swing.JTextField cepText;
-    private javax.swing.JLabel cityLabel;
-    private javax.swing.JTextField cityText;
-    private javax.swing.JLabel countryLabel;
-    private javax.swing.JTextField countryText;
-    private javax.swing.JLabel districtLabel;
-    private javax.swing.JTextField districtText;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel numberLabel;
-    private javax.swing.JTextField numberText;
-    private javax.swing.JPanel personaldata;
-    private javax.swing.JLabel stateLabel;
-    private javax.swing.JTextField stateText;
-    private javax.swing.JLabel streetLabel;
-    private javax.swing.JTextField streetText;
-    private javax.swing.JLabel titlePanel;
-    private javax.swing.JComboBox typeOfBat;
-    private javax.swing.JLabel validarCEP;
-    // End of variables declaration//GEN-END:variables
+   private void showMessage(String message, int typeMsg) {
+      JOptionPane.showMessageDialog(this,
+            message,
+            "Database error",
+            typeMsg);
+   }
+
+   // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JButton CreateBatButton;
+   private javax.swing.JLabel backIcon;
+   private javax.swing.JLabel cepLabel;
+   private javax.swing.JTextField cepText;
+   private javax.swing.JLabel cityLabel;
+   private javax.swing.JTextField cityText;
+   private javax.swing.JLabel countryLabel;
+   private javax.swing.JTextField countryText;
+   private javax.swing.JLabel districtLabel;
+   private javax.swing.JTextField districtText;
+   private javax.swing.JLabel jLabel1;
+   private javax.swing.JLabel nextBatallionLabel;
+   private javax.swing.JLabel numberLabel;
+   private javax.swing.JTextField numberText;
+   private javax.swing.JPanel personaldata;
+   private javax.swing.JLabel stateLabel;
+   private javax.swing.JTextField stateText;
+   private javax.swing.JLabel streetLabel;
+   private javax.swing.JTextField streetText;
+   private javax.swing.JLabel titlePanel;
+   private javax.swing.JComboBox typeOfBat;
+   private javax.swing.JLabel validarCEP;
+   // End of variables declaration//GEN-END:variables
 }

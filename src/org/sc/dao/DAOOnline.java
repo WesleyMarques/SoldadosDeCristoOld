@@ -5,8 +5,8 @@
  */
 package org.sc.dao;
 
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import org.sc.dao.mysql.ConnectionMySql;
 import org.sc.models.User;
@@ -109,25 +109,41 @@ public class DAOOnline implements GenericDAO {
    }
 
    @Override
-   public Map<String, String> query(String query) {
+   public ResultSet query(String query) {
       // TODO Auto-generated method stub
       return null;
    }
 
    @Override
-   public int getCount(String atribute, String entite) throws DAOException {
-      int retorno;
-      String queryFull = "SELECT COUNT(" + atribute + ") as countNumber FROM "
+   public int getOperation(String operation, String atribute, String entite)
+         throws DAOException {
+      int retorno = 0;
+      String queryFull = "SELECT " + operation + "(" + atribute
+            + ") as countNumber FROM "
             + entite + ";";
       try {
          ResultSet resultSet = connection.query(queryFull);
          if (resultSet.first()) {
             retorno = resultSet.getInt("countNumber");
          }
+         return retorno;
       } catch (Exception e) {
          throw new DAOException("Erro na consulta do banco de dados: "
                + e.getMessage());
       }
-      return 0;
+
+   }
+
+   @Override
+   public boolean queryToOtherCommands(String query) throws DAOException {
+      try {
+         connection.queryOther(query);
+         return true;
+      } catch (SQLException e) {
+         System.out.println(query);
+         throw new DAOException("Erro na operação com o banco de dados: "
+               + e.getMessage());
+      }
+
    }
 }

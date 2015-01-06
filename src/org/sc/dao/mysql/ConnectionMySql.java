@@ -71,4 +71,9 @@ public class ConnectionMySql {
       statementm = (Statement) this.conn.createStatement();
       return ((ResultSet) statementm.executeQuery(queryString));
    }
+
+   public int queryOther(String queryString) throws SQLException {
+      statementm = (Statement) this.conn.createStatement();
+      return statementm.executeUpdate(queryString);
+   }
 }

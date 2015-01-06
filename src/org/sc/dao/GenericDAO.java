@@ -1,9 +1,10 @@
 package org.sc.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.sc.models.User;
+
+import com.mysql.jdbc.ResultSet;
 
 /**
  * Serviços simples de um Data Access Object (DAO)
@@ -89,12 +90,14 @@ public interface GenericDAO {
     * @param query
     * @return
     */
-   Map<String, String> query(String query);
+   ResultSet query(String query);
 
    /**
     * 
     * @return
     */
-   int getCount(String atribute, String entite) throws DAOException;
+   int getOperation(String operation, String atribute, String entite)
+         throws DAOException;
 
+   boolean queryToOtherCommands(String query) throws DAOException;
 }

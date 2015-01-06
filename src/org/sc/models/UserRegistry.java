@@ -39,7 +39,7 @@ public class UserRegistry extends User implements Serializable {
     private String city = null;
     private String state = null;
     private String country = null;
-    private PhonesUsers phones = null;
+    private ContactUsers phones = null;
     private String email = null;
     private QuestionnarieUser questionnarieUser;
     
@@ -49,7 +49,7 @@ public class UserRegistry extends User implements Serializable {
             String birthDate, String photo, int sex, String bloodType, String cPF, String civilStatus, String schooling,
             String occupation, String nationality, String MPType, String obs, String fName, String mName, String street,
             String number, String complement, int zipCode, String district, String city, String state, String country,
-            PhonesUsers phones, String email, QuestionnarieUser qUser) throws Exception {
+            ContactUsers phones, String email, QuestionnarieUser qUser) throws Exception {
         super(registry, name, warName, rG, battalion, patent, status);
         setBirthDate(birthDate);
         setBloodType(bloodType);
@@ -406,14 +406,14 @@ public class UserRegistry extends User implements Serializable {
     /**
      * @return the phones
      */
-    public PhonesUsers getPhones() {
+    public ContactUsers getPhones() {
         return phones;
     }
 
     /**
      * @param phones the phones to set
      */
-    public void setPhones(PhonesUsers phones) {
+    public void setPhones(ContactUsers phones) {
         this.phones = phones;
     }
 

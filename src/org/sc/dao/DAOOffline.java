@@ -10,10 +10,11 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.sc.models.User;
 import org.sc.models.UserLogin;
+
+import com.mysql.jdbc.ResultSet;
 
 /**
  * @author Wesley
@@ -142,7 +143,7 @@ public class DAOOffline implements GenericDAO {
    }
 
    @Override
-   public Map<String, String> query(String query) {
+   public ResultSet query(String query) {
       // TODO Auto-generated method stub
       return null;
    }
@@ -163,8 +164,15 @@ public class DAOOffline implements GenericDAO {
    }
 
    @Override
-   public int getCount(String atribute, String entite) throws DAOException {
+   public int getOperation(String operation, String atribute, String entite)
+         throws DAOException {
       // TODO Auto-generated method stub
       return 0;
+   }
+
+   @Override
+   public boolean queryToOtherCommands(String query) throws DAOException {
+      // TODO Auto-generated method stub
+      return false;
    }
 }

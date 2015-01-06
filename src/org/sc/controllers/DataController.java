@@ -6,6 +6,7 @@ import java.util.Map;
 import org.lavieri.modelutil.cep.WebServiceCep;
 import org.sc.dao.DAOException;
 import org.sc.dao.GenericDAO;
+import org.sc.models.Battalion;
 import org.sc.system.SoldadosDeCristo;
 
 public class DataController {
@@ -44,9 +45,31 @@ public class DataController {
    public static int getNextBattalion(String atribute, String entite)
          throws DAOException {
       startDAO();
-      int value = dao.getCount(atribute, entite);
+      int value = dao.getOperation("COUNT", atribute, entite);
+      if (value == 0) {
+         value = 1;
+      } else {
+         value = dao.getOperation("MAX", "numberBat", entite) + 1;
+      }
       closeDAO();
       return value;
+   }
+
+   public static boolean createNewBattalion(Battalion bat) throws DAOException {
+
+      startDAO();
+      if (dao
+            .queryToOtherCommands("INSERT INTO battalions (numberBat, street, number, zipCode, city, state, district, country, status) VALUES("
+                  + bat.getNumberBat() + ",'" + bat.getStreet() + "','"
+                  + bat.getNumber()
+                  + "'," + bat.getZipCode() + ",'"
+                  + bat.getCity() + "','" + bat.getState() + "','"
+                  + bat.getDistrict() + "','" + bat.getCountry() + "','"
+                  + bat.getStatus() + "');")) {
+
+      }
+      return false;
+
    }
 
    private static void startDAO() throws DAOException {
@@ -57,5 +80,4 @@ public class DataController {
    private static void closeDAO() throws DAOException {
       dao.close();
    }
-
 }
