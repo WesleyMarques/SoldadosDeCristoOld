@@ -16,7 +16,7 @@ import org.sc.controllers.LoginController;
  * 
  * @author Wesley
  */
-public class Home extends SwitchablePanel {
+public class Login extends SwitchablePanel {
 
    /**
 	 * 
@@ -29,7 +29,7 @@ public class Home extends SwitchablePanel {
     * @param frame
     */
 
-   public Home(Window frame) {
+   public Login(Window frame) {
       super(frame, false);
       initComponents();
       statusConnect.start();

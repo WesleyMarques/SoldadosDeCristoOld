@@ -348,12 +348,12 @@ public class Aplication extends SwitchablePanel {
    }// GEN-LAST:event_ensinoOpMenuMouseClicked
 
    private void sairOpMenuMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_sairOpMenuMouseClicked
-      getMainFrame().switchPanels(new Home(getMainFrame()));
+      getMainFrame().switchPanels(new Login(getMainFrame()));
    }// GEN-LAST:event_sairOpMenuMouseClicked
 
    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton3MouseClicked
       // TODO add your handling code here:
-      getMainFrame().switchPanels(new Registry(getMainFrame()));
+      getMainFrame().switchPanels(new RegistryUser(getMainFrame()));
    }// GEN-LAST:event_jButton3MouseClicked
 
    private void cadastroOpMenuMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_cadsatroOpMenuMouseEntered

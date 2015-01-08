@@ -32,7 +32,7 @@ public class Window extends JFrame {
       ImageIcon icone = new ImageIcon(getClass().getResource(
             BASE_PATH + "escudoIcon.png").getPath());
       this.setIconImage(icone.getImage());
-      switchPanels(new Home(this));
+      switchPanels(new Login(this));
    }
 
    public void switchPanels(SwitchablePanel newPanel) {
