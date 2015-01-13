@@ -6,7 +6,10 @@
 package org.sc.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.sc.dao.mysql.ConnectionMySql;
 import org.sc.models.User;
@@ -58,13 +61,46 @@ public class DAOOnline implements GenericDAO {
 
    @Override
    public <T> List<T> findAllByEntityId(String entity) {
+      String query = "SELECT * FROM " + entity + ";";
+      try {
+         ResultSet resultSet = connection.query(query);
+      } catch (Exception e) {
 
+      }
       return null;
    }
 
    @Override
+   public List<Map<String, String>> findAllByColl(String entity,
+         String[] colls, String condition) {
+
+      List<Map<String, String>> retorno = new ArrayList<Map<String, String>>();
+      String colunas = "";
+      for (int i = 0; i < colls.length; i++) {
+         colunas += colls[i] + (i < colls.length - 1 ? ", " : "");
+      }
+      String query = "SELECT " + colunas + " FROM " + entity + " " + condition
+            + ";";
+      try {
+         ResultSet resultSet = connection.query(query);
+         Map<String, String> mapResultMap;
+         while (resultSet.next()) {
+            mapResultMap = new HashMap<>();
+            for (int i = 0; i < colls.length; i++) {
+               mapResultMap.put(colls[i], resultSet.getString(colls[i]));
+            }
+            retorno.add(mapResultMap);
+         }
+
+      } catch (Exception e) {
+
+      }
+
+      return retorno;
+   }
+
+   @Override
    public <T> T findByEntityId(String entity, int id) {
-      // TODO Auto-generated method stub
       return null;
    }
 
@@ -137,7 +173,7 @@ public class DAOOnline implements GenericDAO {
    @Override
    public boolean queryToOtherCommands(String query) throws DAOException {
       try {
-         connection.queryOther(query);
+         connection.queryToUpdateDB(query);
          return true;
       } catch (SQLException e) {
          System.out.println(query);

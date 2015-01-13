@@ -1,6 +1,8 @@
 package org.sc.controllers;
 
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.lavieri.modelutil.cep.WebServiceCep;
@@ -34,8 +36,19 @@ public class DataController {
       return info;
    }
 
-   public static int getNewRegistryCode() {
-      return 0;
+   public static int getNewRegistryCode() throws DAOException {
+      startDAO();
+      int value = dao.getOperation("COUNT", "registry", "user");
+      if (value == 0) {
+         value = 1;
+      } else {
+         value = dao.getOperation("MAX", "registry", "user") + 1;
+      }
+
+      int newRegistry = (Calendar.getInstance().get(Calendar.YEAR) * 10000)
+            + value;
+      closeDAO();
+      return newRegistry;
    }
 
    public static String getWarName(String name) {
@@ -66,10 +79,17 @@ public class DataController {
                   + bat.getCity() + "','" + bat.getState() + "','"
                   + bat.getDistrict() + "','" + bat.getCountry() + "','"
                   + bat.getStatus() + "');")) {
-
+         closeDAO();
+         return true;
       }
       return false;
 
+   }
+
+   public static List<Map<String, String>> getAllByColl(String[] colls,
+         String entity, String condition) throws DAOException {
+      startDAO();
+      return dao.findAllByColl(entity, colls, condition);
    }
 
    private static void startDAO() throws DAOException {
@@ -80,4 +100,5 @@ public class DataController {
    private static void closeDAO() throws DAOException {
       dao.close();
    }
+
 }

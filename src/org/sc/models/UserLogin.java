@@ -65,17 +65,6 @@ public class UserLogin extends User implements Serializable {
       return email;
    }
 
-   /**
-    * Verify the email's consistence.
-    * 
-    * @return Boolean of consistence.
-    */
-   private boolean verifyEmailAddress(String emailAddress) {
-      return emailAddress.matches("\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}")
-            && !emailAddress.equals("");
-
-   }
-
    /*
     * (non-Javadoc)
     * 

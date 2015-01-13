@@ -6,6 +6,8 @@
 
 package org.sc.views;
 
+import org.sc.system.SoldadosDeCristo;
+
 /**
  * 
  * @author Wesley
@@ -24,6 +26,13 @@ public class Aplication extends SwitchablePanel {
       super(frame, false);
       initComponents();
       flagMenu = false;
+      try {
+         if (SoldadosDeCristo.getUser().getRegistry() != -1) {
+            configOpMenu.setVisible(false);
+         }
+      } catch (Exception e) {
+
+      }
 
    }
 
@@ -39,276 +48,373 @@ public class Aplication extends SwitchablePanel {
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+   // <editor-fold defaultstate="collapsed"
+   // desc="Generated Code">//GEN-BEGIN:initComponents
+   private void initComponents() {
 
-        popupCadastro = new javax.swing.JPopupMenu();
-        jMenu1 = new javax.swing.JMenu();
-        popupConfig = new javax.swing.JPopupMenu();
-        jMenu2 = new javax.swing.JMenu();
-        novoBatalhaoOp = new javax.swing.JMenuItem();
-        setCommanderOp = new javax.swing.JMenuItem();
-        jButton3 = new javax.swing.JButton();
-        cadastroOpMenu = new javax.swing.JLabel();
-        financeiroOpMenu = new javax.swing.JLabel();
-        ensinoOpMenu = new javax.swing.JLabel();
-        sairOpMenu = new javax.swing.JLabel();
-        configOpMenu = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+      popupCadastro = new javax.swing.JPopupMenu();
+      jMenu1 = new javax.swing.JMenu();
+      popupConfig = new javax.swing.JPopupMenu();
+      jMenu2 = new javax.swing.JMenu();
+      novoBatalhaoOp = new javax.swing.JMenuItem();
+      setCommanderOp = new javax.swing.JMenuItem();
+      jButton3 = new javax.swing.JButton();
+      cadastroOpMenu = new javax.swing.JLabel();
+      financeiroOpMenu = new javax.swing.JLabel();
+      ensinoOpMenu = new javax.swing.JLabel();
+      sairOpMenu = new javax.swing.JLabel();
+      configOpMenu = new javax.swing.JLabel();
+      jButton4 = new javax.swing.JButton();
+      jButton5 = new javax.swing.JButton();
+      jButton6 = new javax.swing.JButton();
+      jButton7 = new javax.swing.JButton();
+      jButton9 = new javax.swing.JButton();
 
-        popupCadastro.setBackground(new java.awt.Color(255, 255, 255));
+      popupCadastro.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setText("jMenu1");
-        jMenu1.setPreferredSize(new java.awt.Dimension(141, 30));
-        popupCadastro.add(jMenu1);
+      jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+      jMenu1.setText("jMenu1");
+      jMenu1.setPreferredSize(new java.awt.Dimension(141, 30));
+      popupCadastro.add(jMenu1);
 
-        popupConfig.setForeground(new java.awt.Color(255, 255, 255));
+      popupConfig.setForeground(new java.awt.Color(255, 255, 255));
 
-        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu2.setText("Batalhão");
+      jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+      jMenu2.setText("Batalhão");
 
-        novoBatalhaoOp.setBackground(new java.awt.Color(255, 255, 255));
-        novoBatalhaoOp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
-        novoBatalhaoOp.setText("Novo Batalhão");
-        novoBatalhaoOp.setToolTipText("");
-        novoBatalhaoOp.setName(""); // NOI18N
-        novoBatalhaoOp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                novoBatalhaoOpActionPerformed(evt);
-            }
-        });
-        jMenu2.add(novoBatalhaoOp);
+      novoBatalhaoOp.setBackground(new java.awt.Color(255, 255, 255));
+      novoBatalhaoOp.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/addIcon.png"))); // NOI18N
+      novoBatalhaoOp.setText("Novo Batalhão");
+      novoBatalhaoOp.setToolTipText("");
+      novoBatalhaoOp.setName(""); // NOI18N
+      novoBatalhaoOp.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            novoBatalhaoOpActionPerformed(evt);
+         }
+      });
+      jMenu2.add(novoBatalhaoOp);
 
-        setCommanderOp.setBackground(new java.awt.Color(255, 255, 255));
-        setCommanderOp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
-        setCommanderOp.setText("Inserir Comandante");
-        setCommanderOp.setToolTipText("");
-        setCommanderOp.setName(""); // NOI18N
-        jMenu2.add(setCommanderOp);
+      setCommanderOp.setBackground(new java.awt.Color(255, 255, 255));
+      setCommanderOp.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/addIcon.png"))); // NOI18N
+      setCommanderOp.setText("Inserir Comandante");
+      setCommanderOp.setToolTipText("");
+      setCommanderOp.setName(""); // NOI18N
+      jMenu2.add(setCommanderOp);
 
-        popupConfig.add(jMenu2);
+      popupConfig.add(jMenu2);
 
-        setPreferredSize(new java.awt.Dimension(1000, 600));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                formMouseExited(evt);
-            }
-        });
+      setPreferredSize(new java.awt.Dimension(1000, 600));
+      addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseEntered(java.awt.event.MouseEvent evt) {
+            formMouseEntered(evt);
+         }
 
-        jButton3.setBackground(new java.awt.Color(145, 0, 143));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cadastrar de Membro");
-        jButton3.setToolTipText("");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
+         public void mouseExited(java.awt.event.MouseEvent evt) {
+            formMouseExited(evt);
+         }
+      });
 
-        cadastroOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        cadastroOpMenu.setForeground(new java.awt.Color(255, 255, 255));
-        cadastroOpMenu.setText("Cadastro");
-        cadastroOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cadastroOpMenuMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cadastroOpMenuMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cadastroOpMenuMouseExited(evt);
-            }
-        });
+      jButton3.setBackground(new java.awt.Color(145, 0, 143));
+      jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton3.setForeground(new java.awt.Color(255, 255, 255));
+      jButton3.setText("Cadastrar de Membro");
+      jButton3.setToolTipText("");
+      jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton3MouseClicked(evt);
+         }
+      });
 
-        financeiroOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        financeiroOpMenu.setForeground(new java.awt.Color(255, 255, 255));
-        financeiroOpMenu.setText("Financeiro");
-        financeiroOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                financeiroOpMenuMouseClicked(evt);
-            }
-        });
+      cadastroOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+      cadastroOpMenu.setForeground(new java.awt.Color(255, 255, 255));
+      cadastroOpMenu.setText("Cadastro");
+      cadastroOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            cadastroOpMenuMouseClicked(evt);
+         }
 
-        ensinoOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        ensinoOpMenu.setForeground(new java.awt.Color(255, 255, 255));
-        ensinoOpMenu.setText("Ensino");
-        ensinoOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ensinoOpMenuMouseClicked(evt);
-            }
-        });
+         public void mouseEntered(java.awt.event.MouseEvent evt) {
+            cadastroOpMenuMouseEntered(evt);
+         }
 
-        sairOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        sairOpMenu.setForeground(new java.awt.Color(255, 255, 255));
-        sairOpMenu.setText("Sair");
-        sairOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sairOpMenuMouseClicked(evt);
-            }
-        });
+         public void mouseExited(java.awt.event.MouseEvent evt) {
+            cadastroOpMenuMouseExited(evt);
+         }
+      });
 
-        configOpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/configAdmin.png"))); // NOI18N
-        configOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                configOpMenuMouseEntered(evt);
-            }
-        });
+      financeiroOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+      financeiroOpMenu.setForeground(new java.awt.Color(255, 255, 255));
+      financeiroOpMenu.setText("Financeiro");
+      financeiroOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            financeiroOpMenuMouseClicked(evt);
+         }
+      });
 
-        jButton4.setBackground(new java.awt.Color(212, 74, 38));
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Cadastrar de Membro");
-        jButton4.setToolTipText("");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
+      ensinoOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+      ensinoOpMenu.setForeground(new java.awt.Color(255, 255, 255));
+      ensinoOpMenu.setText("Ensino");
+      ensinoOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            ensinoOpMenuMouseClicked(evt);
+         }
+      });
 
-        jButton5.setBackground(new java.awt.Color(0, 155, 173));
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Cadastrar de Membro");
-        jButton5.setToolTipText("");
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
+      sairOpMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+      sairOpMenu.setForeground(new java.awt.Color(255, 255, 255));
+      sairOpMenu.setText("Sair");
+      sairOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            sairOpMenuMouseClicked(evt);
+         }
+      });
 
-        jButton6.setBackground(new java.awt.Color(1, 163, 0));
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Cadastrar de Membro");
-        jButton6.setToolTipText("");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
-            }
-        });
+      configOpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/configAdmin.png"))); // NOI18N
+      configOpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseEntered(java.awt.event.MouseEvent evt) {
+            configOpMenuMouseEntered(evt);
+         }
+      });
 
-        jButton7.setBackground(new java.awt.Color(227, 200, 0));
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Cadastrar de Membro");
-        jButton7.setToolTipText("");
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
+      jButton4.setBackground(new java.awt.Color(212, 74, 38));
+      jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton4.setForeground(new java.awt.Color(255, 255, 255));
+      jButton4.setText("Cadastrar de Membro");
+      jButton4.setToolTipText("");
+      jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton4MouseClicked(evt);
+         }
+      });
 
-        jButton9.setBackground(new java.awt.Color(109, 135, 100));
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Cadastrar de Membro");
-        jButton9.setToolTipText("");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
-            }
-        });
+      jButton5.setBackground(new java.awt.Color(0, 155, 173));
+      jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton5.setForeground(new java.awt.Color(255, 255, 255));
+      jButton5.setText("Cadastrar de Membro");
+      jButton5.setToolTipText("");
+      jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton5MouseClicked(evt);
+         }
+      });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cadastroOpMenu)
-                        .addGap(40, 40, 40)
-                        .addComponent(financeiroOpMenu)
-                        .addGap(40, 40, 40)
-                        .addComponent(ensinoOpMenu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
-                        .addComponent(configOpMenu)
-                        .addGap(18, 18, 18)
-                        .addComponent(sairOpMenu)
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cadastroOpMenu)
-                        .addComponent(financeiroOpMenu)
-                        .addComponent(ensinoOpMenu)
-                        .addComponent(sairOpMenu))
-                    .addComponent(configOpMenu))
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
-        );
+      jButton6.setBackground(new java.awt.Color(1, 163, 0));
+      jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton6.setForeground(new java.awt.Color(255, 255, 255));
+      jButton6.setText("Cadastrar de Membro");
+      jButton6.setToolTipText("");
+      jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton6MouseClicked(evt);
+         }
+      });
 
-        cadastroOpMenu.getAccessibleContext().setAccessibleDescription("");
-    }// </editor-fold>//GEN-END:initComponents
+      jButton7.setBackground(new java.awt.Color(227, 200, 0));
+      jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton7.setForeground(new java.awt.Color(255, 255, 255));
+      jButton7.setText("Cadastrar de Membro");
+      jButton7.setToolTipText("");
+      jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton7MouseClicked(evt);
+         }
+      });
 
-    private void novoBatalhaoOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoBatalhaoOpActionPerformed
-        getMainFrame().switchPanels(new NewCompany(getMainFrame()));
-    }//GEN-LAST:event_novoBatalhaoOpActionPerformed
+      jButton9.setBackground(new java.awt.Color(109, 135, 100));
+      jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+      jButton9.setForeground(new java.awt.Color(255, 255, 255));
+      jButton9.setText("Cadastrar de Membro");
+      jButton9.setToolTipText("");
+      jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+      jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+      jButton9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+      jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+      jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jButton9MouseClicked(evt);
+         }
+      });
+
+      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+      this.setLayout(layout);
+      layout.setHorizontalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addGap(35, 35, 35)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addComponent(
+                                                            jButton3,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            230,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(50, 50, 50)
+                                                      .addComponent(
+                                                            jButton4,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            230,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addContainerGap(
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addComponent(
+                                                            cadastroOpMenu)
+                                                      .addGap(40, 40, 40)
+                                                      .addComponent(
+                                                            financeiroOpMenu)
+                                                      .addGap(40, 40, 40)
+                                                      .addComponent(
+                                                            ensinoOpMenu)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            336,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            configOpMenu)
+                                                      .addGap(18, 18, 18)
+                                                      .addComponent(sairOpMenu)
+                                                      .addGap(19, 19, 19))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGroup(
+                                                            layout.createParallelGroup(
+                                                                  javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jButton7,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    230,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    50,
+                                                                                    50,
+                                                                                    50)
+                                                                              .addComponent(
+                                                                                    jButton9,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    230,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jButton5,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    230,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    50,
+                                                                                    50,
+                                                                                    50)
+                                                                              .addComponent(
+                                                                                    jButton6,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    230,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                      .addGap(0, 0,
+                                                            Short.MAX_VALUE))))
+            );
+      layout.setVerticalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                layout.createParallelGroup(
+                                                      javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            cadastroOpMenu)
+                                                      .addComponent(
+                                                            financeiroOpMenu)
+                                                      .addComponent(
+                                                            ensinoOpMenu)
+                                                      .addComponent(sairOpMenu))
+                                          .addComponent(configOpMenu))
+                              .addGap(115, 115, 115)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addComponent(
+                                                jButton3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                jButton4,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGap(50, 50, 50)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addComponent(
+                                                jButton5,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                jButton6,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGap(50, 50, 50)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addComponent(
+                                                jButton7,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                jButton9,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                80,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addContainerGap(141, Short.MAX_VALUE))
+            );
+
+      cadastroOpMenu.getAccessibleContext().setAccessibleDescription("");
+   }// </editor-fold>//GEN-END:initComponents
+
+   private void novoBatalhaoOpActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_novoBatalhaoOpActionPerformed
+      getMainFrame().switchPanels(new NewCompany(getMainFrame()));
+   }// GEN-LAST:event_novoBatalhaoOpActionPerformed
 
    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton4MouseClicked
       // TODO add your handling code here:
@@ -353,7 +459,7 @@ public class Aplication extends SwitchablePanel {
 
    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton3MouseClicked
       // TODO add your handling code here:
-      getMainFrame().switchPanels(new RegistryUser(getMainFrame()));
+      getMainFrame().switchPanels(new Registry(getMainFrame()));
    }// GEN-LAST:event_jButton3MouseClicked
 
    private void cadastroOpMenuMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_cadsatroOpMenuMouseEntered
@@ -387,23 +493,23 @@ public class Aplication extends SwitchablePanel {
       popupCadastro.show(this, 60, 80);
    }// GEN-LAST:event_jLabel1MouseClicked
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cadastroOpMenu;
-    private javax.swing.JLabel configOpMenu;
-    private javax.swing.JLabel ensinoOpMenu;
-    private javax.swing.JLabel financeiroOpMenu;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem novoBatalhaoOp;
-    private javax.swing.JPopupMenu popupCadastro;
-    private javax.swing.JPopupMenu popupConfig;
-    private javax.swing.JLabel sairOpMenu;
-    private javax.swing.JMenuItem setCommanderOp;
-    // End of variables declaration//GEN-END:variables
+   // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JLabel cadastroOpMenu;
+   private javax.swing.JLabel configOpMenu;
+   private javax.swing.JLabel ensinoOpMenu;
+   private javax.swing.JLabel financeiroOpMenu;
+   private javax.swing.JButton jButton3;
+   private javax.swing.JButton jButton4;
+   private javax.swing.JButton jButton5;
+   private javax.swing.JButton jButton6;
+   private javax.swing.JButton jButton7;
+   private javax.swing.JButton jButton9;
+   private javax.swing.JMenu jMenu1;
+   private javax.swing.JMenu jMenu2;
+   private javax.swing.JMenuItem novoBatalhaoOp;
+   private javax.swing.JPopupMenu popupCadastro;
+   private javax.swing.JPopupMenu popupConfig;
+   private javax.swing.JLabel sairOpMenu;
+   private javax.swing.JMenuItem setCommanderOp;
+   // End of variables declaration//GEN-END:variables
 }

@@ -2,290 +2,303 @@ package org.sc.models;
 
 import java.io.Serializable;
 
-public class QuestionnarieUser implements Serializable{
-	
-	/**
+public class QuestionnarieUser implements Serializable {
+
+   /**
 	 * 
 	 */
-	private static final long serialVersionUID = 5972881459997081401L;
-	public static int NO = 0;
-	public static int YES = 1;
-        
-        //Questionnaire to DSC
-        private int isSubmitIntructor;
-        private int isRespectFriends;
-        private int isBuyUniform;
-        private int isDontMiss;
-        private int isGiveUniformToOther;
-        private int isLearnOath;
-        private int isGoodSC;
-        private int isSendInvitToFM;
-	//FIM
-	
-        //Questionaire PS
-	private int numPeople;
-	private String residenceType;
-        private String civilStatus;
-	private String monthlyIncome;
-        private String motherJob;
-        private String fatherJob;
-        private String howKnowDepartament;
-        private String receivedSocialProgram;
-	private String whatTheMemberOfSick;
-        private String schoolLevelFather;
-        private String schoolLevelMother;        
-        private int isFamiliarSmoker;
-	private int isFalimilarAlcoholic;
-        private String familyTakeReligion;
-        //FIM
-        
-        //Questionnaire Personal
-        private String yourColor;
-        private String whatSick;
-        private String whatsAllergy;
-	private int takeMedicine;
-	private String memberTakeReligion;
-        private String whyAreSC;
-	private String aboutMedicine;
-	//FIM
-        
+   private static final long serialVersionUID = 5972881459997081401L;
+   public static int NO = 0;
+   public static int YES = 1;
 
-	public QuestionnarieUser() {
-		// TODO Auto-generated constructor stub
-	}
+   // Questionnaire to DSC
+   private int isSubmitIntructor;
+   private int isRespectFriends;
+   private int isBuyUniform;
+   private int isDontMiss;
+   private int isGiveUniformToOther;
+   private int isLearnOath;
+   private int isGoodSC;
+   private int isSendInvitToFM;
+   private int acceptPoliticalPrivacy;
+   // FIM
 
-    public int getIsSubmitIntructor() {
-        return isSubmitIntructor;
-    }
+   // Questionaire PS
+   private int numPeople;
+   private String residenceType;
+   private String civilStatus;
+   private String monthlyIncome;
+   private String motherJob;
+   private String fatherJob;
+   private String howKnowDepartament;
+   private String receivedSocialProgram;
+   private String whatTheMemberOfSick;
+   private String schoolLevelFather;
+   private String schoolLevelMother;
+   private int isFamiliarSmoker;
+   private int isFalimilarAlcoholic;
+   private String familyTakeReligion;
+   // FIM
 
-    public void setIsSubmitIntructor(int isSubmitIntructor) {
-        this.isSubmitIntructor = isSubmitIntructor;
-    }
+   // Questionnaire Personal
+   private String yourColor;
+   private String whatSick;
+   private String whatsAllergy;
+   private int takeMedicine;
+   private String memberTakeReligion;
+   private String whyAreSC;
+   private String aboutMedicine;
 
-    public int getIsRespectFriends() {
-        return isRespectFriends;
-    }
+   // FIM
 
-    public void setIsRespectFriends(int isRespectFriends) {
-        this.isRespectFriends = isRespectFriends;
-    }
+   public QuestionnarieUser() {
+      // TODO Auto-generated constructor stub
+   }
 
-    public int getIsBuyUniform() {
-        return isBuyUniform;
-    }
+   public int getIsSubmitIntructor() {
+      return isSubmitIntructor;
+   }
 
-    public void setIsBuyUniform(int isBuyUniform) {
-        this.isBuyUniform = isBuyUniform;
-    }
+   public void setIsSubmitIntructor(int isSubmitIntructor) {
+      this.isSubmitIntructor = isSubmitIntructor;
+   }
 
-    public int getIsDontMiss() {
-        return isDontMiss;
-    }
+   public int getIsRespectFriends() {
+      return isRespectFriends;
+   }
 
-    public void setIsDontMiss(int isDontMiss) {
-        this.isDontMiss = isDontMiss;
-    }
+   public void setIsRespectFriends(int isRespectFriends) {
+      this.isRespectFriends = isRespectFriends;
+   }
 
-    public int getIsGiveUniformToOther() {
-        return isGiveUniformToOther;
-    }
+   public int getIsBuyUniform() {
+      return isBuyUniform;
+   }
 
-    public void setIsGiveUniformToOther(int isGiveUniformToOther) {
-        this.isGiveUniformToOther = isGiveUniformToOther;
-    }
+   public void setIsBuyUniform(int isBuyUniform) {
+      this.isBuyUniform = isBuyUniform;
+   }
 
-    public int getIsLearnOath() {
-        return isLearnOath;
-    }
+   public int getIsDontMiss() {
+      return isDontMiss;
+   }
 
-    public void setIsLearnOath(int isLearnOath) {
-        this.isLearnOath = isLearnOath;
-    }
+   public void setIsDontMiss(int isDontMiss) {
+      this.isDontMiss = isDontMiss;
+   }
 
-    public int getIsGoodSC() {
-        return isGoodSC;
-    }
+   public int getIsGiveUniformToOther() {
+      return isGiveUniformToOther;
+   }
 
-    public void setIsGoodSC(int isGoodSC) {
-        this.isGoodSC = isGoodSC;
-    }
+   public void setIsGiveUniformToOther(int isGiveUniformToOther) {
+      this.isGiveUniformToOther = isGiveUniformToOther;
+   }
 
-    public int getIsSendInvitToFM() {
-        return isSendInvitToFM;
-    }
+   public int getIsLearnOath() {
+      return isLearnOath;
+   }
 
-    public void setIsSendInvitToFM(int isSendInvitToFM) {
-        this.isSendInvitToFM = isSendInvitToFM;
-    }
+   public void setIsLearnOath(int isLearnOath) {
+      this.isLearnOath = isLearnOath;
+   }
 
-    public int getNumPeople() {
-        return numPeople;
-    }
+   public int getIsGoodSC() {
+      return isGoodSC;
+   }
 
-    public void setNumPeople(int numPeople) {
-        this.numPeople = numPeople;
-    }
+   public void setIsGoodSC(int isGoodSC) {
+      this.isGoodSC = isGoodSC;
+   }
 
-    public String getResidenceType() {
-        return residenceType;
-    }
+   public int getIsSendInvitToFM() {
+      return isSendInvitToFM;
+   }
 
-    public void setResidenceType(String residenceType) {
-        this.residenceType = residenceType;
-    }
+   public void setIsSendInvitToFM(int isSendInvitToFM) {
+      this.isSendInvitToFM = isSendInvitToFM;
+   }
 
-    public String getCivilStatus() {
-        return civilStatus;
-    }
+   public int getNumPeople() {
+      return numPeople;
+   }
 
-    public void setCivilStatus(String civilStatus) {
-        this.civilStatus = civilStatus;
-    }
+   public void setNumPeople(int numPeople) {
+      this.numPeople = numPeople;
+   }
 
-    public String getMonthlyIncome() {
-        return monthlyIncome;
-    }
+   public String getResidenceType() {
+      return residenceType;
+   }
 
-    public void setMonthlyIncome(String monthlyIncome) {
-        this.monthlyIncome = monthlyIncome;
-    }
+   public void setResidenceType(String residenceType) {
+      this.residenceType = residenceType;
+   }
 
-    public String getMotherJob() {
-        return motherJob;
-    }
+   public String getCivilStatus() {
+      return civilStatus;
+   }
 
-    public void setMotherJob(String motherJob) {
-        this.motherJob = motherJob;
-    }
+   public void setCivilStatus(String civilStatus) {
+      this.civilStatus = civilStatus;
+   }
 
-    public String getFatherJob() {
-        return fatherJob;
-    }
+   public String getMonthlyIncome() {
+      return monthlyIncome;
+   }
 
-    public void setFatherJob(String fatherJob) {
-        this.fatherJob = fatherJob;
-    }
+   public void setMonthlyIncome(String monthlyIncome) {
+      this.monthlyIncome = monthlyIncome;
+   }
 
-    public String getHowKnowDepartament() {
-        return howKnowDepartament;
-    }
+   public String getMotherJob() {
+      return motherJob;
+   }
 
-    public void setHowKnowDepartament(String howKnowDepartament) {
-        this.howKnowDepartament = howKnowDepartament;
-    }
+   public void setMotherJob(String motherJob) {
+      this.motherJob = motherJob;
+   }
 
-    public String getReceivedSocialProgram() {
-        return receivedSocialProgram;
-    }
+   public String getFatherJob() {
+      return fatherJob;
+   }
 
-    public void setReceivedSocialProgram(String receivedSocialProgram) {
-        this.receivedSocialProgram = receivedSocialProgram;
-    }
+   public void setFatherJob(String fatherJob) {
+      this.fatherJob = fatherJob;
+   }
 
-    public String getWhatTheMemberOfSick() {
-        return whatTheMemberOfSick;
-    }
+   public String getHowKnowDepartament() {
+      return howKnowDepartament;
+   }
 
-    public void setWhatTheMemberOfSick(String whatTheMemberOfSick) {
-        this.whatTheMemberOfSick = whatTheMemberOfSick;
-    }
+   public void setHowKnowDepartament(String howKnowDepartament) {
+      this.howKnowDepartament = howKnowDepartament;
+   }
 
-    public String getSchoolLevelFather() {
-        return schoolLevelFather;
-    }
+   public String getReceivedSocialProgram() {
+      return receivedSocialProgram;
+   }
 
-    public void setSchoolLevelFather(String schoolLevelFather) {
-        this.schoolLevelFather = schoolLevelFather;
-    }
+   public void setReceivedSocialProgram(String receivedSocialProgram) {
+      this.receivedSocialProgram = receivedSocialProgram;
+   }
 
-    public String getSchoolLevelMother() {
-        return schoolLevelMother;
-    }
+   public String getWhatTheMemberOfSick() {
+      return whatTheMemberOfSick;
+   }
 
-    public void setSchoolLevelMother(String schoolLevelMother) {
-        this.schoolLevelMother = schoolLevelMother;
-    }
+   public void setWhatTheMemberOfSick(String whatTheMemberOfSick) {
+      this.whatTheMemberOfSick = whatTheMemberOfSick;
+   }
 
-    public int getIsFamiliarSmoker() {
-        return isFamiliarSmoker;
-    }
+   public String getSchoolLevelFather() {
+      return schoolLevelFather;
+   }
 
-    public void setIsFamiliarSmoker(int isFamiliarSmoker) {
-        this.isFamiliarSmoker = isFamiliarSmoker;
-    }
+   public void setSchoolLevelFather(String schoolLevelFather) {
+      this.schoolLevelFather = schoolLevelFather;
+   }
 
-    public int getIsFalimilarAlcoholic() {
-        return isFalimilarAlcoholic;
-    }
+   public String getSchoolLevelMother() {
+      return schoolLevelMother;
+   }
 
-    public void setIsFalimilarAlcoholic(int isFalimilarAlcoholic) {
-        this.isFalimilarAlcoholic = isFalimilarAlcoholic;
-    }
+   public void setSchoolLevelMother(String schoolLevelMother) {
+      this.schoolLevelMother = schoolLevelMother;
+   }
 
-    public String getFamilyTakeReligion() {
-        return familyTakeReligion;
-    }
+   public int getIsFamiliarSmoker() {
+      return isFamiliarSmoker;
+   }
 
-    public void setFamilyTakeReligion(String familyTakeReligion) {
-        this.familyTakeReligion = familyTakeReligion;
-    }
+   public void setIsFamiliarSmoker(int isFamiliarSmoker) {
+      this.isFamiliarSmoker = isFamiliarSmoker;
+   }
 
-    public String getYourColor() {
-        return yourColor;
-    }
+   public int getIsFalimilarAlcoholic() {
+      return isFalimilarAlcoholic;
+   }
 
-    public void setYourColor(String yourColor) {
-        this.yourColor = yourColor;
-    }
+   public void setIsFalimilarAlcoholic(int isFalimilarAlcoholic) {
+      this.isFalimilarAlcoholic = isFalimilarAlcoholic;
+   }
 
-    public String getWhatSick() {
-        return whatSick;
-    }
+   public String getFamilyTakeReligion() {
+      return familyTakeReligion;
+   }
 
-    public void setWhatSick(String whatSick) {
-        this.whatSick = whatSick;
-    }
+   public void setFamilyTakeReligion(String familyTakeReligion) {
+      this.familyTakeReligion = familyTakeReligion;
+   }
 
-    public String getWhatsAllergy() {
-        return whatsAllergy;
-    }
+   public String getYourColor() {
+      return yourColor;
+   }
 
-    public void setWhatsAllergy(String whatsAllergy) {
-        this.whatsAllergy = whatsAllergy;
-    }
+   public void setYourColor(String yourColor) {
+      this.yourColor = yourColor;
+   }
 
-    public int getTakeMedicine() {
-        return takeMedicine;
-    }
+   public String getWhatSick() {
+      return whatSick;
+   }
 
-    public void setTakeMedicine(int takeMedicine) {
-        this.takeMedicine = takeMedicine;
-    }
+   public void setWhatSick(String whatSick) {
+      this.whatSick = whatSick;
+   }
 
-    public String getMemberTakeReligion() {
-        return memberTakeReligion;
-    }
+   public String getWhatsAllergy() {
+      return whatsAllergy;
+   }
 
-    public void setMemberTakeReligion(String memberTakeReligion) {
-        this.memberTakeReligion = memberTakeReligion;
-    }
+   public void setWhatsAllergy(String whatsAllergy) {
+      this.whatsAllergy = whatsAllergy;
+   }
 
-    public String getWhyAreSC() {
-        return whyAreSC;
-    }
+   public int getTakeMedicine() {
+      return takeMedicine;
+   }
 
-    public void setWhyAreSC(String whyAreSC) {
-        this.whyAreSC = whyAreSC;
-    }
+   public void setTakeMedicine(int takeMedicine) {
+      this.takeMedicine = takeMedicine;
+   }
 
-    public String getAboutMedicine() {
-        return aboutMedicine;
-    }
+   public String getMemberTakeReligion() {
+      return memberTakeReligion;
+   }
 
-    public void setAboutMedicine(String aboutMedicine) {
-        this.aboutMedicine = aboutMedicine;
-    }
-        
-        
+   public void setMemberTakeReligion(String memberTakeReligion) {
+      this.memberTakeReligion = memberTakeReligion;
+   }
+
+   public String getWhyAreSC() {
+      return whyAreSC;
+   }
+
+   public void setWhyAreSC(String whyAreSC) {
+      this.whyAreSC = whyAreSC;
+   }
+
+   public String getAboutMedicine() {
+      return aboutMedicine;
+   }
+
+   public void setAboutMedicine(String aboutMedicine) {
+      this.aboutMedicine = aboutMedicine;
+   }
+
+   /**
+    * @return the acceptPoliticalPrivacy
+    */
+   public int getAcceptPoliticalPrivacy() {
+      return acceptPoliticalPrivacy;
+   }
+
+   /**
+    * @param acceptPoliticalPrivacy the acceptPoliticalPrivacy to set
+    */
+   public void setAcceptPoliticalPrivacy(int acceptPoliticalPrivacy) {
+      this.acceptPoliticalPrivacy = acceptPoliticalPrivacy;
+   }
 
 }

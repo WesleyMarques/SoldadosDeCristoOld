@@ -1,6 +1,7 @@
 package org.sc.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.sc.models.User;
 
@@ -100,4 +101,7 @@ public interface GenericDAO {
          throws DAOException;
 
    boolean queryToOtherCommands(String query) throws DAOException;
+
+   List<Map<String, String>> findAllByColl(String entity,
+         String[] colls, String condition);
 }

@@ -8,9 +8,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.sc.controllers.DataOffController;
 import org.sc.models.User;
 import org.sc.models.UserLogin;
 
@@ -114,19 +115,23 @@ public class DAOOffline implements GenericDAO {
    @Override
    public User findUserLoginByField(String entity, String field,
          String fieldValue) throws DAOException {
-      if (loadFile(LOGIN_USER_DAT_FILE)) {
-         List<User> dataObject = readData();
-         try {
-            for (User userList : dataObject) {
-               if (((UserLogin) userList).equals(fieldValue)) {
-                  return userList;
-               }
-            }
-
-         } catch (Exception e) {
-            throw new DAOException("Usuário não encontrado: " + e.getMessage());
-         }
+      try{
+         DataOffController.getUsers(LOGIN_USER_DAT_FILE);         
+      }catch(){
+         
       }
+      List<User> dataObject = readData();
+      try {
+         for (User userList : dataObject) {
+            if (((UserLogin) userList).equals(fieldValue)) {
+               return userList;
+            }
+         }
+
+      } catch (Exception e) {
+         throw new DAOException("Usuário não encontrado: " + e.getMessage());
+      }
+
       return null;
    }
 
@@ -148,21 +153,6 @@ public class DAOOffline implements GenericDAO {
       return null;
    }
 
-   private boolean loadFile(String fileName) throws DAOException {
-      file = new File(PATH + fileName);
-      if (!file.exists()) {
-         try {
-            return file.createNewFile()
-                  && saveData(file, new ArrayList<User>());
-         } catch (Exception e) {
-            throw new DAOException("Erro ao salvar ou criar o arquivo: "
-                  + e.getMessage());
-         }
-
-      }
-      return true;
-   }
-
    @Override
    public int getOperation(String operation, String atribute, String entite)
          throws DAOException {
@@ -174,5 +164,12 @@ public class DAOOffline implements GenericDAO {
    public boolean queryToOtherCommands(String query) throws DAOException {
       // TODO Auto-generated method stub
       return false;
+   }
+
+   @Override
+   public List<Map<String, String>> findAllByColl(String entity,
+         String[] colls, String condition) {
+      // TODO Auto-generated method stub
+      return null;
    }
 }

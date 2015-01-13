@@ -32,9 +32,9 @@ public class User implements Serializable {
     * @return the registry
     * @throws Exception
     */
-   public int getRegistry() throws Exception {
+   public int getRegistry() throws UserInvalidException {
       if (this.registry == 0) {
-         throw new Exception("No Registry!");
+         throw new UserInvalidException("No Registry!");
       }
       return registry;
    }
@@ -44,9 +44,9 @@ public class User implements Serializable {
     *           the registry to set
     * @throws Exception
     */
-   public void setRegistry(int registry) throws Exception {
+   public void setRegistry(int registry) throws UserInvalidException {
       if (registry == 0) {
-         throw new Exception("Data Invalid!");
+         throw new UserInvalidException("Registry value is wrong!");
       }
       this.registry = registry;
    }
@@ -55,9 +55,9 @@ public class User implements Serializable {
     * @return the name
     * @throws Exception
     */
-   public String getName() throws Exception {
+   public String getName() throws UserInvalidException {
       if (this.name == null) {
-         throw new Exception("No Name!");
+         throw new UserInvalidException("No Name!");
       }
       return name;
    }
@@ -67,9 +67,9 @@ public class User implements Serializable {
     *           the name to set
     * @throws Exception
     */
-   public void setName(String name) throws Exception {
+   public void setName(String name) throws UserInvalidException {
       if (name == null) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Your name is wrong!");
       }
       this.name = name;
    }
@@ -78,9 +78,9 @@ public class User implements Serializable {
     * @return the warName
     * @throws Exception
     */
-   public String getWarName() throws Exception {
+   public String getWarName() throws UserInvalidException {
       if (this.warName == null) {
-         throw new Exception("No War Name!");
+         throw new UserInvalidException("No War Name!");
       }
       return warName;
    }
@@ -90,9 +90,9 @@ public class User implements Serializable {
     *           the warName to set
     * @throws Exception
     */
-   public void setWarName(String warName) throws Exception {
+   public void setWarName(String warName) throws UserInvalidException {
       if (warName == null) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Your war name is wrong!");
       }
       this.warName = warName;
    }
@@ -101,9 +101,9 @@ public class User implements Serializable {
     * @return the rG
     * @throws Exception
     */
-   public int getRG() throws Exception {
+   public int getRG() throws UserInvalidException {
       if (this.RG == 0) {
-         throw new Exception("No RG!");
+         throw new UserInvalidException("No RG inserted!");
       }
       return RG;
    }
@@ -113,9 +113,9 @@ public class User implements Serializable {
     *           the rG to set
     * @throws Exception
     */
-   public void setRG(int rG) throws Exception {
+   public void setRG(int rG) throws UserInvalidException {
       if (rG == 0) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Your RG format is wrong!");
       }
       this.RG = rG;
    }
@@ -124,9 +124,9 @@ public class User implements Serializable {
     * @return the battalion
     * @throws Exception
     */
-   public int getBattalion() throws Exception {
+   public int getBattalion() throws UserInvalidException {
       if (this.battalion == 0) {
-         throw new Exception("No Battalion!");
+         throw new UserInvalidException("No Battalion!");
       }
       return battalion;
    }
@@ -136,9 +136,9 @@ public class User implements Serializable {
     *           the battalion to set
     * @throws Exception
     */
-   public void setBattalion(int battalion) throws Exception {
+   public void setBattalion(int battalion) throws UserInvalidException {
       if (battalion == 0) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Battalion value is wrong!");
       }
       this.battalion = battalion;
    }
@@ -147,9 +147,9 @@ public class User implements Serializable {
     * @return the patent
     * @throws Exception
     */
-   public int getPatent() throws Exception {
+   public int getPatent() throws UserInvalidException {
       if (this.patent == 0) {
-         throw new Exception("No Patent!");
+         throw new UserInvalidException("No Patent!");
       }
       return patent;
    }
@@ -159,9 +159,9 @@ public class User implements Serializable {
     *           the patent to set
     * @throws Exception
     */
-   public void setPatent(int patent) throws Exception {
+   public void setPatent(int patent) throws UserInvalidException {
       if (patent == 0) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Patent value is wrong, try again!");
       }
       this.patent = patent;
    }
@@ -170,9 +170,9 @@ public class User implements Serializable {
     * @return the status
     * @throws Exception
     */
-   public String getStatus() throws Exception {
+   public String getStatus() throws UserInvalidException {
       if (this.status == null) {
-         throw new Exception("No Status!");
+         throw new UserInvalidException("No Status!");
       }
       return this.status;
    }
@@ -182,9 +182,9 @@ public class User implements Serializable {
     *           the status to set
     * @throws Exception
     */
-   public void setStatus(String status) throws Exception {
+   public void setStatus(String status) throws UserInvalidException {
       if (status == null) {
-         throw new Exception("Data invalid!");
+         throw new UserInvalidException("Your status value is wrong!");
       }
       this.status = status;
    }
