@@ -1,16 +1,41 @@
 package org.sc.models;
 
-public class Battalion {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name = "battalions")
+public class Battalion implements Serializable {
+   /**
+    * 
+    */
+   private static final long serialVersionUID = 5157994018883257610L;
+
+   @Column(name = "idBattalion")
    private int idBattalion;
+   @Column(name = "street")
    private String street;
+   @Column(name = "numberBat")
    private int numberBat;
+   @Column(name = "zipCode")
    private int zipCode;
+   @Column(name = "city")
    private String city;
+   @Column(name = "state")
    private String state;
+   @Column(name = "district")
    private String district;
+   @Column(name = "country")
    private String country;
+   @Column(name = "status")
    private String status;
+   @Column(name = "number")
    private String number;
+
+   public Battalion() {
+
+   }
 
    public Battalion(int id, String street, String status, String country,
          String district, String state, String city, int zip, int numberbat,

@@ -19,10 +19,12 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.sc.controllers.DataController;
+import org.sc.controllers.DataOffController;
 import org.sc.controllers.UserController;
 import org.sc.dao.DAOException;
 import org.sc.dao.streams.FTPSC;
 import org.sc.dao.util.Util;
+import org.sc.models.Battalion;
 import org.sc.models.ContactUsers;
 import org.sc.models.QuestionnarieUser;
 import org.sc.models.User;
@@ -71,16 +73,23 @@ public class Registry extends SwitchablePanel {
       List<String> comboData = new ArrayList<String>();
 
       try {
-         List<Map<String, String>> batOpDAO = DataController.getAllByColl(
-               new String[] {"idBattalions", "numberBat"}, "battalions",
-               "WHERE status = 'Ativado'");
+         // List<Map<String, String>> batOpDAO = DataController.getAllByColl(
+         // new String[] {"idBattalions", "numberBat"}, "battalions",
+         // "WHERE status = 'Ativado'");
+         //
+         // for (Map<String, String> map : batOpDAO) {
+         //
+         // comboData.add((String) map.get("numberBat")
+         // + "º Batalhão - "
+         // + String.format("%04d",
+         // Integer.parseInt(map.get("idBattalions"))));
+         // }
+         List<Battalion> listB = DataOffController.getBattalions("batList.dat");
 
-         for (Map<String, String> map : batOpDAO) {
+         for (Battalion battalion : listB) {
 
-            comboData.add((String) map.get("numberBat")
-                  + "º Batalhão - "
-                  + String.format("%04d",
-                        Integer.parseInt(map.get("idBattalions"))));
+            comboData.add(battalion.getNumberBat() + "º Batalhão - "
+                  + String.format("%04d", battalion.getNumberBat()));
          }
          batOption.setModel(new DefaultComboBoxModel(comboData.toArray()));
          if (SoldadosDeCristo.getUser().getRegistry() != -1) {
@@ -88,7 +97,7 @@ public class Registry extends SwitchablePanel {
          }
 
       } catch (DAOException e) {
-          
+
       } catch (Exception e) {
       }
    }
@@ -114,1231 +123,2605 @@ public class Registry extends SwitchablePanel {
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
    // <editor-fold defaultstate="collapsed"
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jLabel9 = new javax.swing.JLabel();
-        personaldata = new javax.swing.JPanel();
-        nome = new javax.swing.JLabel();
-        nomeText = new javax.swing.JTextField();
-        sexo = new javax.swing.JLabel();
-        mBox = new javax.swing.JCheckBox();
-        fBox = new javax.swing.JCheckBox();
-        warName = new javax.swing.JLabel();
-        warNameText = new javax.swing.JTextField();
-        birthDate = new javax.swing.JLabel();
-        bDayText = new javax.swing.JFormattedTextField();
-        bat = new javax.swing.JLabel();
-        batOption = new javax.swing.JComboBox();
-        RG = new javax.swing.JLabel();
-        rgText = new javax.swing.JTextField();
-        cpf = new javax.swing.JLabel();
-        cpfText = new javax.swing.JFormattedTextField();
-        bloodType = new javax.swing.JLabel();
-        bloddTypeOption = new javax.swing.JComboBox();
-        naturalidade = new javax.swing.JLabel();
-        natText = new javax.swing.JTextField();
-        ufNat = new javax.swing.JLabel();
-        UF = new javax.swing.JTextField();
-        Nacionalidade = new javax.swing.JLabel();
-        nacText = new javax.swing.JTextField();
-        patente = new javax.swing.JLabel();
-        patOption = new javax.swing.JComboBox();
-        status = new javax.swing.JLabel();
-        statusOption = new javax.swing.JComboBox();
-        civilStatusLabel = new javax.swing.JLabel();
-        civilStatusOptions = new javax.swing.JComboBox();
-        otherdatas = new javax.swing.JTabbedPane();
-        endereco = new javax.swing.JPanel();
-        cepLabel = new javax.swing.JLabel();
-        cepText = new javax.swing.JTextField();
-        streetLabel = new javax.swing.JLabel();
-        streetText = new javax.swing.JTextField();
-        numberLabel = new javax.swing.JLabel();
-        numberText = new javax.swing.JTextField();
-        districtLabel = new javax.swing.JLabel();
-        districtText = new javax.swing.JTextField();
-        complementLabel = new javax.swing.JLabel();
-        complementText = new javax.swing.JTextField();
-        cityLabel = new javax.swing.JLabel();
-        cityText = new javax.swing.JTextField();
-        stateLabel = new javax.swing.JLabel();
-        stateText = new javax.swing.JTextField();
-        countryLabel = new javax.swing.JLabel();
-        countryText = new javax.swing.JTextField();
-        validarCEP = new javax.swing.JLabel();
-        contatos = new javax.swing.JPanel();
-        phoneLabel = new javax.swing.JLabel();
-        typePhone1 = new javax.swing.JComboBox();
-        phoneFormat1 = new javax.swing.JFormattedTextField();
-        typePhone2 = new javax.swing.JComboBox();
-        typePhone3 = new javax.swing.JComboBox();
-        phoneFormat2 = new javax.swing.JFormattedTextField();
-        phoneFormat3 = new javax.swing.JFormattedTextField();
-        emailLabel = new javax.swing.JLabel();
-        emailText = new javax.swing.JTextField();
-        validEmail = new javax.swing.JLabel();
-        redeSocialLabel = new javax.swing.JLabel();
-        FacebookText = new javax.swing.JTextField();
-        facebookLabel = new javax.swing.JLabel();
-        linkedInLabel = new javax.swing.JLabel();
-        LinkeInText = new javax.swing.JTextField();
-        questionarioSC = new javax.swing.JScrollPane();
-        questionarioSCPanel = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        submitIntructorCombo = new javax.swing.JComboBox();
-        jLabel16 = new javax.swing.JLabel();
-        respectFriendsCombo = new javax.swing.JComboBox();
-        jLabel17 = new javax.swing.JLabel();
-        buyUniformCombo = new javax.swing.JComboBox();
-        jLabel18 = new javax.swing.JLabel();
-        dontMissCombo = new javax.swing.JComboBox();
-        jLabel19 = new javax.swing.JLabel();
-        giveUniformToOtherCombo = new javax.swing.JComboBox();
-        jLabel20 = new javax.swing.JLabel();
-        learnOathCombo = new javax.swing.JComboBox();
-        jLabel21 = new javax.swing.JLabel();
-        goodSCComobo = new javax.swing.JComboBox();
-        jLabel22 = new javax.swing.JLabel();
-        sendInvitToFMCombo = new javax.swing.JComboBox();
-        jLabel23 = new javax.swing.JLabel();
-        acceptPoliticalPrivacyCombo = new javax.swing.JComboBox();
-        questionarioSE = new javax.swing.JScrollPane();
-        questionarioSEPanel = new javax.swing.JPanel();
-        QSClabel1 = new javax.swing.JLabel();
-        numPeopleOpt = new javax.swing.JSpinner();
-        QSClabel2 = new javax.swing.JLabel();
-        residenceTypeCombo = new javax.swing.JComboBox();
-        QSClabel3 = new javax.swing.JLabel();
-        civilStatusCombo = new javax.swing.JComboBox();
-        QSClabel4 = new javax.swing.JLabel();
-        monthlyIncomeCombo = new javax.swing.JComboBox();
-        QSClabel5 = new javax.swing.JLabel();
-        fatherLabelSE = new javax.swing.JLabel();
-        fatherJobCombo = new javax.swing.JComboBox();
-        motherLabelSE = new javax.swing.JLabel();
-        motherJobCombo = new javax.swing.JComboBox();
-        QSClabel6 = new javax.swing.JLabel();
-        howKnowDepartamentComobo = new javax.swing.JComboBox();
-        QSClabel7 = new javax.swing.JLabel();
-        receivedSocialProgramCombo = new javax.swing.JComboBox();
-        QSClabel9 = new javax.swing.JLabel();
-        whatTheMemberOfSickCombo = new javax.swing.JComboBox();
-        QSClabel10 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        schoolLevelFatherCombo = new javax.swing.JComboBox();
-        schoolLevelMotherCombo = new javax.swing.JComboBox();
-        QSClabel11 = new javax.swing.JLabel();
-        isFamiliarSmokerCombo = new javax.swing.JComboBox();
-        QSClabel12 = new javax.swing.JLabel();
-        isFalimilarAlcoholicCombo = new javax.swing.JComboBox();
-        QSClabel13 = new javax.swing.JLabel();
-        familyTakeReligionCombo = new javax.swing.JComboBox();
-        questionarioP = new javax.swing.JScrollPane();
-        quetionarioPpanel = new javax.swing.JPanel();
-        QPlabel1 = new javax.swing.JLabel();
-        yourColorCombo = new javax.swing.JComboBox();
-        QPlabel2 = new javax.swing.JLabel();
-        whatSickCombo = new javax.swing.JComboBox();
-        QPlabel3 = new javax.swing.JLabel();
-        whatsAllergyCombo = new javax.swing.JComboBox();
-        QPlabel4 = new javax.swing.JLabel();
-        takeMedicineCombo = new javax.swing.JComboBox();
-        QPlabel5 = new javax.swing.JLabel();
-        memberTakeReligionCombo = new javax.swing.JComboBox();
-        jLabel34 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        whyAreSCText = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        aboutMedicineText = new javax.swing.JTextArea();
-        otherInfo = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        schoolingBox = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        occupationText = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        fatherText = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        motherText = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        payFormBox = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        obsText = new javax.swing.JTextArea();
-        saveButton = new javax.swing.JButton();
-        titleLabel = new javax.swing.JLabel();
-        clearButton = new javax.swing.JButton();
-        helpLabel = new javax.swing.JLabel();
-        statusProgress = new javax.swing.JProgressBar();
-        uploadPhotoLabel = new javax.swing.JLabel();
-        docLabel = new javax.swing.JLabel();
-        photoLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-
-        jLabel9.setText("jLabel9");
-
-        setForeground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
-
-        personaldata.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Dados Pessoais", 0, 0, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
-        personaldata.setForeground(new java.awt.Color(255, 255, 255));
-        personaldata.setToolTipText("");
-        personaldata.setOpaque(false);
-
-        nome.setForeground(new java.awt.Color(255, 255, 255));
-        nome.setText("Nome:");
-
-        sexo.setForeground(new java.awt.Color(255, 255, 255));
-        sexo.setText("Sexo:");
-
-        mBox.setForeground(new java.awt.Color(255, 255, 255));
-        mBox.setText("M");
-        mBox.setOpaque(false);
-
-        fBox.setForeground(new java.awt.Color(255, 255, 255));
-        fBox.setText("F");
-        fBox.setOpaque(false);
-
-        warName.setForeground(new java.awt.Color(255, 255, 255));
-        warName.setText("Nome de Guerra:");
-
-        birthDate.setForeground(new java.awt.Color(255, 255, 255));
-        birthDate.setText("Data de Nascimento:");
-
-        try {
-            bDayText.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        bat.setForeground(new java.awt.Color(255, 255, 255));
-        bat.setText("Batalhão:");
-
-        RG.setForeground(new java.awt.Color(255, 255, 255));
-        RG.setText("RG:");
-
-        cpf.setForeground(new java.awt.Color(255, 255, 255));
-        cpf.setText("CPF:");
-
-        try {
-            cpfText.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        bloodType.setForeground(new java.awt.Color(255, 255, 255));
-        bloodType.setText("Tipo Sanguíneo: ");
-
-        bloddTypeOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" }));
-
-        naturalidade.setForeground(new java.awt.Color(255, 255, 255));
-        naturalidade.setText("Naturalidade:");
-
-        ufNat.setForeground(new java.awt.Color(255, 255, 255));
-        ufNat.setText("UF:");
-
-        Nacionalidade.setForeground(new java.awt.Color(255, 255, 255));
-        Nacionalidade.setText("Nacionalidade:");
-
-        nacText.setText("Brasileiro");
-
-        patente.setForeground(new java.awt.Color(255, 255, 255));
-        patente.setText("Patente:");
-
-        patOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recruta", "Soldado", "Sd. de 1º classe", "Cabo", "3º Sargento", "2º Sargento", "1º Sargento", "Sub Tenente", "Aspirante", "2º Tenente", "1º Tenente", "Capitão", "Major", "Ten. Coronel", "Coronel", "Capelão" }));
-
-        status.setForeground(new java.awt.Color(255, 255, 255));
-        status.setText("Status: ");
-
-        statusOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativado", "Desativado", "Observação" }));
-
-        civilStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
-        civilStatusLabel.setText("Estado Civil:");
-
-        civilStatusOptions.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Casado", "Viúvo", "Divorciado", "Outro" }));
-
-        javax.swing.GroupLayout personaldataLayout = new javax.swing.GroupLayout(personaldata);
-        personaldata.setLayout(personaldataLayout);
-        personaldataLayout.setHorizontalGroup(
-            personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(personaldataLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(warName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RG)
-                        .addComponent(naturalidade)
-                        .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(civilStatusLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(personaldataLayout.createSequentialGroup()
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addComponent(warNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(birthDate)
-                                .addGap(18, 18, 18)
-                                .addComponent(bDayText)
-                                .addGap(18, 18, 18)
-                                .addComponent(bat)))
-                        .addGap(18, 18, 18)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(personaldataLayout.createSequentialGroup()
-                                .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mBox)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fBox)
-                                .addGap(0, 21, Short.MAX_VALUE))
-                            .addComponent(batOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(personaldataLayout.createSequentialGroup()
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(natText, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(rgText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(civilStatusOptions, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpf)
-                            .addComponent(ufNat)
-                            .addComponent(patente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cpfText)
-                            .addComponent(UF)
-                            .addComponent(patOption, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bloodType)
-                            .addComponent(Nacionalidade)
-                            .addComponent(status))
-                        .addGap(18, 18, 18)
-                        .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(statusOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bloddTypeOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nacText)))))
-        );
-        personaldataLayout.setVerticalGroup(
-            personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(personaldataLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(sexo, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                        .addComponent(mBox)
-                        .addComponent(fBox))
-                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(warName)
-                    .addComponent(warNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(birthDate)
-                    .addComponent(bDayText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bat)
-                    .addComponent(batOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RG)
-                    .addComponent(cpf)
-                    .addComponent(cpfText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bloodType)
-                    .addComponent(bloddTypeOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rgText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(natText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(naturalidade)
-                    .addComponent(ufNat)
-                    .addComponent(UF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nacionalidade)
-                    .addComponent(nacText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(personaldataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(status)
-                    .addComponent(statusOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patente)
-                    .addComponent(civilStatusLabel)
-                    .addComponent(civilStatusOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        otherdatas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        otherdatas.setPreferredSize(new java.awt.Dimension(800, 221));
-
-        cepLabel.setText("CEP: ");
-
-        cepText.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cepTextFocusLost(evt);
-            }
-        });
-
-        streetLabel.setText("Logradouro: ");
-
-        streetText.setToolTipText("");
-
-        numberLabel.setText("Número: ");
-
-        districtLabel.setText("Bairro: ");
-
-        complementLabel.setText("Complemento:");
-
-        cityLabel.setText("Cidade:");
-
-        stateLabel.setText("Estado:");
-
-        countryLabel.setText("País:");
-
-        validarCEP.setForeground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(endereco);
-        endereco.setLayout(enderecoLayout);
-        enderecoLayout.setHorizontalGroup(
-            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enderecoLayout.createSequentialGroup()
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(streetLabel)
-                            .addComponent(districtLabel)
-                            .addComponent(cityLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(streetText, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(numberLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(districtText, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(complementLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(complementText))
-                            .addGroup(enderecoLayout.createSequentialGroup()
-                                .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(stateLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(countryLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(countryText))))
-                    .addGroup(enderecoLayout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(cepLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cepText, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(validarCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
-        enderecoLayout.setVerticalGroup(
-            enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(enderecoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cepLabel)
-                        .addComponent(cepText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(validarCEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(streetLabel)
-                    .addComponent(streetText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberLabel)
-                    .addComponent(numberText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(districtLabel)
-                    .addComponent(districtText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(complementLabel)
-                    .addComponent(complementText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(enderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cityLabel)
-                    .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stateLabel)
-                    .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(countryLabel)
-                    .addComponent(countryText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
-        );
-
-        otherdatas.addTab("ENDEREÇO", endereco);
-
-        phoneLabel.setText("Telefones:");
-
-        typePhone1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Responsável", "Pessoal", "Fixo", "Trabalho", " " }));
-
-        try {
-            phoneFormat1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        typePhone2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Responsável", "Pessoal", "Fixo", "Trabalho" }));
-        typePhone2.setSelectedIndex(1);
-
-        typePhone3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Responsável", "Pessoal", "Fixo", "Trabalho" }));
-        typePhone3.setSelectedIndex(2);
-
-        try {
-            phoneFormat2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            phoneFormat3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        emailLabel.setText("Email: ");
-
-        emailText.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                emailTextFocusLost(evt);
-            }
-        });
-
-        redeSocialLabel.setText("REDES SOCIAIS:");
-
-        facebookLabel.setText("Facebook:");
-
-        linkedInLabel.setText("LinkedIn:");
-
-        javax.swing.GroupLayout contatosLayout = new javax.swing.GroupLayout(contatos);
-        contatos.setLayout(contatosLayout);
-        contatosLayout.setHorizontalGroup(
-            contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contatosLayout.createSequentialGroup()
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contatosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(phoneLabel))
-                    .addGroup(contatosLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(typePhone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(typePhone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(typePhone3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(phoneFormat1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                            .addComponent(phoneFormat2)
-                            .addComponent(phoneFormat3))))
-                .addGap(64, 64, 64)
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(redeSocialLabel)
-                    .addGroup(contatosLayout.createSequentialGroup()
-                        .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(contatosLayout.createSequentialGroup()
-                                .addComponent(emailLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(contatosLayout.createSequentialGroup()
-                                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(facebookLabel)
-                                    .addComponent(linkedInLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(FacebookText)
-                                    .addComponent(LinkeInText, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(validEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(142, Short.MAX_VALUE))
-        );
-        contatosLayout.setVerticalGroup(
-            contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contatosLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneLabel)
-                    .addComponent(emailLabel)
-                    .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(validEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contatosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(typePhone1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneFormat1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(contatosLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(redeSocialLabel)))
-                .addGap(18, 18, 18)
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typePhone2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneFormat2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FacebookText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(facebookLabel))
-                .addGap(18, 18, 18)
-                .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(typePhone3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(phoneFormat3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(contatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(linkedInLabel)
-                        .addComponent(LinkeInText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        otherdatas.addTab("CONTATOS", contatos);
-
-        questionarioSC.setViewportView(questionarioSCPanel);
-        questionarioSC.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        questionarioSC.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-        jLabel15.setText("1 - Está disposto a se submeter e obedecer as exigêcias e normas estabelecidas pelos instrutores?");
-
-        submitIntructorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel16.setText("2 - Promete respeitar os seus colegas e superiores?");
-
-        respectFriendsCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel17.setText("3 - Fará todo esforço possível para adquirir o fardamento?");
-
-        buyUniformCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel18.setText("4 - Compromete-se a não faltar reuniões e atividades relacionadas ao Departamento?");
-
-        dontMissCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel19.setText("5 - Caso desista de continuarno Departamento doará seu fardamento a outro membro?");
-
-        giveUniformToOtherCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel20.setText("6 - compromete-se a aprender os Juramentos, Hino Oficial e Divisa?");
-
-        learnOathCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel21.setText("7 - Colaborará para o bom andamento do Soldado de Cristo?");
-
-        goodSCComobo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel22.setText("8 - Compromete-se a convidar outros colegas e familiares?");
-
-        sendInvitToFMCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        jLabel23.setText("9 - Concorda com todos os termos de de privacidade e uso do departamento?");
-
-        acceptPoliticalPrivacyCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        javax.swing.GroupLayout questionarioSCPanelLayout = new javax.swing.GroupLayout(questionarioSCPanel);
-        questionarioSCPanel.setLayout(questionarioSCPanelLayout);
-        questionarioSCPanelLayout.setHorizontalGroup(
-            questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(18, 18, 18)
-                        .addComponent(submitIntructorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(respectFriendsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buyUniformCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dontMissCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(giveUniformToOtherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(learnOathCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(goodSCComobo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sendInvitToFMCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(acceptPoliticalPrivacyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(338, Short.MAX_VALUE))
-        );
-        questionarioSCPanelLayout.setVerticalGroup(
-            questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(questionarioSCPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(submitIntructorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(respectFriendsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(buyUniformCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(dontMissCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(giveUniformToOtherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(learnOathCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(goodSCComobo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(sendInvitToFMCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSCPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(acceptPoliticalPrivacyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
-
-        questionarioSC.setViewportView(questionarioSCPanel);
-
-        otherdatas.addTab("QUESTIONÁRIO SC", questionarioSC);
-
-        QSClabel1.setText("1 - Quantas pessoas compõem a sua família, incluindo você?");
-
-        QSClabel2.setText("2 - Qual é o tipo de residência de sua família?");
-
-        residenceTypeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Própria", "Alugada", "Emprestada" }));
-
-        QSClabel3.setText("3 - Estado civil dos pais?");
-
-        civilStatusCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Casados", "Divorciados", "Vivem em casas separadas", "Outro" }));
-
-        QSClabel4.setText("4 - Qual a renda mensal média de sua família hoje?");
-
-        monthlyIncomeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Até R$ 700,00", "De R$ 700,00 até R$ 1000,00", "De R$ 1000,00 até R$ 1500,00", "De R$ 1500,00 até R$ 2000,00", "Acima de R$ 2000,00", "Não possui nenhuma renda" }));
-
-        QSClabel5.setText("5 - Qual tipo de trabalho é realizado?");
-
-        fatherLabelSE.setText("PAI");
-
-        fatherJobCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Assalariado", "Aposentado", "Pensionista", "Dono de casa", "Outro" }));
-
-        motherLabelSE.setText("MÃE");
-
-        motherJobCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Assalariada", "Aposentada", "Pensionista", "Dona de casa", "Outro" }));
-
-        QSClabel6.setText("6 - Como conheceu o Departamento Soldados de Cristo?");
-
-        howKnowDepartamentComobo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mídias digitais e propagandas (Sites, Redes Sociais, Rádio, Televisão)", "Através de desfiles e apresentações (7 de Setembro, Formaturas)", "Através do convite de amigos ou familiares", "Outro" }));
-
-        QSClabel7.setText("7 - Recebe algum auxílio ou programa Social?");
-
-        receivedSocialProgramCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhum", "Bolsa família", "Pensão ", "Auxílio doença", "Outro" }));
-
-        QSClabel9.setText("8 - Algum familiar possui algum problema de saúde?");
-
-        whatTheMemberOfSickCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhum", "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumatismo", "Câncer", "Depressão", "Outra" }));
-
-        QSClabel10.setText("10 - Qual o nível de escolaridade?");
-
-        jLabel27.setText("PAI");
-
-        jLabel28.setText("MÃE");
-
-        schoolLevelFatherCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ensino Fundamental", "Ensino Médio", "Ensino Superior", "Mestre", "Doutor", "Outro" }));
-
-        schoolLevelMotherCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ensino Fundamental", "Ensino Médio", "Ensino Superior", "Mestre", "Doutor", "Outro" }));
-
-        QSClabel11.setText("11 - Alguém fuma em sua família?");
-
-        isFamiliarSmokerCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        QSClabel12.setText("12 - Tem algum familiar envolvido com o Alcolismo?");
-
-        isFalimilarAlcoholicCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SIM", "NÃO" }));
-
-        QSClabel13.setText("13 - Professa alguma religião?");
-
-        familyTakeReligionCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhuma", "Protestantismo", "Catolicismo", "Judaismo", "Espiritismo", "Afro-brasileira", "Outra" }));
-
-        javax.swing.GroupLayout questionarioSEPanelLayout = new javax.swing.GroupLayout(questionarioSEPanel);
-        questionarioSEPanel.setLayout(questionarioSEPanelLayout);
-        questionarioSEPanelLayout.setHorizontalGroup(
-            questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(QSClabel1)
-                            .addComponent(QSClabel2)
-                            .addComponent(QSClabel3)
-                            .addComponent(QSClabel4)
-                            .addComponent(QSClabel5)
-                            .addComponent(QSClabel6)
-                            .addComponent(QSClabel7)
-                            .addComponent(QSClabel9))
-                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(whatTheMemberOfSickCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(receivedSocialProgramCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(howKnowDepartamentComobo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                                        .addComponent(fatherLabelSE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fatherJobCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(motherLabelSE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(motherJobCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(monthlyIncomeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(civilStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(residenceTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(numPeopleOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(QSClabel10)
-                            .addComponent(QSClabel11)
-                            .addComponent(QSClabel12)
-                            .addComponent(QSClabel13))
-                        .addGap(53, 53, 53)
-                        .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(familyTakeReligionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(isFalimilarAlcoholicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(isFamiliarSmokerCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(schoolLevelFatherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(schoolLevelMotherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(224, Short.MAX_VALUE))
-        );
-        questionarioSEPanelLayout.setVerticalGroup(
-            questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(questionarioSEPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel1)
-                    .addComponent(numPeopleOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel2)
-                    .addComponent(residenceTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel3)
-                    .addComponent(civilStatusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel4)
-                    .addComponent(monthlyIncomeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel5)
-                    .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fatherLabelSE)
-                        .addComponent(fatherJobCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(motherLabelSE)
-                        .addComponent(motherJobCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel6)
-                    .addComponent(howKnowDepartamentComobo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel7)
-                    .addComponent(receivedSocialProgramCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel9)
-                    .addComponent(whatTheMemberOfSickCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QSClabel10)
-                    .addComponent(schoolLevelFatherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel28)
-                    .addComponent(schoolLevelMotherCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel11)
-                    .addComponent(isFamiliarSmokerCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel12)
-                    .addComponent(isFalimilarAlcoholicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(questionarioSEPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(QSClabel13)
-                    .addComponent(familyTakeReligionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-
-        questionarioSE.setViewportView(questionarioSEPanel);
-
-        otherdatas.addTab("QUESTIONÁRIO SÓCIO-ECONÔMICO", questionarioSE);
-
-        questionarioP.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        QPlabel1.setText("1 - Qual a sua cor?");
-
-        yourColorCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Branco", "Negro", "Pardo", "Outro" }));
-
-        QPlabel2.setText("2 - O membro possui algum tipo de enfermidade?");
-
-        whatSickCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhuma", "Diabetes", "Pressão Alta", "Doenças do Coração", "Reumantismo", "Câncer", "Depressão", "Asma", "Outra" }));
-
-        QPlabel3.setText("3 - Ele Possui algum tipo de alergia? ");
-
-        whatsAllergyCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nehuma", "Respiratória", "Alimentar", "Insetos", "Medicamento", "Outro" }));
-
-        QPlabel4.setText("4 - O membro toma algum medicamento?");
-
-        takeMedicineCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NÃO", "SIM" }));
-
-        QPlabel5.setText("5 - Professa alguma religião?");
-
-        memberTakeReligionCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nenhuma", "Protestantismo", "Catolicismo", "Judaismo", "Espiritismo", "Afro-brasileira", "Outra" }));
-
-        jLabel34.setText("6 - Por que deseja ser um soldado de Cristo?");
-
-        whyAreSCText.setColumns(20);
-        whyAreSCText.setRows(5);
-        jScrollPane4.setViewportView(whyAreSCText);
-
-        jLabel1.setText("Observações médicas:");
-
-        aboutMedicineText.setColumns(20);
-        aboutMedicineText.setRows(5);
-        jScrollPane1.setViewportView(aboutMedicineText);
-
-        javax.swing.GroupLayout quetionarioPpanelLayout = new javax.swing.GroupLayout(quetionarioPpanel);
-        quetionarioPpanel.setLayout(quetionarioPpanelLayout);
-        quetionarioPpanelLayout.setHorizontalGroup(
-            quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4))
-                    .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(QPlabel5)
-                            .addComponent(QPlabel2)
-                            .addComponent(QPlabel4)
-                            .addComponent(QPlabel1)
-                            .addComponent(QPlabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(yourColorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(whatSickCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(whatsAllergyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(memberTakeReligionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                                        .addComponent(takeMedicineCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(286, Short.MAX_VALUE))
-        );
-        quetionarioPpanelLayout.setVerticalGroup(
-            quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QPlabel1)
-                    .addComponent(yourColorCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QPlabel2)
-                    .addComponent(whatSickCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(quetionarioPpanelLayout.createSequentialGroup()
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(whatsAllergyCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(QPlabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(takeMedicineCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addComponent(QPlabel4))
-                        .addGap(13, 13, 13)
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(memberTakeReligionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(QPlabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(quetionarioPpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel34)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-
-        questionarioP.setViewportView(quetionarioPpanel);
-
-        otherdatas.addTab("QUESTIONÁRIO PESSOAL", questionarioP);
-
-        jLabel3.setText("Escolaridade: ");
-
-        schoolingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel4.setText("Ocupação: ");
-
-        jLabel5.setText("Nome do Pai:");
-
-        jLabel6.setText("Nome da mãe:");
-
-        jLabel7.setText("Forma de pagamento:");
-
-        payFormBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel8.setText("Observações:");
-
-        obsText.setColumns(20);
-        obsText.setRows(5);
-        jScrollPane2.setViewportView(obsText);
-
-        javax.swing.GroupLayout otherInfoLayout = new javax.swing.GroupLayout(otherInfo);
-        otherInfo.setLayout(otherInfoLayout);
-        otherInfoLayout.setHorizontalGroup(
-            otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(otherInfoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(schoolingBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel7)
-                        .addGap(27, 27, 27)
-                        .addComponent(payFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(otherInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(motherText, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(otherInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(occupationText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(otherInfoLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fatherText, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        otherInfoLayout.setVerticalGroup(
-            otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(otherInfoLayout.createSequentialGroup()
-                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(schoolingBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(payFormBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))))
-                .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(occupationText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(fatherText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(otherInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(motherText, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(otherInfoLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        otherdatas.addTab("OUTRAS INFORMAÇÕES", otherInfo);
-
-        saveButton.setText("Cadastrar");
-        saveButton.setPreferredSize(new java.awt.Dimension(81, 25));
-        saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveButtonMouseClicked(evt);
-            }
-        });
-
-        titleLabel.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
-        titleLabel.setText("CADASTRO DE MEMBROS - N BATALHÃO");
-
-        clearButton.setText("Limpar");
-        clearButton.setPreferredSize(new java.awt.Dimension(81, 25));
-        clearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButtonActionPerformed(evt);
-            }
-        });
-
-        helpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconeDuvida.png"))); // NOI18N
-
-        statusProgress.setForeground(new java.awt.Color(0, 153, 0));
-        statusProgress.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        statusProgress.setOpaque(true);
-        statusProgress.setPreferredSize(new java.awt.Dimension(145, 25));
-        statusProgress.setStringPainted(true);
-
-        uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/imagemIconSemOk.png"))); // NOI18N
-        uploadPhotoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                uploadPhotoLabelMouseClicked(evt);
-            }
-        });
-
-        docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pdfIconSemOk.png"))); // NOI18N
-        docLabel.setToolTipText("");
-        docLabel.setName("pdfIcon"); // NOI18N
-        docLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                docLabelMouseClicked(evt);
-            }
-        });
-
-        photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userDefault.jpg"))); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/closeIcon.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/voltarIcon.png"))); // NOI18N
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel10)
-                            .addGap(136, 136, 136)
-                            .addComponent(titleLabel))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(otherdatas, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(64, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(uploadPhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jLabel2))
-                                    .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(helpLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(uploadPhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(docLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(personaldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(otherdatas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(statusProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(helpLabel)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
+   // <editor-fold defaultstate="collapsed"
+   // desc="Generated Code">//GEN-BEGIN:initComponents
+   private void initComponents() {
+
+      jLabel9 = new javax.swing.JLabel();
+      personaldata = new javax.swing.JPanel();
+      nome = new javax.swing.JLabel();
+      nomeText = new javax.swing.JTextField();
+      sexo = new javax.swing.JLabel();
+      mBox = new javax.swing.JCheckBox();
+      fBox = new javax.swing.JCheckBox();
+      warName = new javax.swing.JLabel();
+      warNameText = new javax.swing.JTextField();
+      birthDate = new javax.swing.JLabel();
+      bDayText = new javax.swing.JFormattedTextField();
+      bat = new javax.swing.JLabel();
+      batOption = new javax.swing.JComboBox();
+      RG = new javax.swing.JLabel();
+      rgText = new javax.swing.JTextField();
+      cpf = new javax.swing.JLabel();
+      cpfText = new javax.swing.JFormattedTextField();
+      bloodType = new javax.swing.JLabel();
+      bloddTypeOption = new javax.swing.JComboBox();
+      naturalidade = new javax.swing.JLabel();
+      natText = new javax.swing.JTextField();
+      ufNat = new javax.swing.JLabel();
+      UF = new javax.swing.JTextField();
+      Nacionalidade = new javax.swing.JLabel();
+      nacText = new javax.swing.JTextField();
+      patente = new javax.swing.JLabel();
+      patOption = new javax.swing.JComboBox();
+      status = new javax.swing.JLabel();
+      statusOption = new javax.swing.JComboBox();
+      civilStatusLabel = new javax.swing.JLabel();
+      civilStatusOptions = new javax.swing.JComboBox();
+      otherdatas = new javax.swing.JTabbedPane();
+      endereco = new javax.swing.JPanel();
+      cepLabel = new javax.swing.JLabel();
+      cepText = new javax.swing.JTextField();
+      streetLabel = new javax.swing.JLabel();
+      streetText = new javax.swing.JTextField();
+      numberLabel = new javax.swing.JLabel();
+      numberText = new javax.swing.JTextField();
+      districtLabel = new javax.swing.JLabel();
+      districtText = new javax.swing.JTextField();
+      complementLabel = new javax.swing.JLabel();
+      complementText = new javax.swing.JTextField();
+      cityLabel = new javax.swing.JLabel();
+      cityText = new javax.swing.JTextField();
+      stateLabel = new javax.swing.JLabel();
+      stateText = new javax.swing.JTextField();
+      countryLabel = new javax.swing.JLabel();
+      countryText = new javax.swing.JTextField();
+      validarCEP = new javax.swing.JLabel();
+      contatos = new javax.swing.JPanel();
+      phoneLabel = new javax.swing.JLabel();
+      typePhone1 = new javax.swing.JComboBox();
+      phoneFormat1 = new javax.swing.JFormattedTextField();
+      typePhone2 = new javax.swing.JComboBox();
+      typePhone3 = new javax.swing.JComboBox();
+      phoneFormat2 = new javax.swing.JFormattedTextField();
+      phoneFormat3 = new javax.swing.JFormattedTextField();
+      emailLabel = new javax.swing.JLabel();
+      emailText = new javax.swing.JTextField();
+      validEmail = new javax.swing.JLabel();
+      redeSocialLabel = new javax.swing.JLabel();
+      FacebookText = new javax.swing.JTextField();
+      facebookLabel = new javax.swing.JLabel();
+      linkedInLabel = new javax.swing.JLabel();
+      LinkeInText = new javax.swing.JTextField();
+      questionarioSC = new javax.swing.JScrollPane();
+      questionarioSCPanel = new javax.swing.JPanel();
+      jLabel15 = new javax.swing.JLabel();
+      submitIntructorCombo = new javax.swing.JComboBox();
+      jLabel16 = new javax.swing.JLabel();
+      respectFriendsCombo = new javax.swing.JComboBox();
+      jLabel17 = new javax.swing.JLabel();
+      buyUniformCombo = new javax.swing.JComboBox();
+      jLabel18 = new javax.swing.JLabel();
+      dontMissCombo = new javax.swing.JComboBox();
+      jLabel19 = new javax.swing.JLabel();
+      giveUniformToOtherCombo = new javax.swing.JComboBox();
+      jLabel20 = new javax.swing.JLabel();
+      learnOathCombo = new javax.swing.JComboBox();
+      jLabel21 = new javax.swing.JLabel();
+      goodSCComobo = new javax.swing.JComboBox();
+      jLabel22 = new javax.swing.JLabel();
+      sendInvitToFMCombo = new javax.swing.JComboBox();
+      jLabel23 = new javax.swing.JLabel();
+      acceptPoliticalPrivacyCombo = new javax.swing.JComboBox();
+      questionarioSE = new javax.swing.JScrollPane();
+      questionarioSEPanel = new javax.swing.JPanel();
+      QSClabel1 = new javax.swing.JLabel();
+      numPeopleOpt = new javax.swing.JSpinner();
+      QSClabel2 = new javax.swing.JLabel();
+      residenceTypeCombo = new javax.swing.JComboBox();
+      QSClabel3 = new javax.swing.JLabel();
+      civilStatusCombo = new javax.swing.JComboBox();
+      QSClabel4 = new javax.swing.JLabel();
+      monthlyIncomeCombo = new javax.swing.JComboBox();
+      QSClabel5 = new javax.swing.JLabel();
+      fatherLabelSE = new javax.swing.JLabel();
+      fatherJobCombo = new javax.swing.JComboBox();
+      motherLabelSE = new javax.swing.JLabel();
+      motherJobCombo = new javax.swing.JComboBox();
+      QSClabel6 = new javax.swing.JLabel();
+      howKnowDepartamentComobo = new javax.swing.JComboBox();
+      QSClabel7 = new javax.swing.JLabel();
+      receivedSocialProgramCombo = new javax.swing.JComboBox();
+      QSClabel9 = new javax.swing.JLabel();
+      whatTheMemberOfSickCombo = new javax.swing.JComboBox();
+      QSClabel10 = new javax.swing.JLabel();
+      jLabel27 = new javax.swing.JLabel();
+      jLabel28 = new javax.swing.JLabel();
+      schoolLevelFatherCombo = new javax.swing.JComboBox();
+      schoolLevelMotherCombo = new javax.swing.JComboBox();
+      QSClabel11 = new javax.swing.JLabel();
+      isFamiliarSmokerCombo = new javax.swing.JComboBox();
+      QSClabel12 = new javax.swing.JLabel();
+      isFalimilarAlcoholicCombo = new javax.swing.JComboBox();
+      QSClabel13 = new javax.swing.JLabel();
+      familyTakeReligionCombo = new javax.swing.JComboBox();
+      questionarioP = new javax.swing.JScrollPane();
+      quetionarioPpanel = new javax.swing.JPanel();
+      QPlabel1 = new javax.swing.JLabel();
+      yourColorCombo = new javax.swing.JComboBox();
+      QPlabel2 = new javax.swing.JLabel();
+      whatSickCombo = new javax.swing.JComboBox();
+      QPlabel3 = new javax.swing.JLabel();
+      whatsAllergyCombo = new javax.swing.JComboBox();
+      QPlabel4 = new javax.swing.JLabel();
+      takeMedicineCombo = new javax.swing.JComboBox();
+      QPlabel5 = new javax.swing.JLabel();
+      memberTakeReligionCombo = new javax.swing.JComboBox();
+      jLabel34 = new javax.swing.JLabel();
+      jScrollPane4 = new javax.swing.JScrollPane();
+      whyAreSCText = new javax.swing.JTextArea();
+      jLabel1 = new javax.swing.JLabel();
+      jScrollPane1 = new javax.swing.JScrollPane();
+      aboutMedicineText = new javax.swing.JTextArea();
+      otherInfo = new javax.swing.JPanel();
+      jLabel3 = new javax.swing.JLabel();
+      schoolingBox = new javax.swing.JComboBox();
+      jLabel4 = new javax.swing.JLabel();
+      occupationText = new javax.swing.JTextField();
+      jLabel5 = new javax.swing.JLabel();
+      fatherText = new javax.swing.JTextField();
+      jLabel6 = new javax.swing.JLabel();
+      motherText = new javax.swing.JTextField();
+      jLabel7 = new javax.swing.JLabel();
+      payFormBox = new javax.swing.JComboBox();
+      jLabel8 = new javax.swing.JLabel();
+      jScrollPane2 = new javax.swing.JScrollPane();
+      obsText = new javax.swing.JTextArea();
+      saveButton = new javax.swing.JButton();
+      titleLabel = new javax.swing.JLabel();
+      clearButton = new javax.swing.JButton();
+      helpLabel = new javax.swing.JLabel();
+      statusProgress = new javax.swing.JProgressBar();
+      uploadPhotoLabel = new javax.swing.JLabel();
+      docLabel = new javax.swing.JLabel();
+      photoLabel = new javax.swing.JLabel();
+      jLabel2 = new javax.swing.JLabel();
+      jLabel10 = new javax.swing.JLabel();
+
+      jLabel9.setText("jLabel9");
+
+      setForeground(new java.awt.Color(255, 255, 255));
+      setPreferredSize(new java.awt.Dimension(1000, 600));
+
+      personaldata.setBorder(javax.swing.BorderFactory.createTitledBorder(
+            javax.swing.BorderFactory.createTitledBorder(""), "Dados Pessoais",
+            0, 0, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255,
+                  255, 255))); // NOI18N
+      personaldata.setForeground(new java.awt.Color(255, 255, 255));
+      personaldata.setToolTipText("");
+      personaldata.setOpaque(false);
+
+      nome.setForeground(new java.awt.Color(255, 255, 255));
+      nome.setText("Nome:");
+
+      sexo.setForeground(new java.awt.Color(255, 255, 255));
+      sexo.setText("Sexo:");
+
+      mBox.setForeground(new java.awt.Color(255, 255, 255));
+      mBox.setText("M");
+      mBox.setOpaque(false);
+
+      fBox.setForeground(new java.awt.Color(255, 255, 255));
+      fBox.setText("F");
+      fBox.setOpaque(false);
+
+      warName.setForeground(new java.awt.Color(255, 255, 255));
+      warName.setText("Nome de Guerra:");
+
+      birthDate.setForeground(new java.awt.Color(255, 255, 255));
+      birthDate.setText("Data de Nascimento:");
+
+      try {
+         bDayText
+               .setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
+                     new javax.swing.text.MaskFormatter("####-##-##")));
+      } catch (java.text.ParseException ex) {
+         ex.printStackTrace();
+      }
+
+      bat.setForeground(new java.awt.Color(255, 255, 255));
+      bat.setText("Batalhão:");
+
+      RG.setForeground(new java.awt.Color(255, 255, 255));
+      RG.setText("RG:");
+
+      cpf.setForeground(new java.awt.Color(255, 255, 255));
+      cpf.setText("CPF:");
+
+      try {
+         cpfText
+               .setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
+                     new javax.swing.text.MaskFormatter("###########")));
+      } catch (java.text.ParseException ex) {
+         ex.printStackTrace();
+      }
+
+      bloodType.setForeground(new java.awt.Color(255, 255, 255));
+      bloodType.setText("Tipo Sanguíneo: ");
+
+      bloddTypeOption.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"}));
+
+      naturalidade.setForeground(new java.awt.Color(255, 255, 255));
+      naturalidade.setText("Naturalidade:");
+
+      ufNat.setForeground(new java.awt.Color(255, 255, 255));
+      ufNat.setText("UF:");
+
+      Nacionalidade.setForeground(new java.awt.Color(255, 255, 255));
+      Nacionalidade.setText("Nacionalidade:");
+
+      nacText.setText("Brasileiro");
+
+      patente.setForeground(new java.awt.Color(255, 255, 255));
+      patente.setText("Patente:");
+
+      patOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Recruta", "Soldado", "Sd. de 1º classe", "Cabo", "3º Sargento",
+            "2º Sargento", "1º Sargento", "Sub Tenente", "Aspirante",
+            "2º Tenente", "1º Tenente", "Capitão", "Major", "Ten. Coronel",
+            "Coronel", "Capelão"}));
+
+      status.setForeground(new java.awt.Color(255, 255, 255));
+      status.setText("Status: ");
+
+      statusOption.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Ativado", "Desativado", "Observação"}));
+
+      civilStatusLabel.setForeground(new java.awt.Color(255, 255, 255));
+      civilStatusLabel.setText("Estado Civil:");
+
+      civilStatusOptions
+            .setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+                  "Solteiro", "Casado", "Viúvo", "Divorciado", "Outro"}));
+
+      javax.swing.GroupLayout personaldataLayout = new javax.swing.GroupLayout(
+            personaldata);
+      personaldata.setLayout(personaldataLayout);
+      personaldataLayout
+            .setHorizontalGroup(
+            personaldataLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        personaldataLayout
+                              .createSequentialGroup()
+                              .addGap(19, 19, 19)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.LEADING,
+                                                            false)
+                                                      .addComponent(
+                                                            warName,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(RG)
+                                                      .addComponent(
+                                                            naturalidade)
+                                                      .addComponent(
+                                                            nome,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE))
+                                          .addComponent(civilStatusLabel))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                  .addComponent(
+                                                                        nomeText,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        437,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addGroup(
+                                                                        personaldataLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    warNameText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    140,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    birthDate)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    bDayText)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    bat)))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        personaldataLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    sexo,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    45,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    mBox)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    fBox)
+                                                                              .addGap(
+                                                                                    0,
+                                                                                    21,
+                                                                                    Short.MAX_VALUE))
+                                                                  .addComponent(
+                                                                        batOption,
+                                                                        0,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        Short.MAX_VALUE)))
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                  .addComponent(
+                                                                        natText,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        143,
+                                                                        Short.MAX_VALUE)
+                                                                  .addComponent(
+                                                                        rgText,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        140,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        civilStatusOptions,
+                                                                        0,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        Short.MAX_VALUE))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        cpf)
+                                                                  .addComponent(
+                                                                        ufNat)
+                                                                  .addComponent(
+                                                                        patente))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                  .addComponent(
+                                                                        cpfText)
+                                                                  .addComponent(
+                                                                        UF)
+                                                                  .addComponent(
+                                                                        patOption,
+                                                                        javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                        0,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        Short.MAX_VALUE))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        bloodType)
+                                                                  .addComponent(
+                                                                        Nacionalidade)
+                                                                  .addComponent(
+                                                                        status))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            personaldataLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        statusOption,
+                                                                        0,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        Short.MAX_VALUE)
+                                                                  .addComponent(
+                                                                        bloddTypeOption,
+                                                                        0,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        Short.MAX_VALUE)
+                                                                  .addComponent(
+                                                                        nacText)))))
+            );
+      personaldataLayout
+            .setVerticalGroup(
+            personaldataLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        personaldataLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                false)
+                                          .addGroup(
+                                                personaldataLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            sexo,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            25, Short.MAX_VALUE)
+                                                      .addComponent(mBox)
+                                                      .addComponent(fBox))
+                                          .addComponent(
+                                                nome,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                Short.MAX_VALUE)
+                                          .addComponent(
+                                                nomeText,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                25, Short.MAX_VALUE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(warName)
+                                          .addComponent(
+                                                warNameText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(birthDate)
+                                          .addComponent(
+                                                bDayText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(bat)
+                                          .addComponent(
+                                                batOption,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(RG)
+                                          .addComponent(cpf)
+                                          .addComponent(
+                                                cpfText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(bloodType)
+                                          .addComponent(
+                                                bloddTypeOption,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                rgText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(
+                                                natText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(naturalidade)
+                                          .addComponent(ufNat)
+                                          .addComponent(
+                                                UF,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(Nacionalidade)
+                                          .addComponent(
+                                                nacText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    personaldataLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(status)
+                                          .addComponent(
+                                                statusOption,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                patOption,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(patente)
+                                          .addComponent(civilStatusLabel)
+                                          .addComponent(
+                                                civilStatusOptions,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addContainerGap(23, Short.MAX_VALUE))
+            );
+
+      otherdatas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+      otherdatas.setPreferredSize(new java.awt.Dimension(800, 221));
+
+      cepLabel.setText("CEP: ");
+
+      cepText.addFocusListener(new java.awt.event.FocusAdapter() {
+         public void focusLost(java.awt.event.FocusEvent evt) {
+            cepTextFocusLost(evt);
+         }
+      });
+
+      streetLabel.setText("Logradouro: ");
+
+      streetText.setToolTipText("");
+
+      numberLabel.setText("Número: ");
+
+      districtLabel.setText("Bairro: ");
+
+      complementLabel.setText("Complemento:");
+
+      cityLabel.setText("Cidade:");
+
+      stateLabel.setText("Estado:");
+
+      countryLabel.setText("País:");
+
+      validarCEP.setForeground(new java.awt.Color(255, 0, 0));
+
+      javax.swing.GroupLayout enderecoLayout = new javax.swing.GroupLayout(
+            endereco);
+      endereco.setLayout(enderecoLayout);
+      enderecoLayout
+            .setHorizontalGroup(
+            enderecoLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        enderecoLayout
+                              .createSequentialGroup()
+                              .addGroup(
+                                    enderecoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                enderecoLayout
+                                                      .createSequentialGroup()
+                                                      .addContainerGap()
+                                                      .addGroup(
+                                                            enderecoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        streetLabel)
+                                                                  .addComponent(
+                                                                        districtLabel)
+                                                                  .addComponent(
+                                                                        cityLabel))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addGroup(
+                                                            enderecoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                  .addGroup(
+                                                                        enderecoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    streetText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    465,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    numberLabel)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                              .addComponent(
+                                                                                    numberText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    96,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        enderecoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    districtText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    211,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    complementLabel)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    complementText))
+                                                                  .addGroup(
+                                                                        enderecoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    cityText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    211,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    stateLabel)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    stateText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    179,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    countryLabel)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    countryText))))
+                                          .addGroup(
+                                                enderecoLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(287, 287, 287)
+                                                      .addComponent(cepLabel)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addComponent(
+                                                            cepText,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            120,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(39, 39, 39)
+                                                      .addComponent(
+                                                            validarCEP,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            204,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addContainerGap(189, Short.MAX_VALUE))
+            );
+      enderecoLayout
+            .setVerticalGroup(
+            enderecoLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        enderecoLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    enderecoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                false)
+                                          .addGroup(
+                                                enderecoLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(cepLabel)
+                                                      .addComponent(
+                                                            cepText,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            25,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addComponent(
+                                                validarCEP,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                Short.MAX_VALUE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                    Short.MAX_VALUE)
+                              .addGroup(
+                                    enderecoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(streetLabel)
+                                          .addComponent(
+                                                streetText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(numberLabel)
+                                          .addComponent(
+                                                numberText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    enderecoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(districtLabel)
+                                          .addComponent(
+                                                districtText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(complementLabel)
+                                          .addComponent(
+                                                complementText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                              .addGroup(
+                                    enderecoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(cityLabel)
+                                          .addComponent(
+                                                cityText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(stateLabel)
+                                          .addComponent(
+                                                stateText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(countryLabel)
+                                          .addComponent(
+                                                countryText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGap(35, 35, 35))
+            );
+
+      otherdatas.addTab("ENDEREÇO", endereco);
+
+      phoneLabel.setText("Telefones:");
+
+      typePhone1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Responsável", "Pessoal", "Fixo", "Trabalho", " "}));
+
+      try {
+         phoneFormat1
+               .setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
+                     new javax.swing.text.MaskFormatter("(##) ####-####")));
+      } catch (java.text.ParseException ex) {
+         ex.printStackTrace();
+      }
+
+      typePhone2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Responsável", "Pessoal", "Fixo", "Trabalho"}));
+      typePhone2.setSelectedIndex(1);
+
+      typePhone3.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Responsável", "Pessoal", "Fixo", "Trabalho"}));
+      typePhone3.setSelectedIndex(2);
+
+      try {
+         phoneFormat2
+               .setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
+                     new javax.swing.text.MaskFormatter("(##) ####-####")));
+      } catch (java.text.ParseException ex) {
+         ex.printStackTrace();
+      }
+
+      try {
+         phoneFormat3
+               .setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(
+                     new javax.swing.text.MaskFormatter("(##) ####-####")));
+      } catch (java.text.ParseException ex) {
+         ex.printStackTrace();
+      }
+
+      emailLabel.setText("Email: ");
+
+      emailText.addFocusListener(new java.awt.event.FocusAdapter() {
+         public void focusLost(java.awt.event.FocusEvent evt) {
+            emailTextFocusLost(evt);
+         }
+      });
+
+      redeSocialLabel.setText("REDES SOCIAIS:");
+
+      facebookLabel.setText("Facebook:");
+
+      linkedInLabel.setText("LinkedIn:");
+
+      javax.swing.GroupLayout contatosLayout = new javax.swing.GroupLayout(
+            contatos);
+      contatos.setLayout(contatosLayout);
+      contatosLayout
+            .setHorizontalGroup(
+            contatosLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        contatosLayout
+                              .createSequentialGroup()
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createSequentialGroup()
+                                                      .addContainerGap()
+                                                      .addComponent(phoneLabel))
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(40, 40, 40)
+                                                      .addGroup(
+                                                            contatosLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                  .addComponent(
+                                                                        typePhone2,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        typePhone1,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        typePhone3,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                      .addGap(39, 39, 39)
+                                                      .addGroup(
+                                                            contatosLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                                        false)
+                                                                  .addComponent(
+                                                                        phoneFormat1,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        108,
+                                                                        Short.MAX_VALUE)
+                                                                  .addComponent(
+                                                                        phoneFormat2)
+                                                                  .addComponent(
+                                                                        phoneFormat3))))
+                              .addGap(64, 64, 64)
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(redeSocialLabel)
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            contatosLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                  .addGroup(
+                                                                        contatosLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    emailLabel)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    emailText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    321,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        contatosLayout
+                                                                              .createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    contatosLayout
+                                                                                          .createParallelGroup(
+                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                          .addComponent(
+                                                                                                facebookLabel)
+                                                                                          .addComponent(
+                                                                                                linkedInLabel))
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addGroup(
+                                                                                    contatosLayout
+                                                                                          .createParallelGroup(
+                                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                                false)
+                                                                                          .addComponent(
+                                                                                                FacebookText)
+                                                                                          .addComponent(
+                                                                                                LinkeInText,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                246,
+                                                                                                Short.MAX_VALUE))))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                      .addComponent(
+                                                            validEmail,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            65,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addContainerGap(142, Short.MAX_VALUE))
+            );
+      contatosLayout
+            .setVerticalGroup(
+            contatosLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        contatosLayout
+                              .createSequentialGroup()
+                              .addGap(18, 18, 18)
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(phoneLabel)
+                                          .addComponent(emailLabel)
+                                          .addComponent(
+                                                emailText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                validEmail,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createSequentialGroup()
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addGroup(
+                                                            contatosLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        typePhone1,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        25,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        phoneFormat1,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        25,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(24, 24, 24)
+                                                      .addComponent(
+                                                            redeSocialLabel)))
+                              .addGap(18, 18, 18)
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(
+                                                typePhone2,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                phoneFormat2,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(
+                                                FacebookText,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                25,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(facebookLabel))
+                              .addGap(18, 18, 18)
+                              .addGroup(
+                                    contatosLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            typePhone3,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            25,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(
+                                                            phoneFormat3,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            25,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                contatosLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            linkedInLabel)
+                                                      .addComponent(
+                                                            LinkeInText,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            25,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addContainerGap(
+                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                    Short.MAX_VALUE))
+            );
+
+      otherdatas.addTab("CONTATOS", contatos);
+
+      questionarioSC.setViewportView(questionarioSCPanel);
+      questionarioSC
+            .setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+      questionarioSC
+            .setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+      jLabel15
+            .setText("1 - Está disposto a se submeter e obedecer as exigêcias e normas estabelecidas pelos instrutores?");
+
+      submitIntructorCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel16.setText("2 - Promete respeitar os seus colegas e superiores?");
+
+      respectFriendsCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel17
+            .setText("3 - Fará todo esforço possível para adquirir o fardamento?");
+
+      buyUniformCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel18
+            .setText("4 - Compromete-se a não faltar reuniões e atividades relacionadas ao Departamento?");
+
+      dontMissCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "SIM", "NÃO"}));
+
+      jLabel19
+            .setText("5 - Caso desista de continuarno Departamento doará seu fardamento a outro membro?");
+
+      giveUniformToOtherCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel20
+            .setText("6 - compromete-se a aprender os Juramentos, Hino Oficial e Divisa?");
+
+      learnOathCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel21
+            .setText("7 - Colaborará para o bom andamento do Soldado de Cristo?");
+
+      goodSCComobo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "SIM", "NÃO"}));
+
+      jLabel22
+            .setText("8 - Compromete-se a convidar outros colegas e familiares?");
+
+      sendInvitToFMCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      jLabel23
+            .setText("9 - Concorda com todos os termos de de privacidade e uso do departamento?");
+
+      acceptPoliticalPrivacyCombo
+            .setModel(new javax.swing.DefaultComboBoxModel(new String[] {"SIM",
+                  "NÃO"}));
+
+      javax.swing.GroupLayout questionarioSCPanelLayout = new javax.swing.GroupLayout(
+            questionarioSCPanel);
+      questionarioSCPanel.setLayout(questionarioSCPanelLayout);
+      questionarioSCPanelLayout
+            .setHorizontalGroup(
+            questionarioSCPanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        questionarioSCPanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                false)
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel15)
+                                                      .addGap(18, 18, 18)
+                                                      .addComponent(
+                                                            submitIntructorCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel16)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            respectFriendsCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel17)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            buyUniformCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel18)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            dontMissCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel19)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            giveUniformToOtherCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel20)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            learnOathCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel21)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            goodSCComobo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel22)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            sendInvitToFMCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGroup(
+                                                questionarioSCPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel23)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE)
+                                                      .addComponent(
+                                                            acceptPoliticalPrivacyCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addContainerGap(338, Short.MAX_VALUE))
+            );
+      questionarioSCPanelLayout
+            .setVerticalGroup(
+            questionarioSCPanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        questionarioSCPanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel15)
+                                          .addComponent(
+                                                submitIntructorCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel16)
+                                          .addComponent(
+                                                respectFriendsCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel17)
+                                          .addComponent(
+                                                buyUniformCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel18)
+                                          .addComponent(
+                                                dontMissCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel19)
+                                          .addComponent(
+                                                giveUniformToOtherCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel20)
+                                          .addComponent(
+                                                learnOathCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel21)
+                                          .addComponent(
+                                                goodSCComobo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel22)
+                                          .addComponent(
+                                                sendInvitToFMCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSCPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(jLabel23)
+                                          .addComponent(
+                                                acceptPoliticalPrivacyCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addContainerGap(93, Short.MAX_VALUE))
+            );
+
+      questionarioSC.setViewportView(questionarioSCPanel);
+
+      otherdatas.addTab("QUESTIONÁRIO SC", questionarioSC);
+
+      QSClabel1
+            .setText("1 - Quantas pessoas compõem a sua família, incluindo você?");
+
+      QSClabel2.setText("2 - Qual é o tipo de residência de sua família?");
+
+      residenceTypeCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Própria", "Alugada", "Emprestada"}));
+
+      QSClabel3.setText("3 - Estado civil dos pais?");
+
+      civilStatusCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Casados", "Divorciados", "Vivem em casas separadas",
+                  "Outro"}));
+
+      QSClabel4.setText("4 - Qual a renda mensal média de sua família hoje?");
+
+      monthlyIncomeCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Até R$ 700,00", "De R$ 700,00 até R$ 1000,00",
+                  "De R$ 1000,00 até R$ 1500,00",
+                  "De R$ 1500,00 até R$ 2000,00", "Acima de R$ 2000,00",
+                  "Não possui nenhuma renda"}));
+
+      QSClabel5.setText("5 - Qual tipo de trabalho é realizado?");
+
+      fatherLabelSE.setText("PAI");
+
+      fatherJobCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Assalariado", "Aposentado", "Pensionista",
+                  "Dono de casa", "Outro"}));
+
+      motherLabelSE.setText("MÃE");
+
+      motherJobCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Assalariada", "Aposentada", "Pensionista",
+                  "Dona de casa", "Outro"}));
+
+      QSClabel6.setText("6 - Como conheceu o Departamento Soldados de Cristo?");
+
+      howKnowDepartamentComobo
+            .setModel(new javax.swing.DefaultComboBoxModel(
+                  new String[] {
+                        "Mídias digitais e propagandas (Sites, Redes Sociais, Rádio, Televisão)",
+                        "Através de desfiles e apresentações (7 de Setembro, Formaturas)",
+                        "Através do convite de amigos ou familiares", "Outro"}));
+
+      QSClabel7.setText("7 - Recebe algum auxílio ou programa Social?");
+
+      receivedSocialProgramCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Nenhum", "Bolsa família", "Pensão ",
+                  "Auxílio doença", "Outro"}));
+
+      QSClabel9.setText("8 - Algum familiar possui algum problema de saúde?");
+
+      whatTheMemberOfSickCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Nenhum", "Diabetes", "Pressão Alta",
+                  "Doenças do Coração", "Reumatismo", "Câncer", "Depressão",
+                  "Outra"}));
+
+      QSClabel10.setText("10 - Qual o nível de escolaridade?");
+
+      jLabel27.setText("PAI");
+
+      jLabel28.setText("MÃE");
+
+      schoolLevelFatherCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Ensino Fundamental", "Ensino Médio",
+                  "Ensino Superior", "Mestre", "Doutor", "Outro"}));
+
+      schoolLevelMotherCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Ensino Fundamental", "Ensino Médio",
+                  "Ensino Superior", "Mestre", "Doutor", "Outro"}));
+
+      QSClabel11.setText("11 - Alguém fuma em sua família?");
+
+      isFamiliarSmokerCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      QSClabel12.setText("12 - Tem algum familiar envolvido com o Alcolismo?");
+
+      isFalimilarAlcoholicCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"SIM", "NÃO"}));
+
+      QSClabel13.setText("13 - Professa alguma religião?");
+
+      familyTakeReligionCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Nenhuma", "Protestantismo", "Catolicismo",
+                  "Judaismo", "Espiritismo", "Afro-brasileira", "Outra"}));
+
+      javax.swing.GroupLayout questionarioSEPanelLayout = new javax.swing.GroupLayout(
+            questionarioSEPanel);
+      questionarioSEPanel.setLayout(questionarioSEPanelLayout);
+      questionarioSEPanelLayout
+            .setHorizontalGroup(
+            questionarioSEPanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        questionarioSEPanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                questionarioSEPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            questionarioSEPanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        QSClabel1)
+                                                                  .addComponent(
+                                                                        QSClabel2)
+                                                                  .addComponent(
+                                                                        QSClabel3)
+                                                                  .addComponent(
+                                                                        QSClabel4)
+                                                                  .addComponent(
+                                                                        QSClabel5)
+                                                                  .addComponent(
+                                                                        QSClabel6)
+                                                                  .addComponent(
+                                                                        QSClabel7)
+                                                                  .addComponent(
+                                                                        QSClabel9))
+                                                      .addGroup(
+                                                            questionarioSEPanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        questionarioSEPanelLayout
+                                                                              .createSequentialGroup()
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    questionarioSEPanelLayout
+                                                                                          .createParallelGroup(
+                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                          .addComponent(
+                                                                                                whatTheMemberOfSickCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addComponent(
+                                                                                                receivedSocialProgramCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addComponent(
+                                                                                                howKnowDepartamentComobo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addGroup(
+                                                                                                questionarioSEPanelLayout
+                                                                                                      .createSequentialGroup()
+                                                                                                      .addComponent(
+                                                                                                            fatherLabelSE)
+                                                                                                      .addPreferredGap(
+                                                                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            fatherJobCombo,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                      .addPreferredGap(
+                                                                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                                      .addComponent(
+                                                                                                            motherLabelSE)
+                                                                                                      .addPreferredGap(
+                                                                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            motherJobCombo,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                          .addComponent(
+                                                                                                monthlyIncomeCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addComponent(
+                                                                                                civilStatusCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addComponent(
+                                                                                                residenceTypeCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                  .addGroup(
+                                                                        questionarioSEPanelLayout
+                                                                              .createSequentialGroup()
+                                                                              .addGap(
+                                                                                    6,
+                                                                                    6,
+                                                                                    6)
+                                                                              .addComponent(
+                                                                                    numPeopleOpt,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                          .addGroup(
+                                                questionarioSEPanelLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            questionarioSEPanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        QSClabel10)
+                                                                  .addComponent(
+                                                                        QSClabel11)
+                                                                  .addComponent(
+                                                                        QSClabel12)
+                                                                  .addComponent(
+                                                                        QSClabel13))
+                                                      .addGap(53, 53, 53)
+                                                      .addGroup(
+                                                            questionarioSEPanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        familyTakeReligionCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        isFalimilarAlcoholicCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        isFamiliarSmokerCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addGroup(
+                                                                        questionarioSEPanelLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jLabel27)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    schoolLevelFatherCombo,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    jLabel28)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    schoolLevelMotherCombo,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                              .addContainerGap(224, Short.MAX_VALUE))
+            );
+      questionarioSEPanelLayout
+            .setVerticalGroup(
+            questionarioSEPanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        questionarioSEPanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QSClabel1)
+                                          .addComponent(
+                                                numPeopleOpt,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel2)
+                                          .addComponent(
+                                                residenceTypeCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel3)
+                                          .addComponent(
+                                                civilStatusCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel4)
+                                          .addComponent(
+                                                monthlyIncomeCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel5)
+                                          .addGroup(
+                                                questionarioSEPanelLayout
+                                                      .createParallelGroup(
+                                                            javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            fatherLabelSE)
+                                                      .addComponent(
+                                                            fatherJobCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(
+                                                            motherLabelSE)
+                                                      .addComponent(
+                                                            motherJobCombo,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QSClabel6)
+                                          .addComponent(
+                                                howKnowDepartamentComobo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QSClabel7)
+                                          .addComponent(
+                                                receivedSocialProgramCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QSClabel9)
+                                          .addComponent(
+                                                whatTheMemberOfSickCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addGap(6, 6, 6)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QSClabel10)
+                                          .addComponent(
+                                                schoolLevelFatherCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(jLabel27)
+                                          .addComponent(jLabel28)
+                                          .addComponent(
+                                                schoolLevelMotherCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel11)
+                                          .addComponent(
+                                                isFamiliarSmokerCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel12)
+                                          .addComponent(
+                                                isFalimilarAlcoholicCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    questionarioSEPanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(QSClabel13)
+                                          .addComponent(
+                                                familyTakeReligionCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addContainerGap(49, Short.MAX_VALUE))
+            );
+
+      questionarioSE.setViewportView(questionarioSEPanel);
+
+      otherdatas.addTab("QUESTIONÁRIO SÓCIO-ECONÔMICO", questionarioSE);
+
+      questionarioP
+            .setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+      QPlabel1.setText("1 - Qual a sua cor?");
+
+      yourColorCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Branco", "Negro", "Pardo", "Outro"}));
+
+      QPlabel2.setText("2 - O membro possui algum tipo de enfermidade?");
+
+      whatSickCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Nenhuma", "Diabetes", "Pressão Alta", "Doenças do Coração",
+            "Reumantismo", "Câncer", "Depressão", "Asma", "Outra"}));
+
+      QPlabel3.setText("3 - Ele Possui algum tipo de alergia? ");
+
+      whatsAllergyCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Nehuma", "Respiratória", "Alimentar", "Insetos",
+                  "Medicamento", "Outro"}));
+
+      QPlabel4.setText("4 - O membro toma algum medicamento?");
+
+      takeMedicineCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"NÃO", "SIM"}));
+
+      QPlabel5.setText("5 - Professa alguma religião?");
+
+      memberTakeReligionCombo.setModel(new javax.swing.DefaultComboBoxModel(
+            new String[] {"Nenhuma", "Protestantismo", "Catolicismo",
+                  "Judaismo", "Espiritismo", "Afro-brasileira", "Outra"}));
+
+      jLabel34.setText("6 - Por que deseja ser um soldado de Cristo?");
+
+      whyAreSCText.setColumns(20);
+      whyAreSCText.setRows(5);
+      jScrollPane4.setViewportView(whyAreSCText);
+
+      jLabel1.setText("Observações médicas:");
+
+      aboutMedicineText.setColumns(20);
+      aboutMedicineText.setRows(5);
+      jScrollPane1.setViewportView(aboutMedicineText);
+
+      javax.swing.GroupLayout quetionarioPpanelLayout = new javax.swing.GroupLayout(
+            quetionarioPpanel);
+      quetionarioPpanel.setLayout(quetionarioPpanelLayout);
+      quetionarioPpanelLayout
+            .setHorizontalGroup(
+            quetionarioPpanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        quetionarioPpanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    quetionarioPpanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                false)
+                                          .addGroup(
+                                                quetionarioPpanelLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel34)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                      .addComponent(
+                                                            jScrollPane4))
+                                          .addGroup(
+                                                quetionarioPpanelLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        QPlabel5)
+                                                                  .addComponent(
+                                                                        QPlabel2)
+                                                                  .addComponent(
+                                                                        QPlabel4)
+                                                                  .addComponent(
+                                                                        QPlabel1)
+                                                                  .addComponent(
+                                                                        QPlabel3))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                            26, Short.MAX_VALUE)
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        yourColorCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        whatSickCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addGroup(
+                                                                        quetionarioPpanelLayout
+                                                                              .createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    quetionarioPpanelLayout
+                                                                                          .createParallelGroup(
+                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                          .addComponent(
+                                                                                                whatsAllergyCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addComponent(
+                                                                                                memberTakeReligionCombo,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addGroup(
+                                                                                                quetionarioPpanelLayout
+                                                                                                      .createSequentialGroup()
+                                                                                                      .addComponent(
+                                                                                                            takeMedicineCombo,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                      .addPreferredGap(
+                                                                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            jLabel1)))
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    jScrollPane1,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    297,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                              .addContainerGap(286, Short.MAX_VALUE))
+            );
+      quetionarioPpanelLayout
+            .setVerticalGroup(
+            quetionarioPpanelLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        quetionarioPpanelLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    quetionarioPpanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QPlabel1)
+                                          .addComponent(
+                                                yourColorCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    quetionarioPpanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                          .addComponent(QPlabel2)
+                                          .addComponent(
+                                                whatSickCombo,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                              .addGroup(
+                                    quetionarioPpanelLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                quetionarioPpanelLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        whatsAllergyCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        QPlabel3))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        quetionarioPpanelLayout
+                                                                              .createParallelGroup(
+                                                                                    javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                              .addComponent(
+                                                                                    takeMedicineCombo,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addComponent(
+                                                                                    jLabel1))
+                                                                  .addComponent(
+                                                                        QPlabel4))
+                                                      .addGap(13, 13, 13)
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        memberTakeReligionCombo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        QPlabel5))
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                      .addGroup(
+                                                            quetionarioPpanelLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addComponent(
+                                                                        jLabel34)
+                                                                  .addComponent(
+                                                                        jScrollPane4,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addComponent(
+                                                jScrollPane1,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addContainerGap(76, Short.MAX_VALUE))
+            );
+
+      questionarioP.setViewportView(quetionarioPpanel);
+
+      otherdatas.addTab("QUESTIONÁRIO PESSOAL", questionarioP);
+
+      jLabel3.setText("Escolaridade: ");
+
+      schoolingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Item 1", "Item 2", "Item 3", "Item 4"}));
+
+      jLabel4.setText("Ocupação: ");
+
+      jLabel5.setText("Nome do Pai:");
+
+      jLabel6.setText("Nome da mãe:");
+
+      jLabel7.setText("Forma de pagamento:");
+
+      payFormBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+            "Item 1", "Item 2", "Item 3", "Item 4"}));
+
+      jLabel8.setText("Observações:");
+
+      obsText.setColumns(20);
+      obsText.setRows(5);
+      jScrollPane2.setViewportView(obsText);
+
+      javax.swing.GroupLayout otherInfoLayout = new javax.swing.GroupLayout(
+            otherInfo);
+      otherInfo.setLayout(otherInfoLayout);
+      otherInfoLayout
+            .setHorizontalGroup(
+            otherInfoLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        otherInfoLayout
+                              .createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    otherInfoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addComponent(jLabel3)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                      .addComponent(
+                                                            schoolingBox,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(75, 75, 75)
+                                                      .addComponent(jLabel7)
+                                                      .addGap(27, 27, 27)
+                                                      .addComponent(
+                                                            payFormBox,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            173,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(18, 18, 18)
+                                                      .addComponent(jLabel8)
+                                                      .addContainerGap(
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE))
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        otherInfoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jLabel6)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    motherText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    437,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        otherInfoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jLabel4)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    occupationText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    145,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        otherInfoLayout
+                                                                              .createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    jLabel5)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                              .addComponent(
+                                                                                    fatherText,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    437,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                      .addGap(18, 18, 18)
+                                                      .addComponent(
+                                                            jScrollPane2,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            283,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addGap(0, 0,
+                                                            Short.MAX_VALUE))))
+            );
+      otherInfoLayout
+            .setVerticalGroup(
+            otherInfoLayout
+                  .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        otherInfoLayout
+                              .createSequentialGroup()
+                              .addGroup(
+                                    otherInfoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addContainerGap()
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        jLabel3)
+                                                                  .addComponent(
+                                                                        schoolingBox,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(20, 20, 20)
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        payFormBox,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        jLabel7)
+                                                                  .addComponent(
+                                                                        jLabel8))))
+                              .addGroup(
+                                    otherInfoLayout
+                                          .createParallelGroup(
+                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        jLabel4)
+                                                                  .addComponent(
+                                                                        occupationText,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        25,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        jLabel5)
+                                                                  .addComponent(
+                                                                        fatherText,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        25,
+                                                                        Short.MAX_VALUE))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            otherInfoLayout
+                                                                  .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                  .addComponent(
+                                                                        jLabel6)
+                                                                  .addComponent(
+                                                                        motherText,
+                                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                        25,
+                                                                        Short.MAX_VALUE))
+                                                      .addContainerGap(
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE))
+                                          .addGroup(
+                                                otherInfoLayout
+                                                      .createSequentialGroup()
+                                                      .addGap(9, 9, 9)
+                                                      .addComponent(
+                                                            jScrollPane2,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addContainerGap(
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            Short.MAX_VALUE))))
+            );
+
+      otherdatas.addTab("OUTRAS INFORMAÇÕES", otherInfo);
+
+      saveButton.setText("Cadastrar");
+      saveButton.setPreferredSize(new java.awt.Dimension(81, 25));
+      saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            saveButtonMouseClicked(evt);
+         }
+      });
+
+      titleLabel.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+      titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+      titleLabel.setText("CADASTRO DE MEMBROS - N BATALHÃO");
+
+      clearButton.setText("Limpar");
+      clearButton.setPreferredSize(new java.awt.Dimension(81, 25));
+      clearButton.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            clearButtonActionPerformed(evt);
+         }
+      });
+
+      helpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/iconeDuvida.png"))); // NOI18N
+
+      statusProgress.setForeground(new java.awt.Color(0, 153, 0));
+      statusProgress.setCursor(new java.awt.Cursor(
+            java.awt.Cursor.DEFAULT_CURSOR));
+      statusProgress.setOpaque(true);
+      statusProgress.setPreferredSize(new java.awt.Dimension(145, 25));
+      statusProgress.setStringPainted(true);
+
+      uploadPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass()
+            .getResource("/images/imagemIconSemOk.png"))); // NOI18N
+      uploadPhotoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            uploadPhotoLabelMouseClicked(evt);
+         }
+      });
+
+      docLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/pdfIconSemOk.png"))); // NOI18N
+      docLabel.setToolTipText("");
+      docLabel.setName("pdfIcon"); // NOI18N
+      docLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            docLabelMouseClicked(evt);
+         }
+      });
+
+      photoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/userDefault.jpg"))); // NOI18N
+
+      jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/closeIcon.png"))); // NOI18N
+      jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jLabel2MouseClicked(evt);
+         }
+      });
+
+      jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+            "/images/voltarIcon.png"))); // NOI18N
+      jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jLabel10MouseClicked(evt);
+         }
+      });
+
+      javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+      this.setLayout(layout);
+      layout.setHorizontalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                          .addGroup(
+                                                layout.createParallelGroup(
+                                                      javax.swing.GroupLayout.Alignment.LEADING)
+                                                      .addGroup(
+                                                            layout.createSequentialGroup()
+                                                                  .addGap(18,
+                                                                        18, 18)
+                                                                  .addComponent(
+                                                                        jLabel10)
+                                                                  .addGap(136,
+                                                                        136,
+                                                                        136)
+                                                                  .addComponent(
+                                                                        titleLabel))
+                                                      .addGroup(
+                                                            layout.createSequentialGroup()
+                                                                  .addContainerGap()
+                                                                  .addComponent(
+                                                                        otherdatas,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        909,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addContainerGap(64,
+                                                            Short.MAX_VALUE)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(
+                                                                  javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                          .addGroup(
+                                                                                                layout.createSequentialGroup()
+                                                                                                      .addComponent(
+                                                                                                            uploadPhotoLabel,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                            30,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                      .addPreferredGap(
+                                                                                                            javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            docLabel,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                            30,
+                                                                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                      .addGap(
+                                                                                                            26,
+                                                                                                            26,
+                                                                                                            26)
+                                                                                                      .addComponent(
+                                                                                                            jLabel2))
+                                                                                          .addComponent(
+                                                                                                photoLabel,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                150,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    personaldata,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(
+                                                                                    statusProgress,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    268,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addGap(
+                                                                                    18,
+                                                                                    18,
+                                                                                    18)
+                                                                              .addComponent(
+                                                                                    helpLabel)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                              .addComponent(
+                                                                                    clearButton,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                              .addPreferredGap(
+                                                                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                              .addComponent(
+                                                                                    saveButton,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                    93,
+                                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                              .addContainerGap(84, Short.MAX_VALUE))
+            );
+      layout.setVerticalGroup(
+            layout.createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING)
+                  .addGroup(
+                        layout.createSequentialGroup()
+                              .addContainerGap()
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(titleLabel)
+                                          .addComponent(jLabel10))
+                              .addGap(18, 18, 18)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGap(5, 5, 5)
+                                                      .addComponent(
+                                                            photoLabel,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            164,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addPreferredGap(
+                                                            javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(
+                                                                  javax.swing.GroupLayout.Alignment.LEADING,
+                                                                  false)
+                                                                  .addComponent(
+                                                                        jLabel2)
+                                                                  .addComponent(
+                                                                        uploadPhotoLabel,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        30,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                  .addComponent(
+                                                                        docLabel,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                        30,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addComponent(
+                                                personaldata,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                              .addPreferredGap(
+                                    javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                                    Short.MAX_VALUE)
+                              .addComponent(otherdatas,
+                                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                                    206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                              .addGap(18, 18, 18)
+                              .addGroup(
+                                    layout.createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING)
+                                          .addComponent(
+                                                statusProgress,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                          .addComponent(helpLabel)
+                                          .addGroup(
+                                                layout.createParallelGroup(
+                                                      javax.swing.GroupLayout.Alignment.BASELINE)
+                                                      .addComponent(
+                                                            saveButton,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                      .addComponent(
+                                                            clearButton,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                            javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                            javax.swing.GroupLayout.PREFERRED_SIZE)))
+                              .addContainerGap(61, Short.MAX_VALUE))
+            );
+   }// </editor-fold>//GEN-END:initComponents
 
    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel10MouseClicked
       // TODO add your handling code here:
@@ -1659,167 +3042,167 @@ public class Registry extends SwitchablePanel {
             Window.BASE_PATH + "/userDefault.jpg").getPath());
    }// GEN-LAST:event_jLabel2MouseClicked
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FacebookText;
-    private javax.swing.JTextField LinkeInText;
-    private javax.swing.JLabel Nacionalidade;
-    private javax.swing.JLabel QPlabel1;
-    private javax.swing.JLabel QPlabel2;
-    private javax.swing.JLabel QPlabel3;
-    private javax.swing.JLabel QPlabel4;
-    private javax.swing.JLabel QPlabel5;
-    private javax.swing.JLabel QSClabel1;
-    private javax.swing.JLabel QSClabel10;
-    private javax.swing.JLabel QSClabel11;
-    private javax.swing.JLabel QSClabel12;
-    private javax.swing.JLabel QSClabel13;
-    private javax.swing.JLabel QSClabel2;
-    private javax.swing.JLabel QSClabel3;
-    private javax.swing.JLabel QSClabel4;
-    private javax.swing.JLabel QSClabel5;
-    private javax.swing.JLabel QSClabel6;
-    private javax.swing.JLabel QSClabel7;
-    private javax.swing.JLabel QSClabel9;
-    private javax.swing.JLabel RG;
-    private javax.swing.JTextField UF;
-    private javax.swing.JTextArea aboutMedicineText;
-    private javax.swing.JComboBox acceptPoliticalPrivacyCombo;
-    private javax.swing.JFormattedTextField bDayText;
-    private javax.swing.JLabel bat;
-    private javax.swing.JComboBox batOption;
-    private javax.swing.JLabel birthDate;
-    private javax.swing.JComboBox bloddTypeOption;
-    private javax.swing.JLabel bloodType;
-    private javax.swing.JComboBox buyUniformCombo;
-    private javax.swing.JLabel cepLabel;
-    private javax.swing.JTextField cepText;
-    private javax.swing.JLabel cityLabel;
-    private javax.swing.JTextField cityText;
-    private javax.swing.JComboBox civilStatusCombo;
-    private javax.swing.JLabel civilStatusLabel;
-    private javax.swing.JComboBox civilStatusOptions;
-    private javax.swing.JButton clearButton;
-    private javax.swing.JLabel complementLabel;
-    private javax.swing.JTextField complementText;
-    private javax.swing.JPanel contatos;
-    private javax.swing.JLabel countryLabel;
-    private javax.swing.JTextField countryText;
-    private javax.swing.JLabel cpf;
-    private javax.swing.JFormattedTextField cpfText;
-    private javax.swing.JLabel districtLabel;
-    private javax.swing.JTextField districtText;
-    private javax.swing.JLabel docLabel;
-    private javax.swing.JComboBox dontMissCombo;
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField emailText;
-    private javax.swing.JPanel endereco;
-    private javax.swing.JCheckBox fBox;
-    private javax.swing.JLabel facebookLabel;
-    private javax.swing.JComboBox familyTakeReligionCombo;
-    private javax.swing.JComboBox fatherJobCombo;
-    private javax.swing.JLabel fatherLabelSE;
-    private javax.swing.JTextField fatherText;
-    private javax.swing.JComboBox giveUniformToOtherCombo;
-    private javax.swing.JComboBox goodSCComobo;
-    private javax.swing.JLabel helpLabel;
-    private javax.swing.JComboBox howKnowDepartamentComobo;
-    private javax.swing.JComboBox isFalimilarAlcoholicCombo;
-    private javax.swing.JComboBox isFamiliarSmokerCombo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JComboBox learnOathCombo;
-    private javax.swing.JLabel linkedInLabel;
-    private javax.swing.JCheckBox mBox;
-    private javax.swing.JComboBox memberTakeReligionCombo;
-    private javax.swing.JComboBox monthlyIncomeCombo;
-    private javax.swing.JComboBox motherJobCombo;
-    private javax.swing.JLabel motherLabelSE;
-    private javax.swing.JTextField motherText;
-    private javax.swing.JTextField nacText;
-    private javax.swing.JTextField natText;
-    private javax.swing.JLabel naturalidade;
-    private javax.swing.JLabel nome;
-    private javax.swing.JTextField nomeText;
-    private javax.swing.JSpinner numPeopleOpt;
-    private javax.swing.JLabel numberLabel;
-    private javax.swing.JTextField numberText;
-    private javax.swing.JTextArea obsText;
-    private javax.swing.JTextField occupationText;
-    private javax.swing.JPanel otherInfo;
-    private javax.swing.JTabbedPane otherdatas;
-    private javax.swing.JComboBox patOption;
-    private javax.swing.JLabel patente;
-    private javax.swing.JComboBox payFormBox;
-    private javax.swing.JPanel personaldata;
-    private javax.swing.JFormattedTextField phoneFormat1;
-    private javax.swing.JFormattedTextField phoneFormat2;
-    private javax.swing.JFormattedTextField phoneFormat3;
-    private javax.swing.JLabel phoneLabel;
-    private javax.swing.JLabel photoLabel;
-    private javax.swing.JScrollPane questionarioP;
-    private javax.swing.JScrollPane questionarioSC;
-    private javax.swing.JPanel questionarioSCPanel;
-    private javax.swing.JScrollPane questionarioSE;
-    private javax.swing.JPanel questionarioSEPanel;
-    private javax.swing.JPanel quetionarioPpanel;
-    private javax.swing.JComboBox receivedSocialProgramCombo;
-    private javax.swing.JLabel redeSocialLabel;
-    private javax.swing.JComboBox residenceTypeCombo;
-    private javax.swing.JComboBox respectFriendsCombo;
-    private javax.swing.JTextField rgText;
-    private javax.swing.JButton saveButton;
-    private javax.swing.JComboBox schoolLevelFatherCombo;
-    private javax.swing.JComboBox schoolLevelMotherCombo;
-    private javax.swing.JComboBox schoolingBox;
-    private javax.swing.JComboBox sendInvitToFMCombo;
-    private javax.swing.JLabel sexo;
-    private javax.swing.JLabel stateLabel;
-    private javax.swing.JTextField stateText;
-    private javax.swing.JLabel status;
-    private javax.swing.JComboBox statusOption;
-    private javax.swing.JProgressBar statusProgress;
-    private javax.swing.JLabel streetLabel;
-    private javax.swing.JTextField streetText;
-    private javax.swing.JComboBox submitIntructorCombo;
-    private javax.swing.JComboBox takeMedicineCombo;
-    private javax.swing.JLabel titleLabel;
-    private javax.swing.JComboBox typePhone1;
-    private javax.swing.JComboBox typePhone2;
-    private javax.swing.JComboBox typePhone3;
-    private javax.swing.JLabel ufNat;
-    private javax.swing.JLabel uploadPhotoLabel;
-    private javax.swing.JLabel validEmail;
-    private javax.swing.JLabel validarCEP;
-    private javax.swing.JLabel warName;
-    private javax.swing.JTextField warNameText;
-    private javax.swing.JComboBox whatSickCombo;
-    private javax.swing.JComboBox whatTheMemberOfSickCombo;
-    private javax.swing.JComboBox whatsAllergyCombo;
-    private javax.swing.JTextArea whyAreSCText;
-    private javax.swing.JComboBox yourColorCombo;
-    // End of variables declaration//GEN-END:variables
+   // Variables declaration - do not modify//GEN-BEGIN:variables
+   private javax.swing.JTextField FacebookText;
+   private javax.swing.JTextField LinkeInText;
+   private javax.swing.JLabel Nacionalidade;
+   private javax.swing.JLabel QPlabel1;
+   private javax.swing.JLabel QPlabel2;
+   private javax.swing.JLabel QPlabel3;
+   private javax.swing.JLabel QPlabel4;
+   private javax.swing.JLabel QPlabel5;
+   private javax.swing.JLabel QSClabel1;
+   private javax.swing.JLabel QSClabel10;
+   private javax.swing.JLabel QSClabel11;
+   private javax.swing.JLabel QSClabel12;
+   private javax.swing.JLabel QSClabel13;
+   private javax.swing.JLabel QSClabel2;
+   private javax.swing.JLabel QSClabel3;
+   private javax.swing.JLabel QSClabel4;
+   private javax.swing.JLabel QSClabel5;
+   private javax.swing.JLabel QSClabel6;
+   private javax.swing.JLabel QSClabel7;
+   private javax.swing.JLabel QSClabel9;
+   private javax.swing.JLabel RG;
+   private javax.swing.JTextField UF;
+   private javax.swing.JTextArea aboutMedicineText;
+   private javax.swing.JComboBox acceptPoliticalPrivacyCombo;
+   private javax.swing.JFormattedTextField bDayText;
+   private javax.swing.JLabel bat;
+   private javax.swing.JComboBox batOption;
+   private javax.swing.JLabel birthDate;
+   private javax.swing.JComboBox bloddTypeOption;
+   private javax.swing.JLabel bloodType;
+   private javax.swing.JComboBox buyUniformCombo;
+   private javax.swing.JLabel cepLabel;
+   private javax.swing.JTextField cepText;
+   private javax.swing.JLabel cityLabel;
+   private javax.swing.JTextField cityText;
+   private javax.swing.JComboBox civilStatusCombo;
+   private javax.swing.JLabel civilStatusLabel;
+   private javax.swing.JComboBox civilStatusOptions;
+   private javax.swing.JButton clearButton;
+   private javax.swing.JLabel complementLabel;
+   private javax.swing.JTextField complementText;
+   private javax.swing.JPanel contatos;
+   private javax.swing.JLabel countryLabel;
+   private javax.swing.JTextField countryText;
+   private javax.swing.JLabel cpf;
+   private javax.swing.JFormattedTextField cpfText;
+   private javax.swing.JLabel districtLabel;
+   private javax.swing.JTextField districtText;
+   private javax.swing.JLabel docLabel;
+   private javax.swing.JComboBox dontMissCombo;
+   private javax.swing.JLabel emailLabel;
+   private javax.swing.JTextField emailText;
+   private javax.swing.JPanel endereco;
+   private javax.swing.JCheckBox fBox;
+   private javax.swing.JLabel facebookLabel;
+   private javax.swing.JComboBox familyTakeReligionCombo;
+   private javax.swing.JComboBox fatherJobCombo;
+   private javax.swing.JLabel fatherLabelSE;
+   private javax.swing.JTextField fatherText;
+   private javax.swing.JComboBox giveUniformToOtherCombo;
+   private javax.swing.JComboBox goodSCComobo;
+   private javax.swing.JLabel helpLabel;
+   private javax.swing.JComboBox howKnowDepartamentComobo;
+   private javax.swing.JComboBox isFalimilarAlcoholicCombo;
+   private javax.swing.JComboBox isFamiliarSmokerCombo;
+   private javax.swing.JLabel jLabel1;
+   private javax.swing.JLabel jLabel10;
+   private javax.swing.JLabel jLabel15;
+   private javax.swing.JLabel jLabel16;
+   private javax.swing.JLabel jLabel17;
+   private javax.swing.JLabel jLabel18;
+   private javax.swing.JLabel jLabel19;
+   private javax.swing.JLabel jLabel2;
+   private javax.swing.JLabel jLabel20;
+   private javax.swing.JLabel jLabel21;
+   private javax.swing.JLabel jLabel22;
+   private javax.swing.JLabel jLabel23;
+   private javax.swing.JLabel jLabel27;
+   private javax.swing.JLabel jLabel28;
+   private javax.swing.JLabel jLabel3;
+   private javax.swing.JLabel jLabel34;
+   private javax.swing.JLabel jLabel4;
+   private javax.swing.JLabel jLabel5;
+   private javax.swing.JLabel jLabel6;
+   private javax.swing.JLabel jLabel7;
+   private javax.swing.JLabel jLabel8;
+   private javax.swing.JLabel jLabel9;
+   private javax.swing.JScrollPane jScrollPane1;
+   private javax.swing.JScrollPane jScrollPane2;
+   private javax.swing.JScrollPane jScrollPane4;
+   private javax.swing.JComboBox learnOathCombo;
+   private javax.swing.JLabel linkedInLabel;
+   private javax.swing.JCheckBox mBox;
+   private javax.swing.JComboBox memberTakeReligionCombo;
+   private javax.swing.JComboBox monthlyIncomeCombo;
+   private javax.swing.JComboBox motherJobCombo;
+   private javax.swing.JLabel motherLabelSE;
+   private javax.swing.JTextField motherText;
+   private javax.swing.JTextField nacText;
+   private javax.swing.JTextField natText;
+   private javax.swing.JLabel naturalidade;
+   private javax.swing.JLabel nome;
+   private javax.swing.JTextField nomeText;
+   private javax.swing.JSpinner numPeopleOpt;
+   private javax.swing.JLabel numberLabel;
+   private javax.swing.JTextField numberText;
+   private javax.swing.JTextArea obsText;
+   private javax.swing.JTextField occupationText;
+   private javax.swing.JPanel otherInfo;
+   private javax.swing.JTabbedPane otherdatas;
+   private javax.swing.JComboBox patOption;
+   private javax.swing.JLabel patente;
+   private javax.swing.JComboBox payFormBox;
+   private javax.swing.JPanel personaldata;
+   private javax.swing.JFormattedTextField phoneFormat1;
+   private javax.swing.JFormattedTextField phoneFormat2;
+   private javax.swing.JFormattedTextField phoneFormat3;
+   private javax.swing.JLabel phoneLabel;
+   private javax.swing.JLabel photoLabel;
+   private javax.swing.JScrollPane questionarioP;
+   private javax.swing.JScrollPane questionarioSC;
+   private javax.swing.JPanel questionarioSCPanel;
+   private javax.swing.JScrollPane questionarioSE;
+   private javax.swing.JPanel questionarioSEPanel;
+   private javax.swing.JPanel quetionarioPpanel;
+   private javax.swing.JComboBox receivedSocialProgramCombo;
+   private javax.swing.JLabel redeSocialLabel;
+   private javax.swing.JComboBox residenceTypeCombo;
+   private javax.swing.JComboBox respectFriendsCombo;
+   private javax.swing.JTextField rgText;
+   private javax.swing.JButton saveButton;
+   private javax.swing.JComboBox schoolLevelFatherCombo;
+   private javax.swing.JComboBox schoolLevelMotherCombo;
+   private javax.swing.JComboBox schoolingBox;
+   private javax.swing.JComboBox sendInvitToFMCombo;
+   private javax.swing.JLabel sexo;
+   private javax.swing.JLabel stateLabel;
+   private javax.swing.JTextField stateText;
+   private javax.swing.JLabel status;
+   private javax.swing.JComboBox statusOption;
+   private javax.swing.JProgressBar statusProgress;
+   private javax.swing.JLabel streetLabel;
+   private javax.swing.JTextField streetText;
+   private javax.swing.JComboBox submitIntructorCombo;
+   private javax.swing.JComboBox takeMedicineCombo;
+   private javax.swing.JLabel titleLabel;
+   private javax.swing.JComboBox typePhone1;
+   private javax.swing.JComboBox typePhone2;
+   private javax.swing.JComboBox typePhone3;
+   private javax.swing.JLabel ufNat;
+   private javax.swing.JLabel uploadPhotoLabel;
+   private javax.swing.JLabel validEmail;
+   private javax.swing.JLabel validarCEP;
+   private javax.swing.JLabel warName;
+   private javax.swing.JTextField warNameText;
+   private javax.swing.JComboBox whatSickCombo;
+   private javax.swing.JComboBox whatTheMemberOfSickCombo;
+   private javax.swing.JComboBox whatsAllergyCombo;
+   private javax.swing.JTextArea whyAreSCText;
+   private javax.swing.JComboBox yourColorCombo;
+   // End of variables declaration//GEN-END:variables
 
 }

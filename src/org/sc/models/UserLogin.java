@@ -2,13 +2,20 @@ package org.sc.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name = "userlogin")
 public class UserLogin extends User implements Serializable {
 
    /**
 	 * 
 	 */
    private static final long serialVersionUID = -7395479933272131962L;
+
+   @Column(name = "user")
    private String user = null;
+   @Column(name = "password")
    private String password = null;
    private String email = null;
 

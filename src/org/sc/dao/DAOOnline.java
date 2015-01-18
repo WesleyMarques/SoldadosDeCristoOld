@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.sc.dao.mysql.ConnectionMySql;
+import org.sc.models.Battalion;
 import org.sc.models.User;
 import org.sc.models.UserLogin;
 
@@ -64,8 +65,10 @@ public class DAOOnline implements GenericDAO {
       String query = "SELECT * FROM " + entity + ";";
       try {
          ResultSet resultSet = connection.query(query);
+         ResultSetMapper<T> result = new ResultSetMapper<T>();
+         return result.mapResultSetToObject(resultSet, Battalion.class);
       } catch (Exception e) {
-
+         e.printStackTrace();
       }
       return null;
    }
@@ -176,7 +179,6 @@ public class DAOOnline implements GenericDAO {
          connection.queryToUpdateDB(query);
          return true;
       } catch (SQLException e) {
-         System.out.println(query);
          throw new DAOException("Erro na operação com o banco de dados: "
                + e.getMessage());
       }

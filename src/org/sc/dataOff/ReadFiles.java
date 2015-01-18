@@ -40,6 +40,7 @@ public class ReadFiles {
          in = new ObjectInputStream(new FileInputStream(PATH + fileName));
          if (in != null) {
             dataObject = ((List<Object>) in.readObject());
+            System.err.println("ok: " + dataObject.size());
             in.close();
          }
       } catch (StreamCorruptedException e) {
@@ -55,18 +56,22 @@ public class ReadFiles {
       return dataObject;
    }
 
-   public boolean saveData(File file, List<Object> obj) throws Exception {
+   public boolean saveData(String file, List<Object> obj) throws Exception {
       FileOutputStream out = null;
       ObjectOutputStream outObj = null;
+
       try {
          try {
-            out = new FileOutputStream(file);
+            out = new FileOutputStream(PATH + file);
             outObj = new ObjectOutputStream(out);
          } catch (FileNotFoundException e) {
             throw e;
          }
+         System.err.println(obj.size());
          outObj.writeObject(obj);
+
       } catch (Exception e) {
+
          throw new Exception("Erro ao salvar os dados");
       } finally {
          out.close();
@@ -81,7 +86,7 @@ public class ReadFiles {
       if (!file.exists()) {
          try {
             return file.createNewFile()
-                  && saveData(file, obj);
+                  && saveData(fileName, obj);
          } catch (Exception e) {
             throw new DAOException("Erro ao salvar ou criar o arquivo: "
                   + e.getMessage());

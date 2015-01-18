@@ -6,6 +6,8 @@
 
 package org.sc.views;
 
+import org.sc.controllers.DataOffController;
+import org.sc.dao.DAOException;
 import org.sc.system.SoldadosDeCristo;
 
 /**
@@ -434,6 +436,12 @@ public class Aplication extends SwitchablePanel {
 
    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton9MouseClicked
       // TODO add your handling code here:
+      try {
+         DataOffController.syncronizedFile();
+      } catch (DAOException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
    }// GEN-LAST:event_jButton9MouseClicked
 
    private void configOpMenuMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_configOpMenuMouseEntered
