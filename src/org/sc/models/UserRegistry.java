@@ -2,6 +2,9 @@ package org.sc.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
+
 import org.sc.dao.util.Util;
 
 public class UserRegistry extends User implements Serializable {
@@ -39,6 +42,7 @@ public class UserRegistry extends User implements Serializable {
    private String city = null;
    private String state = null;
    private String country = null;
+   @OneToOne(cascade = CascadeType.ALL)
    private ContactUsers phones = null;
    private String email = null;
    private QuestionnarieUser questionnarieUser;

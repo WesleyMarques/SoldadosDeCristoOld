@@ -20,7 +20,7 @@ public class ContactUsers implements Serializable {
    }
 
    public void add(String chave, String key, String... obs) {
-      List list = new ArrayList<>();
+      List<Object> list = new ArrayList<>();
       for (String contact : obs) {
          list.add(contact);
       }

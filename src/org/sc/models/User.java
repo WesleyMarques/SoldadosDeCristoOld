@@ -2,6 +2,10 @@ package org.sc.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name = "user")
 public class User implements Serializable {
 
    /**
@@ -9,13 +13,25 @@ public class User implements Serializable {
 	 */
    private static final long serialVersionUID = -8210551665835499908L;
    // Atributos da classe
+
+   @Column(name = "registry")
    private int registry = 0;
+   @Column(name = "name")
    private String name = null;
+   @Column(name = "warName")
    private String warName = null;
+   @Column(name = "rg")
    private int RG = 0;
+   @Column(name = "battalion")
    private int battalion = -1;
+   @Column(name = "patent")
    private int patent = 0;
+   @Column(name = "status")
    private String status = null;
+
+   public User() {
+      // TODO Empty constructor due to mapping using Hybernate
+   }
 
    public User(int registry, String name, String warName, int rG,
          int battalion, int patent, String status) throws Exception {
